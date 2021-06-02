@@ -1,0 +1,111 @@
+/* utilities */
+
+/* main  */
+
+.navbar .navbar-title {
+  color: var(--nav-color);
+}
+
+.navbar div ul {
+  display: flex;
+}
+
+.navbar div ul li {
+  margin: 0 1rem;
+}
+
+.navbar div ul li i {
+  color: var(--nav-color);
+  padding-right: 10px;
+}
+
+.admin-signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: var(--full-height);
+  line-height: 2;
+}
+
+.admin-signin .label {
+  font-weight: bold;
+}
+
+.admin-signin .input {
+  height: 3rem;
+  width: 400px;
+  padding: 1rem;
+}
+
+.admin-signin a {
+  color: blue;
+}
+.admin-signin a:hover {
+  color: turquoise;
+}
+
+.admin-signout {
+  margin-top: 4rem;
+}
+.admin-signout a {
+  color: blue;
+}
+
+/* ADMIN EDIT  */
+.admin-products-container {
+  margin: 5rem;
+  max-width: 1300px;
+}
+.admin-products {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-table {
+  width: 100%;
+  margin-top: 1rem;
+}
+.admin-table thead {
+  text-align: left;
+}
+.admin-table thead tr th {
+  padding-left: 12px;
+}
+.admin-table th:first-of-type {
+  width: 50%;
+}
+.admin-table td:first-of-type {
+  width: 50%;
+}
+
+.admin-table td {
+  vertical-align: middle;
+}
+
+.admin-table tbody td,
+.admin-table thead th {
+  padding: 0.5em 0.75em;
+  border: 1px solid #dbdbdb;
+  border-width: 0 0 1px;
+}
+
+/* Admin Edit */
+
+.admin-edit {
+  text-align: center;
+  width: 60%;
+  margin: auto;
+  margin-top: 2rem;
+  line-height: 2;
+}
+
+.admin-edit .label {
+  margin-right: auto;
+  font-weight: bold;
+}
+
+.admin-edit .input {
+  padding: 1rem;
+}

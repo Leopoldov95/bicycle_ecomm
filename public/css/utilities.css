@@ -1,0 +1,105 @@
+:root {
+  --nav-color: burlywood;
+  --full-height: calc(100vh - 64px);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.p-1 {
+  margin: 1rem 0;
+}
+
+.navbar {
+  color: white;
+  display: flex;
+  flex-basis: 1;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+}
+
+.navbar #myLinks {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.submit-btn {
+  border: none;
+  background-color: var(--nav-color);
+  color: white;
+  padding: 1rem 1.4rem;
+}
+.new-btn {
+  border: none;
+  background-color: rgb(59, 192, 179);
+  color: white;
+  padding: 10px 1rem;
+  border-radius: 5px;
+}
+
+.new-btn i {
+  padding-right: 8px;
+}
+
+.submit-btn i {
+  margin-right: 6px;
+}
+
+.edit-btn {
+  background-color: rgb(50, 159, 231);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+}
+
+.delete-btn {
+  background-color: rgb(231, 50, 50);
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+}
+
+.error-msg {
+  color: red;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+/* HAMBURGER MENU DEFAULT  */
+.mobile-nav {
+  display: none;
+}
+
+.mobile-title {
+  display: none;
+}
