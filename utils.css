@@ -1,0 +1,71 @@
+.add {
+  color: var(--bg-sec);
+}
+
+.favorite {
+  opacity: 0.4;
+}
+
+.nav-icon {
+  padding: 1rem;
+  background-color: white;
+  margin-right: 1.5rem;
+  border-radius: 50%;
+  -webkit-box-shadow: 0px 0px 25px -14px #000000;
+  box-shadow: 0px 0px 25px -14px #000000;
+}
+.filter-icon {
+  padding: 0.7rem 0.8rem;
+  background-color: white;
+  margin-right: 1.5rem;
+  border-radius: 18px;
+  -webkit-box-shadow: 0px 0px 25px -14px #000000;
+  box-shadow: 0px 0px 25px -14px #000000;
+}
+
+.nav-icon:hover,
+.filter-icon:hover {
+  cursor: pointer;
+}
+.card {
+  width: 30%;
+  border-radius: 15px;
+  padding: 1.5rem;
+  -webkit-box-shadow: 0px 0px 25px -14px #000000;
+  box-shadow: 0px 0px 25px -14px #000000;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  height: 22rem;
+}
+
+.card .top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card .top i {
+  font-size: 1.2rem;
+}
+
+.card .top i:hover {
+  cursor: pointer;
+}
+
+.card .mid {
+  margin: 1rem 0;
+}
+
+.card .mid img {
+  width: 100%;
+}
+
+.card .bottom {
+  text-align: center;
+  line-height: 2;
+}
+
+.card .bottom h2 {
+  color: var(--bg-sec);
+}
