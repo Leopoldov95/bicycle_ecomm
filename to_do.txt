@@ -1,6 +1,0 @@
-// REDO THIS PROJECT
-1 - remove home and contact page
-2 - redesign product and cart page
-3 - only allow admin access for ME, only I get admin access
-4 - alow users to sign in, but only to save cart items
-5 - redo admin pages
