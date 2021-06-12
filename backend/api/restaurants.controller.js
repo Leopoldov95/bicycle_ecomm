@@ -1,9 +1,9 @@
-import RestaurantDAO from "./dao/restaurantsDAO.js";
+import RestaurantsDAO from "./dao/restaurantsDAO.js";
 
 export default class RestaurantsController {
   static async apiGetRestaurants(req, res, next) {
     const restaurantsPerPage = req.query.restaurantsPerPage
-      ? parseInt(parseInt(req.query.restaurantsPerPag, 10))
+      ? parseInt(req.query.restaurantsPerPage, 10)
       : 20;
     const page = req.query.page ? parseInt(req.query.page, 10) : 0;
 
@@ -17,11 +17,12 @@ export default class RestaurantsController {
     }
 
     const { restaurantsList, totalNumRestaurants } =
-      await RestaurantDAO.getRestaurants({
+      await RestaurantsDAO.getRestaurants({
         filters,
         page,
         restaurantsPerPage,
       });
+
     let response = {
       restaurants: restaurantsList,
       page: page,
