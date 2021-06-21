@@ -19,7 +19,7 @@ const Slideshow = () => {
           <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
             <div>
               <h2>Find Your Next Bike Here</h2>
-              <button></button>
+              <button className="btn">Shop Bikes</button>
             </div>
           </div>
         </div>
@@ -30,7 +30,7 @@ const Slideshow = () => {
           <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
             <div>
               <h2>Learn More About Us</h2>
-              <button></button>
+              <button className="btn">About Us</button>
             </div>
           </div>
         </div>

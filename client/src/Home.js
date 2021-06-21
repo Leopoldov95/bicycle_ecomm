@@ -7,6 +7,21 @@ function Home() {
   return (
     <div className="Home">
       <Slideshow />
+      <div className="Home-best">
+        <h2>Best Selling Bicycles</h2>
+        <div className="Home-cards">
+          <div className="card-main">
+            <img src="/img/bikes/bonnette_02.jpeg" />
+            <div>
+              <h4>Bonnette Bike</h4>
+              <span>$749.99</span>
+            </div>
+          </div>
+          <div className="card-main">
+            <img src="/img/bikes/comm_02.jpeg" />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

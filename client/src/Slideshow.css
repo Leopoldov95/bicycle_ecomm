@@ -16,3 +16,12 @@
 .each-slide div h2 {
   font-size: 3rem;
 }
+
+.each-slide .btn {
+  border: none;
+  outline: none;
+  background-color: rgb(187, 146, 84);
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}
