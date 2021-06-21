@@ -10,6 +10,7 @@ const slideImages = [
 
 const properties = {
   indicators: true,
+  autoplay: false,
 };
 const Slideshow = () => {
   return (

@@ -8,7 +8,7 @@
 
 .each-slide div {
   padding: 20px;
-
+  line-height: 2;
   color: white;
   text-align: center;
 }

@@ -1,0 +1,17 @@
+.Footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6f6f6;
+  line-height: 2.5;
+}
+
+.Footer-icons ul {
+  display: flex;
+}
+
+.Footer-icons ul li {
+  font-size: 1.4rem;
+  padding: 0 10px;
+}

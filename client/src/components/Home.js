@@ -19,6 +19,10 @@ function Home() {
           </div>
           <div className="card-main">
             <img src="/img/bikes/comm_02.jpeg" />
+            <div>
+              <h4>Commune Bike</h4>
+              <span>$599.99</span>
+            </div>
           </div>
         </div>
       </div>
