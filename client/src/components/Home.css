@@ -13,17 +13,46 @@
 
 .card-main {
   border: 1px solid rgba(51, 51, 51, 0.466);
-  padding-bottom: 2rem;
+
 }
 
 .card-main img {
   width: 100%;
 }
 
-.card-main span {
+.card-main .card-main-content span {
   color: rgb(187, 146, 84);
 }
 
-.card-main div {
+.card-main  .card-main-content {
   line-height: 2;
+}
+.card-main:hover .card-main-shop,
+.card-main:hover .card-main-shop span{
+  display: flex;
+  opacity: 1;
+
+
+}
+.card-main .card-main-shop{
+  display: flex;
+  height: 2.5rem;
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+ 
+.card-main .card-main-shop span {
+  display: none;
+  color: white;
+  background-color: #333;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all ease 0.3s;
+}
+
+.card-main .card-main-shop span i {
+  padding-left: 1rem;
 }

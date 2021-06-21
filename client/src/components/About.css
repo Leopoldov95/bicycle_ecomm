@@ -1,0 +1,42 @@
+.About {
+    max-width: 1200px;
+    margin: 3rem auto;
+}
+
+
+
+.About div:first-of-type h2 {
+    margin-bottom: 1.2rem;
+}
+.About div:first-of-type  {
+   line-height: 1.8;
+}
+
+.About-flex {
+    display: flex;
+    margin: 1.8rem 0;
+}
+
+.About-flex p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.About-flex div:first-of-type{
+    width: 60%;
+}
+
+.About-flex div:nth-child(2) {
+    width: 30%;
+    margin-left: auto;
+}
+
+.About-flex div:nth-child(2) img {
+    width: 100%;
+    height: 100%;
+}
+
+.About .reverse{
+    flex-direction: row-reverse !important;
+}
