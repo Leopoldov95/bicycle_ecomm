@@ -1,1 +1,18 @@
 Learn MERN
+
+// What this app should have
+- A home page with a nav bar
+
+- a view all page for bicycles
+- individual bicycle view
+- a shopping cart
+- a way for new users to sign in and view shopping cart
+- a way for new users to create an account
+
+///// webpage flow ////
+  - home page
+  - view all bikes page
+    - view individual bike
+  - About page
+  - User Login
+    - User creation
