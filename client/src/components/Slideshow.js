@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
 import "./Slideshow.css";
 
@@ -31,7 +32,10 @@ const Slideshow = () => {
           <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
             <div>
               <h2>Learn More About Us</h2>
-              <button className="btn">About Us</button>
+              <Link to='/about'>
+                  <button className="btn">About Us</button>
+              </Link>
+            
             </div>
           </div>
         </div>

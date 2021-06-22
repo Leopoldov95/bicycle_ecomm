@@ -40,3 +40,8 @@
 .About .reverse{
     flex-direction: row-reverse !important;
 }
+
+.About .reverse div:nth-child(2){
+    margin-right: auto !important;
+    margin-left: 0;
+}
