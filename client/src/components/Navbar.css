@@ -2,11 +2,15 @@ a {
   text-decoration: none;
 }
 
-a:hover{
-  opacity: 0.9;
+li:hover,
+a:hover {
+  cursor: pointer;
+  color: #ab9a6f;
 }
 
-a, a:visited, a:active {
+a,
+a:visited,
+a:active {
   color: inherit;
 }
 .Navbar {
@@ -17,6 +21,7 @@ a, a:visited, a:active {
   padding: 0 3rem;
   height: 3.5rem;
   border-bottom: 1px solid rgb(240, 240, 240);
+  position: relative;
 }
 
 .Navbar ul {

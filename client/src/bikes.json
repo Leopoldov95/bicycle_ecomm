@@ -1,0 +1,67 @@
+[
+  {
+    "title": "Original Fixed Bike",
+    "subtitle": "Original",
+    "image": "fixed_01.png",
+    "price": 349,
+    "id": 1001
+  },
+  {
+    "title": "Coaster Bike",
+    "subtitle": "Coaster",
+    "image": "coaster_01.jpeg",
+    "price": 399,
+    "id": 1002
+  },
+  {
+    "title": "Gravel Adventure Bike",
+    "subtitle": "Adventure",
+    "image": "adventure_01.jpeg",
+    "price": 899,
+    "id": 1003
+  },
+  {
+    "title": "Drop Bar Road Bike",
+    "subtitle": "Drop Bar Road",
+    "image": "bonnette_01.jpeg",
+    "price": 749,
+    "id": 1004
+  },
+  {
+    "title": "Classic 8 Speed Bike",
+    "subtitle": "Classic 8 Speed",
+    "image": "city_8speed_01.jpeg",
+    "price": 699,
+    "id": 1005
+  },
+
+  {
+    "title": "Classic 3 Speed Bike",
+    "subtitle": "Classic 3 Speed",
+    "image": "city_3speed_01.jpeg",
+    "price": 649,
+    "id": 1006
+  },
+
+  {
+    "title": "City Step Through - 3 Speed",
+    "subtitle": "Step Through Classic 3 Speed",
+    "image": "city_step_3speed_01.jpeg",
+    "price": 799,
+    "id": 1007
+  },
+  {
+    "title": "City Step Through - 8 Speed",
+    "subtitle": "Step Through Classic 8 Speed",
+    "image": "city_step_01.jpeg",
+    "price": 849,
+    "id": 1008
+  },
+  {
+    "title": "Urban Commuter Bike",
+    "subtitle": "Urban Commuter",
+    "image": "comm_01.jpeg",
+    "price": 649,
+    "id": 1009
+  }
+]

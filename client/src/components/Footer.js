@@ -32,7 +32,7 @@ function Footer() {
         </ul>
       </div>
       <div className="Footer-logo">
-        <img src="/img/logo.png" />
+        <img src="/img/logo.png" alt="logo" />
       </div>
     </div>
   );

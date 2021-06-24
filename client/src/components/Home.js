@@ -11,23 +11,27 @@ function Home() {
         <h2>Best Selling Bicycles</h2>
         <div className="Home-cards">
           <div className="card-main">
-            <img src="/img/bikes/bonnette_02.jpeg" />
-            <div className='card-main-content'>
+            <img src="/img/bikes/bonnette_02.jpeg" alt="bonnette_bike" />
+            <div className="card-main-content">
               <h4>Bonnette Bike</h4>
               <span>$749.99</span>
             </div>
-            <div className='card-main-shop'>
-              <span>Add To Cart <i className="fas fa-shopping-cart"></i></span>
+            <div className="card-main-shop">
+              <span>
+                Add To Cart <i className="fas fa-shopping-cart"></i>
+              </span>
             </div>
           </div>
           <div className="card-main">
-            <img src="/img/bikes/comm_02.jpeg" />
-            <div className='card-main-content'>
+            <img src="/img/bikes/comm_02.jpeg" alt="commuter_bike" />
+            <div className="card-main-content">
               <h4>Commune Bike</h4>
               <span>$599.99</span>
             </div>
-            <div className='card-main-shop'>
-              <span>Add To Cart <i className="fas fa-shopping-cart"></i></span>
+            <div className="card-main-shop">
+              <span>
+                Add To Cart <i className="fas fa-shopping-cart"></i>
+              </span>
             </div>
           </div>
         </div>

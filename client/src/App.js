@@ -8,19 +8,16 @@ import About from "./components/About";
 function App() {
   return (
     <div className="App">
-     
       <Router>
-      <Navbar />
+        <Navbar />
+
         <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/about" exact component={About} />
-        <Route path="*"  render={()=> (
-          <h1>Sorry, page not found</h1>
-        )} />
+          <Route path="/" exact component={Home} />
+          <Route path="/about" exact component={About} />
+          <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
         </Switch>
-        
       </Router>
-    
+
       <Footer />
     </div>
   );

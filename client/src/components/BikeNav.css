@@ -1,0 +1,57 @@
+.BikeNav {
+  z-index: 10;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  background-color: white;
+  width: 100%;
+  height: 222px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+
+  -webkit-box-shadow: 2px 4px 4px -3px rgba(0, 0, 0, 0.41);
+  box-shadow: 2px 4px 4px -3px rgba(0, 0, 0, 0.41);
+}
+.BikeNav .BikeNav-select {
+  min-width: 360px;
+}
+.BikeNav .BikeNav-select ul {
+  flex-direction: column;
+}
+
+.BikeNav .BikeNav-select ul li {
+  padding: 9px 1.8rem;
+  color: white;
+  background-color: #212427;
+}
+
+.BikeNav .BikeNav-select ul li:hover {
+  background-color: black;
+}
+
+.active {
+  background-color: #ab9a6f !important;
+}
+
+.BikeNav-bikes {
+  display: flex;
+
+  overflow-y: hidden;
+}
+.BikeNav .BikeNav-bike-card {
+  height: 222px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 1rem;
+}
+.BikeNav .BikeNav-bike-card:hover {
+}
+.BikeNav .BikeNav-bike-card img {
+  height: 80%;
+}
+
+.overlay {
+  /* add overlay effect here */
+}

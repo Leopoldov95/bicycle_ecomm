@@ -16,3 +16,10 @@ Learn MERN
   - About page
   - User Login
     - User creation
+
+// databse uses 
+- user creation
+- user Login
+- shopping cart
+  - adding items
+  - deleting items 
