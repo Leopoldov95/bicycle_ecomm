@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
-import "./Slideshow.css";
+import "./css/Slideshow.css";
 
 const slideImages = [
   "/img/home/home_main.jpg",
@@ -20,7 +20,7 @@ const Slideshow = () => {
         <div className="each-slide">
           <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
             <div>
-              <h2>Find Your Next Bike Here</h2>
+              <h2>Find Your Next Bike With Us</h2>
               <button className="btn">Shop Bikes</button>
             </div>
           </div>
@@ -31,11 +31,10 @@ const Slideshow = () => {
         <div className="each-slide">
           <div style={{ backgroundImage: `url(${slideImages[2]})` }}>
             <div>
-              <h2>Learn More About Us</h2>
-              <Link to='/about'>
-                  <button className="btn">About Us</button>
+              <h2>Who We Are</h2>
+              <Link to="/about">
+                <button className="btn">Learn More</button>
               </Link>
-            
             </div>
           </div>
         </div>

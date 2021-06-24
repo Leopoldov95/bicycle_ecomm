@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BikeNav from "./BikeNav";
-import "./Navbar.css";
+import "./css/Navbar.css";
 function Navbar() {
+  const [display, setDisplay] = useState(false);
+  function handleDisplay() {
+    setDisplay(!display);
+  }
   return (
     <div className="Navbar">
       <div className="Navbar-nav">
         <ul>
-          <li>Bikes</li>
+          <li onClick={handleDisplay}>Bikes</li>
           <Link to="/about">
             <li>About Us</li>
           </Link>
@@ -27,7 +31,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <BikeNav />
+      <BikeNav display={display} />
     </div>
   );
 }

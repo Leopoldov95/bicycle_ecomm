@@ -44,14 +44,24 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 0 1rem;
+  padding: 0 1rem;
+  position: relative;
 }
-.BikeNav .BikeNav-bike-card:hover {
+
+.BikeNav .BikeNav-bike-card:after {
+  content: "";
+  background-color: #989898;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: all ease 0.2s;
+}
+.BikeNav .BikeNav-bike-card:hover:after {
+  opacity: 0.3;
 }
 .BikeNav .BikeNav-bike-card img {
   height: 80%;
-}
-
-.overlay {
-  /* add overlay effect here */
 }

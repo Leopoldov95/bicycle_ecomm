@@ -1,6 +1,7 @@
 import React from "react";
-import "./Home.css";
+import "./css/Home.css";
 import Slideshow from "./Slideshow";
+import BikeData from "../bikes.json";
 import "react-slideshow-image/dist/styles.css";
 
 function Home() {
@@ -10,16 +11,28 @@ function Home() {
       <div className="Home-best">
         <h2>Best Selling Bicycles</h2>
         <div className="Home-cards">
-          <div className="card-main">
+          {BikeData.map((bike) => {
+            if (bike.best === true) {
+              <div className="card-main">
+                <img src="/img/bikes/{bike.image}" alt={bike.subtitle} />
+                <div className="card-main-content">
+                  <h4>{bike.subtitle}</h4>
+                  <span>${bike.price}</span>
+                </div>
+                <div className="card-main-shop">
+                  <span>View Bicycle</span>
+                </div>
+              </div>;
+            }
+          })}
+          {/* <div className="card-main">
             <img src="/img/bikes/bonnette_02.jpeg" alt="bonnette_bike" />
             <div className="card-main-content">
               <h4>Bonnette Bike</h4>
               <span>$749.99</span>
             </div>
             <div className="card-main-shop">
-              <span>
-                Add To Cart <i className="fas fa-shopping-cart"></i>
-              </span>
+              <span>View Bicycle</span>
             </div>
           </div>
           <div className="card-main">
@@ -29,11 +42,9 @@ function Home() {
               <span>$599.99</span>
             </div>
             <div className="card-main-shop">
-              <span>
-                Add To Cart <i className="fas fa-shopping-cart"></i>
-              </span>
+              <span>View Bicycle</span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

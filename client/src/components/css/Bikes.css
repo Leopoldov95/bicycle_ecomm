@@ -1,0 +1,55 @@
+.Bikes .Bikes-header {
+  height: 2.6rem;
+  background-color: #fbfbfb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.4rem;
+}
+
+.Bikes .Bikes-header .Bikes-filter button {
+  border: none;
+  outline: none;
+}
+
+.Bikes .Bikes-header .Bikes-filter button i {
+  font-size: 1.2rem;
+  background-color: #fbfbfb;
+}
+
+.Bikes .Bikes-header .Bikes-filter span {
+  padding-left: 1rem;
+}
+
+.Bikes .Bikes-container {
+  /* display: grid; */
+  grid-template-columns: 1fr 4fr;
+}
+
+.Bikes .Bikes-container .Bikes-settings {
+  height: 100%;
+}
+
+.Bikes .Bikes-container .Bikes-settings form {
+  padding-left: 2.4rem;
+  line-height: 1.5;
+  border: 1px solid #ececec;
+}
+
+.Bikes .Bikes-products {
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.Bikes .Bikes-products .Bikes-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ececec;
+  height: 400px;
+}
+
+.Bikes .Bikes-products .Bikes-card img {
+  width: 300px;
+}

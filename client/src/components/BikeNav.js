@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "./BikeNav.css";
+import "./css/BikeNav.css";
 import BikeData from "../bikes.json";
-function BikeNav() {
-  const [active, setActive] = useState(null);
+function BikeNav(props) {
+  const [active, setActive] = useState(1);
   const bikes = {
     1: [BikeData[0], BikeData[1]],
     2: [BikeData[2]],
@@ -17,13 +17,15 @@ function BikeNav() {
   function displayNavBikes(id) {
     if (id) {
       return bikes[id].map((bike) => (
-        <div key={bike.name} className="BikeNav-bike-card">
-          <img src={`img/bikes/${bike.image}`} />
-          <span>{bike.subtitle}</span>
-          <span>
-            <strong>${bike.price}</strong>
-          </span>
-        </div>
+        <Link to={`/bikes/${bike.id}`}>
+          <div key={bike.name} className="BikeNav-bike-card ">
+            <img src={`img/bikes/${bike.image}`} />
+            <span>{bike.subtitle}</span>
+            <span>
+              <strong>${bike.price}</strong>
+            </span>
+          </div>
+        </Link>
       ));
     }
   }
@@ -31,7 +33,10 @@ function BikeNav() {
     return `${active === id ? "active" : ""}`;
   }
   return (
-    <div className="BikeNav">
+    <div
+      className="BikeNav"
+      style={{ display: `${props.display ? "grid" : "none"}` }}
+    >
       <div className="BikeNav-select">
         <ul>
           {/* May want to refactor here */}

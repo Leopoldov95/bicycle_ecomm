@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import Bikes from "./components/Bikes";
+import Bike from "./components/Bike";
 
 function App() {
   return (
@@ -14,6 +16,8 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
+          <Route path="/bikes" exact component={Bikes} />
+          <Route path="/bikes/:id" exact component={Bike} />
           <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
         </Switch>
       </Router>
