@@ -4,6 +4,7 @@ import "./css/BikeNav.css";
 import BikeData from "../bikes.json";
 function BikeNav(props) {
   const [active, setActive] = useState(1);
+
   const bikes = {
     1: [BikeData[0], BikeData[1]],
     2: [BikeData[2]],
@@ -36,6 +37,7 @@ function BikeNav(props) {
     <div
       className="BikeNav"
       style={{ display: `${props.display ? "grid" : "none"}` }}
+      onMouseOut={props.handleDisplay}
     >
       <div className="BikeNav-select">
         <ul>

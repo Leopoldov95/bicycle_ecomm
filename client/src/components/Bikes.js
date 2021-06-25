@@ -2,14 +2,17 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BikeData from "../bikes.json";
 import "./css/Bikes.css";
+import { styleFilter, speedFilter, priceFilter } from "./helper/filter";
 function Bikes() {
   const [showFilter, setShowFilter] = useState(true);
-  const [styleFilter, setStyleFilter]
+  const [displayBikes, setDisplayBikes] = useState(BikeData);
+  const [filters, setFilters] = useState(null);
+  /*  const [styleFilter, setStyleFilter] */
 
   function handleFilter() {
     setShowFilter(!showFilter);
   }
-
+  console.log(styleFilter("Casual"));
   function handleStyles() {
     const arr = [];
     BikeData.forEach((bike) => {
@@ -49,6 +52,9 @@ function Bikes() {
             <i className="fas fa-sliders-h"></i>
           </button>
           <span>{showFilter ? "Hide Filters" : "Show Filters"}</span>
+        </div>
+        <div className="Bikes-filter-display">
+          {filters && filters.map((filter) => <span>{filter}</span>)}
         </div>
       </div>
       <div
@@ -99,7 +105,7 @@ function Bikes() {
           </form>
         </div>
         <div className="Bikes-products">
-          {BikeData.map((bike) => (
+          {displayBikes.map((bike) => (
             <Link to={`/bike/${bike.id}`}>
               <div key={bike.id} className="Bikes-card">
                 <img src={`/img/bikes/${bike.image}`} />

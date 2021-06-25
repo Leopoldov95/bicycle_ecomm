@@ -31,7 +31,7 @@ function Navbar() {
           </li>
         </ul>
       </div>
-      <BikeNav display={display} />
+      <BikeNav display={display} handleDisplay={handleDisplay} />
     </div>
   );
 }
