@@ -4,6 +4,7 @@ import BikeData from "../bikes.json";
 import "./css/Bikes.css";
 function Bikes() {
   const [showFilter, setShowFilter] = useState(true);
+  const [styleFilter, setStyleFilter]
 
   function handleFilter() {
     setShowFilter(!showFilter);
