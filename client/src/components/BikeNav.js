@@ -18,8 +18,8 @@ function BikeNav(props) {
     if (id) {
       return bikes[id].map((bike) => (
         <Link to={`/bikes/${bike.id}`}>
-          <div key={bike.name} className="BikeNav-bike-card ">
-            <img src={`img/bikes/${bike.image}`} />
+          <div key={bike.id} className="BikeNav-bike-card ">
+            <img src={`img/bikes/${bike.image}`} alt={bike.subtitle} />
             <span>{bike.subtitle}</span>
             <span>
               <strong>${bike.price}</strong>
