@@ -7,6 +7,9 @@ function Bikes() {
   const [showFilter, setShowFilter] = useState(true);
   const [displayBikes, setDisplayBikes] = useState(BikeData);
   const [filters, setFilters] = useState([]);
+  const [currStyle, setCurrStyle] = useState(null);
+  const [currSpeed, setCurrSpeed] = useState(null);
+  const [currPrice, setCurrPrice] = useState(null);
   /*  const [styleFilter, setStyleFilter] */
 
   function handleFilter() {
