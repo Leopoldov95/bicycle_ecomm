@@ -1,3 +1,7 @@
+.Bikes i {
+  cursor: pointer;
+}
+
 .Bikes .Bikes-hero::before {
   content: "";
   position: absolute;
@@ -45,6 +49,24 @@
 
 .Bikes .Bikes-header .Bikes-filter span {
   padding-left: 1rem;
+}
+
+.Bikes .Bikes-header .Bikes-filter-display {
+  display: flex;
+}
+
+.Bikes .Bikes-header .Bikes-filter-display .Bikes-filter-card {
+  display: flex;
+  align-items: center;
+  background-color: #04a9a7;
+  color: white;
+  font-size: 12px;
+  padding: 4px;
+  border-radius: 5px;
+  margin: 0 2px;
+}
+.Bikes .Bikes-header .Bikes-filter-display .Bikes-filter-card i {
+  padding-left: 6px;
 }
 
 .Bikes .Bikes-container {

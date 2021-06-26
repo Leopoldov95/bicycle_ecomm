@@ -6,11 +6,14 @@ import { styleFilter, speedFilter, priceFilter } from "./helper/filter";
 function Bikes() {
   const [showFilter, setShowFilter] = useState(true);
   const [displayBikes, setDisplayBikes] = useState(BikeData);
-  const [filters, setFilters] = useState(null);
+  const [filters, setFilters] = useState([]);
   /*  const [styleFilter, setStyleFilter] */
 
   function handleFilter() {
     setShowFilter(!showFilter);
+  }
+  function handleFilterSetting(filter) {
+    setFilters([...filters, filter]);
   }
   console.log(styleFilter("Casual"));
   function handleStyles() {
@@ -54,7 +57,13 @@ function Bikes() {
           <span>{showFilter ? "Hide Filters" : "Show Filters"}</span>
         </div>
         <div className="Bikes-filter-display">
-          {filters && filters.map((filter) => <span>{filter}</span>)}
+          {filters.length > 0 &&
+            filters.map((filter) => (
+              <div className="Bikes-filter-card">
+                <span>{filter}</span>
+                <i className="fas fa-times"></i>
+              </div>
+            ))}
         </div>
       </div>
       <div
@@ -69,8 +78,14 @@ function Bikes() {
             <h2>Style</h2>
             {[...styles].map((style) => (
               <div>
-                <input type="radio" id={style} name="style" value={style} /> 
-                <label htmlFor={style}>{style}</label>
+                <input
+                  onClick={() => handleFilterSetting(style)}
+                  type="radio"
+                  id={style}
+                  name="style"
+                  value={style}
+                />
+                 <label htmlFor={style}>{style}</label>
               </div>
             ))}
           </form>
