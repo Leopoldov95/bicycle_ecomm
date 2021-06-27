@@ -2,8 +2,8 @@ a {
   text-decoration: none;
 }
 
-li:hover,
-a:hover {
+.Navbar li:hover,
+.Navbar a:hover {
   cursor: pointer;
   color: #ab9a6f;
 }

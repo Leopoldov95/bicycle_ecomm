@@ -21,7 +21,9 @@ const Slideshow = () => {
           <div style={{ backgroundImage: `url(${slideImages[0]})` }}>
             <div>
               <h2>Find Your Next Bike With Us</h2>
-              <button className="btn">Shop Bikes</button>
+              <Link to="/bikes">
+                <button className="btn">Shop Bikes</button>
+              </Link>
             </div>
           </div>
         </div>

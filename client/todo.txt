@@ -1,4 +1,6 @@
 Things to handle
 - fix bicycle navbar
 - implement item filter
+- fix all filtet issues
+- refactor code
 - create pages for individual bicycles

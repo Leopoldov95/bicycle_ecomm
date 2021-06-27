@@ -4,7 +4,12 @@ import BikeData from "../bikes.json";
 import "./css/Bikes.css";
 //import { styleFilter, speedFilter, priceFilter } from "./helper/filter";
 function Bikes() {
-  const priceRange = [300, 500, 700, 800];
+  const priceRange = [
+    "$0 - $300",
+    "$301 - $500",
+    "$501 - $700",
+    "$701 - $1000",
+  ];
   const [showFilter, setShowFilter] = useState(true);
   const [displayBikes, setDisplayBikes] = useState(BikeData);
   const [filters, setFilters] = useState({
@@ -16,14 +21,6 @@ function Bikes() {
   useEffect(() => {
     updateBikes();
   }, [filters]);
-  /*  const [currStyle, setCurrStyle] = useState(null);
-  const [currSpeed, setCurrSpeed] = useState(null);
-  const [currPrice, setCurrPrice] = useState(null); */
-  /* create a useEffect here to change filter cards */
-  /*   useEffect(() => {
-    setFilters([currStyle, currPrice, currSpeed]);
-  }, [currStyle, currPrice, currSpeed]); */
-  /* Set Filter */
 
   // sets the filter for styles
   function styleFilter(filter) {
@@ -142,17 +139,34 @@ function Bikes() {
   const styles = handleStyles();
   const speeds = handleSpeed();
 
+  function handlePriceFilter(price, bikes) {
+    // console.log(bikes.forEach((bike) => console.log(bike.price)));
+    const arr = [];
+    const newArr = price.split("-");
+    for (let i of newArr) {
+      arr.push(Number(i.match(/(\d+)/)[0]));
+    }
+    // use arr to search within price range
+    console.log(arr);
+    return bikes.filter((bike) => bike.price >= arr[0] && bike.price <= arr[1]);
+  }
+
   function updateBikes() {
     // checking if any filters are currently active
-    if (Object.values(filters).some((el) => el !== null)) {
-      for (let [key, value] of Object.entries(filters)) {
-        if (value !== null) {
-          console.log(`${key} is active`);
-          console.log(BikeData[0][key] === value);
-          // double loop here
-          let newDisplay = displayBikes.filter((item) => item[key] === value);
 
-          console.log(newDisplay);
+    // so when chaning filters of the same category, it dervies the new list from the exisitng modified list rather than the orignal list
+    if (Object.values(filters).some((el) => el !== null)) {
+      let newDisplay = BikeData;
+      for (let [key, value] of Object.entries(filters)) {
+        if (value !== null && key !== "price") {
+          // double loop here
+          newDisplay = newDisplay.filter((item) => item[key] === value);
+
+          setDisplayBikes(newDisplay);
+        } else if (value !== null && key === "price") {
+          // handle price setting here, may want to refactor later
+          console.log("price filter has been engaged");
+          newDisplay = handlePriceFilter(filters.price, newDisplay);
           setDisplayBikes(newDisplay);
         }
       }
@@ -187,7 +201,7 @@ function Bikes() {
           {Object.keys(filters).map(
             (filterName) =>
               filters[filterName] !== null && (
-                <div className="Bikes-filter-card">
+                <div className="Bikes-filter-card" key={filterName}>
                   <span>{filters[filterName]}</span>
                   <i
                     onClick={() => deleteFilter(filters[filterName])}
@@ -204,12 +218,14 @@ function Bikes() {
       >
         <div
           className="Bikes-settings"
+          /*  visibility: visible;
+  opacity: 1; */
           style={{ display: `${showFilter ? "block" : "none"}` }}
         >
           <form action="">
             <h2>Style</h2>
             {[...styles].map((style) => (
-              <div>
+              <div className="radio" key={style}>
                 <input
                   onClick={() => styleFilter(style)}
                   checked={filters.style === style}
@@ -218,14 +234,17 @@ function Bikes() {
                   name="style"
                   value={style}
                 />
-                 <label htmlFor={style}>{style}</label>
+                 
+                <label className="radio-label" htmlFor={style}>
+                  {style}
+                </label>
               </div>
             ))}
           </form>
           <form action="">
             <h2>Speeds</h2>
             {[...speeds].map((speed) => (
-              <div>
+              <div className="radio" key={speed}>
                 <input
                   onClick={() => speedFilter(speed)}
                   checked={filters.speed === speed}
@@ -234,66 +253,41 @@ function Bikes() {
                   name="speed"
                   value={speed}
                 />
-                 <label htmlFor={speed}>{speed}</label>
+                 
+                <label className="radio-label" htmlFor={speed}>
+                  {speed}
+                </label>
               </div>
             ))}
           </form>
           <form action="">
             <h2>Price</h2>
 
-            <div>
-              <input
-                onClick={() => priceFilter("under $300")}
-                checked={filters.price === "under $300"}
-                type="radio"
-                id="300"
-                name="price"
-                value="300"
-              />
-               <label htmlFor="300">under $300</label>
-            </div>
-            <div>
-              <input
-                onClick={() => priceFilter("$300-$500")}
-                checked={filters.price === "$300-$500"}
-                type="radio"
-                id="500"
-                name="price"
-                value="500"
-              />
-               <label htmlFor="500">$300 - 500</label>
-            </div>
-            <div>
-              <input
-                onClick={() => priceFilter("$500 - $700")}
-                checked={filters.price === "$500 - $700"}
-                type="radio"
-                id="700"
-                name="price"
-                value="700"
-              />
-               <label htmlFor="700">$500 - 700</label>
-            </div>
-            <div>
-              <input
-                onClick={() => priceFilter("$800+")}
-                checked={filters.price === "$800+"}
-                type="radio"
-                id="800"
-                name="price"
-                value="800"
-              />
-               <label htmlFor="800">$800+</label>
-            </div>
+            {priceRange.map((price) => (
+              <div className="radio">
+                <input
+                  onClick={() => priceFilter(price)}
+                  checked={filters.price === price}
+                  type="radio"
+                  id={price}
+                  name="price"
+                  value={price}
+                />
+                 
+                <label className="radio-label" htmlFor={price}>
+                  {price}
+                </label>
+              </div>
+            ))}
           </form>
         </div>
         <div className="Bikes-products">
           {displayBikes.map((bike) => (
-            <Link to={`/bike/${bike.id}`}>
-              <div key={bike.id} className="Bikes-card">
-                <img src={`/img/bikes/${bike.image}`} />
+            <Link key={bike.id} to={`/bike/${bike.id}`}>
+              <div className="Bikes-card">
+                <img src={`/img/bikes/${bike.image}`} alt={bike.subtitle} />
                 <span>{bike.title}</span>
-                <span>${bike.price}</span>
+                <span className="Bikes-card-price">${bike.price}</span>
                 <div className="Bikes-card-link">
                   <span>View Bicycle</span>
                 </div>

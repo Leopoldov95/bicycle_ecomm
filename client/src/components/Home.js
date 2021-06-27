@@ -15,8 +15,8 @@ function Home() {
           {BikeData.map(
             (bike) =>
               bike.best === true && (
-                <Link to={`/bikes/${bike.id}`}>
-                  <div key={bike.subtitle} className="card-main">
+                <Link key={bike.subtitle} to={`/bikes/${bike.id}`}>
+                  <div className="card-main">
                     <img src={`/img/bikes/${bike.image}`} alt={bike.subtitle} />
                     <div className="card-main-content">
                       <h4>{bike.subtitle}</h4>
