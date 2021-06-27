@@ -18,7 +18,11 @@ function BikeNav(props) {
   function displayNavBikes(id) {
     if (id) {
       return bikes[id].map((bike) => (
-        <Link key={bike.id} to={`/bikes/${bike.id}`}>
+        <Link
+          key={bike.id}
+          to={`/bikes/${bike.id}`}
+          onClick={props.handleDisplay}
+        >
           <div className="BikeNav-bike-card ">
             <img src={`img/bikes/${bike.image}`} alt={bike.subtitle} />
             <span>{bike.subtitle}</span>
@@ -37,7 +41,7 @@ function BikeNav(props) {
     <div
       className="BikeNav"
       style={{ display: `${props.display ? "grid" : "none"}` }}
-      onMouseOut={props.handleDisplay}
+      onMouseLeave={props.handleDisplay}
     >
       <div className="BikeNav-select">
         <ul>
@@ -77,7 +81,7 @@ function BikeNav(props) {
           >
             Commuter
           </li>
-          <Link to="/bikes">
+          <Link to="/bikes" onClick={props.handleDisplay}>
             <li>All Bikes</li>
           </Link>
         </ul>
