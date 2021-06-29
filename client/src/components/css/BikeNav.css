@@ -1,5 +1,5 @@
 .BikeNav {
-  z-index: 10;
+  z-index: 50;
   position: absolute;
   top: 56px;
   left: 0;
@@ -39,7 +39,9 @@
   overflow-y: hidden;
 }
 .BikeNav .BikeNav-bike-card {
-  height: 222px;
+  height: 100%;
+
+  line-height: 1.5;
   display: flex;
   flex-direction: column;
   justify-content: center;

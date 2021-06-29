@@ -8,8 +8,8 @@
     "speed": "Fixed",
     "best": false,
     "id": 1001,
-    "highlighst": [
-      "Original brake – The one that started it all.",
+    "highlights": [
+      "Original Bike – The one that started it all.",
       "Sealed bottom bracket for smooth spins",
       "25mm rims",
       "Warranty activated with professional assembly from your local bike shop."
@@ -48,7 +48,7 @@
     "price": 259,
     "best": false,
     "id": 1002,
-    "highlighst": [
+    "highlights": [
       "Coaster brake – just push back on the pedals to stop.",
       "Sealed bottom bracket for smooth spins",
       "25mm rims",
@@ -88,7 +88,7 @@
     "price": 899,
     "best": false,
     "id": 1003,
-    "highlighst": [
+    "highlights": [
       "650B compatible, so you can swap rims and rock monster tires",
       "Gravel-ready geometry keeps you in control on loose surfaces",
       "Disc brakes provide unmatched stopping power"
@@ -127,7 +127,7 @@
     "price": 749,
     "best": true,
     "id": 1004,
-    "highlighst": [
+    "highlights": [
       "Chromoly mainframe and fork for a light, comfortable ride.",
       "Drop bars give you a more options for hand and body positioning.",
       "Compact dual-chainring for tackling tough climbs.",
@@ -169,7 +169,7 @@
     "best": false,
     "price": 699,
     "id": 1005,
-    "highlighst": [
+    "highlights": [
       "8-speed external gearing or check out the 3-speed internal gearing option.",
       "Relaxed urban geometry",
       "Includes rear rack and fenders"
@@ -209,7 +209,7 @@
     "best": false,
     "price": 649,
     "id": 1006,
-    "highlighst": [
+    "highlights": [
       "3-speed external gearing or check out the 3-speed internal gearing option.",
       "Relaxed urban geometry",
       "Includes rear rack and fenders"
@@ -249,7 +249,7 @@
     "best": false,
     "price": 799,
     "id": 1007,
-    "highlighst": [
+    "highlights": [
       "3-speed external gearing or check out the 3-speed internal gearing option.",
       "Relaxed urban geometry",
       "Includes rear rack and fenders"
@@ -288,7 +288,7 @@
     "best": false,
     "price": 849,
     "id": 1008,
-    "highlighst": [
+    "highlights": [
       "8-speed external gearing or check out the 3-speed internal gearing option.",
       "Relaxed urban geometry",
       "Includes rear rack and fenders"
@@ -327,7 +327,7 @@
     "best": true,
     "price": 649,
     "id": 1009,
-    "highlighst": [
+    "highlights": [
       "8 speeds to conquer your city's toughest streets.",
       "Disc brakes for awesome all-weather stopping power.",
       "Dual chainguard keeps your chain in place over the roughest roads.",

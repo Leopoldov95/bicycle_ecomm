@@ -1,7 +1,3 @@
-a {
-  text-decoration: none;
-}
-
 .Navbar li:hover,
 .Navbar a:hover {
   cursor: pointer;
@@ -34,4 +30,13 @@ a:active {
 
 .Navbar .Navbar-brand img {
   height: 3.5rem;
+}
+
+.Navbar .Navbar-brand span {
+  margin: 0 4px;
+}
+
+.Navbar .Navbar-brand a:hover {
+  cursor: pointer;
+  color: black;
 }

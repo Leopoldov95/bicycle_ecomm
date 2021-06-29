@@ -19,7 +19,13 @@ function Navbar() {
       </div>
       <div className="Navbar-brand">
         <Link to="/">
-          <h1>Leo Cycling</h1>
+          <h1>
+            Leo
+            <span>
+              <i className="fas fa-bicycle"></i>
+            </span>
+            Cycling
+          </h1>
         </Link>
       </div>
       <div className="Navbar-user">

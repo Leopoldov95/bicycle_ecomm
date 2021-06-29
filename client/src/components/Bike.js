@@ -9,7 +9,10 @@ import "./css/Bike.css";
 
 function Bike(props) {
   const currId = props.match.params.id;
-  const [size, setSize] = useState("Medium");
+  const sizes = ["SMALL", "MEDIUM", "LARGE", "X-LARGE"];
+  const bikeNav = ["DETAILS", "SPECS", "SIZING", "WARRANTY"];
+  const [size, setSize] = useState("MEDIUM");
+  const [currInfo, setCurrInfo] = useState("DETAILS");
   //const [currId, setCurrId] = useState(props.match.params.id);
 
   /* useEffect(() => {
@@ -37,7 +40,7 @@ function Bike(props) {
         {/* <div className="Bike-main-img">
           <img src={`/img/bikes/${currImg}`} alt={currBike.subtitle} />
         </div> */}
-        <div className="Bike-main-img-slide">
+        <div className="img-slide">
           <Slide easing="ease" {...properties}>
             {images.map((img) => (
               <div className="each-slide">
@@ -50,8 +53,8 @@ function Bike(props) {
             ))}
           </Slide>
         </div>
-        <div className="Bike-main-content">
-          <div className="Bike-main-content-header">
+        <div className="content">
+          <div className="content-header">
             <div>
               <h4>{currBike.title}</h4>
               <h2>{size}</h2>
@@ -60,11 +63,138 @@ function Bike(props) {
               <h1>${currBike.price}</h1>
             </div>
           </div>
+          <div className="content-size">
+            <span>Size:</span>
+            <ul>
+              {sizes.map((s) => (
+                <li
+                  className={`${s === size && "btn-active"} btn`}
+                  onClick={() => setSize(s)}
+                >
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <button className="btn-cart">
+            ADD TO <i className="fas fa-shopping-cart"></i>
+          </button>
+          <div className="content-highlights">
+            <div>
+              <h2>Highlights: </h2>
+            </div>
+            <div>
+              <ul>
+                {currBike.highlights.map((det) => (
+                  <li>{det}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="warranty">
+              <div>
+                <span>
+                  <i class="fas fa-tools"></i>
+                </span>
+                <p>Choose to Have Your Bike Delivered Fully Built</p>
+              </div>
+              <div>
+                <span>
+                  <i class="fas fa-truck"></i>
+                </span>
+                <p>30 Day Free Returns</p>
+              </div>
+              <div>
+                <span>
+                  <i class="fas fa-trophy"></i>
+                </span>
+                <p> Lifetime Frame and Fork Warranty</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className="Bike-details">
-        <div className="Bike-nav"></div>
-        <div className="Bike-info"></div>
+        <div className="Bike-nav">
+          <ul>
+            {bikeNav.map((nav) => (
+              <li
+                className={`${currInfo === nav ? "nav-active" : ""}`}
+                onClick={() => setCurrInfo(nav)}
+              >
+                {nav}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div className="Bike-info">
+          <div
+            className="details"
+            style={{ display: `${currInfo === bikeNav[0] ? "block" : "none"}` }}
+          >
+            <h2>{currBike.title}</h2>
+            <p>{currBike.details}</p>
+          </div>
+          <div
+            className="specs"
+            style={{ display: `${currInfo === bikeNav[1] ? "block" : "none"}` }}
+          >
+            <h3>{currBike.subtitle}</h3>
+            <ul>
+              {Object.entries(currBike.specs).map(
+                ([key, value]) => (
+                  <li>
+                    <span>
+                      <strong>{key}:</strong>
+                    </span>
+                    <span>{value}</span>
+                  </li>
+                )
+                // Pretty straightforward - use key for the key and value for the value.
+                // Just to clarify: unlike object destructuring, the parameter names don't matter here.
+              )}
+            </ul>
+          </div>
+          <div
+            className="sizing"
+            style={{ display: `${currInfo === bikeNav[2] ? "block" : "none"}` }}
+          >
+            <p>
+              Everybody's size is different - it's always best to measure your
+              inseam before deciding what size is best.
+            </p>
+            <div className="sizing-menu">
+              <div className="btn-sizing" onClick={() => setSize("SMALL")}>
+                <h2>SMALL</h2>
+                <p>For riders 5'6" to 5'9"</p>
+              </div>
+              <div className="btn-sizing" onClick={() => setSize("MEDIUM")}>
+                <h2>MEDIUM</h2>
+                <p>For riders 5'8" to 5'10"</p>
+              </div>
+              <div className="btn-sizing" onClick={() => setSize("LARGE")}>
+                <h2>LARGE</h2>
+                <p>For riders 5'10" to 6'</p>
+              </div>
+              <div className="btn-sizing" onClick={() => setSize("X-LARGE")}>
+                <h2>X-LARGE</h2>
+                <p>For riders 6' to 6'2"</p>
+              </div>
+            </div>
+          </div>
+          <div
+            className="warranty"
+            style={{ display: `${currInfo === bikeNav[3] ? "block" : "none"}` }}
+          >
+            <h2>The best warranty in the business</h2>
+            <p>
+              We believe in our bikes and we believe you should be able to enjoy
+              riding without sweating the small stuff - that’s why we’ve got
+              your back! With a lifetime warranty on frames and a 1-year
+              warranty on components, you can ride confidently with the
+              knowledge that we’ve got you covered.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
