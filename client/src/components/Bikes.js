@@ -283,7 +283,7 @@ function Bikes() {
         </div>
         <div className="Bikes-products">
           {displayBikes.map((bike) => (
-            <Link key={bike.id} to={`/bike/${bike.id}`}>
+            <Link key={bike.id} to={`/bikes/${bike.id}`}>
               <div className="Bikes-card">
                 <img src={`/img/bikes/${bike.image}`} alt={bike.subtitle} />
                 <span>{bike.title}</span>

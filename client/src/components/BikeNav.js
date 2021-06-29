@@ -24,7 +24,7 @@ function BikeNav(props) {
           onClick={props.handleDisplay}
         >
           <div className="BikeNav-bike-card ">
-            <img src={`img/bikes/${bike.image}`} alt={bike.subtitle} />
+            <img src={`/img/bikes/${bike.image}`} alt={bike.subtitle} />
             <span>{bike.subtitle}</span>
             <span>
               <strong>${bike.price}</strong>

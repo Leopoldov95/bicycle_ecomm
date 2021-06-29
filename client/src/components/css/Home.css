@@ -49,3 +49,32 @@
   opacity: 0;
   transition: all ease 0.3s;
 }
+
+/* Home Page SLideshow properties */
+.Home .each-slide > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 600px;
+}
+
+.Home .each-slide div {
+  padding: 20px;
+  line-height: 2;
+  color: white;
+  text-align: center;
+}
+
+.Home .each-slide div h2 {
+  font-size: 3rem;
+}
+
+.Home .each-slide .btn {
+  border: none;
+  outline: none;
+  background-color: #ab9a6f;
+  color: white;
+  padding: 1rem;
+  border-radius: 5px;
+}

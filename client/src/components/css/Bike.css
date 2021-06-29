@@ -1,0 +1,22 @@
+.Bike {
+  padding: 0 1.5rem;
+}
+.Bike .Bike-main {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.Bike .Bike-main .Bike-main-img img {
+  width: 100%;
+}
+
+.Bike .Bike-main .Bike-main-content .Bike-main-content-header {
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+  align-items: center;
+}
+/* Bike Page Slideshow settings */
+.Bike .each-slide > div {
+  height: 500px;
+}

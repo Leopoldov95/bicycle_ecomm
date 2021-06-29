@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Slide } from "react-slideshow-image";
-import "./css/Slideshow.css";
+//import "./css/Slideshow.css";
 
 const slideImages = [
   "/img/home/home_main.jpg",

@@ -17,7 +17,11 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/about" exact component={About} />
           <Route path="/bikes" exact component={Bikes} />
-          <Route path="/bikes/:id" exact component={Bike} />
+          <Route
+            path="/bikes/:id"
+            exact
+            render={(props) => <Bike {...props} />}
+          />
           <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
         </Switch>
       </Router>
