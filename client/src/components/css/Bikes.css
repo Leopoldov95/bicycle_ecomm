@@ -209,3 +209,32 @@
 .radio input[type="radio"] + .radio-label:empty:before {
   margin-right: 0;
 }
+
+/* Mobile View */
+@media only screen and (max-width: 480px) {
+  .Bikes .Bikes-hero {
+    padding: 0 2rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .Bikes .Bikes-products {
+    display: flex;
+    flex-direction: column;
+  }
+  .Bikes .Bikes-header {
+    padding: 0 1rem;
+  }
+  .Bikes .Bikes-container {
+    grid-template-columns: none;
+  }
+  .Bikes .Bikes-container .Bikes-settings form {
+    padding: 1rem;
+  }
+  .Bikes .Bikes-header .Bikes-filter span {
+    display: none;
+  }
+  .Bikes .Bikes-products .Bikes-card img {
+    width: 80%;
+  }
+}

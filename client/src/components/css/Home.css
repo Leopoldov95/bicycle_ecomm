@@ -78,3 +78,21 @@
   padding: 1rem;
   border-radius: 5px;
 }
+
+/* Home mobile Menu */
+@media only screen and (max-width: 480px) {
+  .Home .each-slide div h2 {
+    font-size: 1rem;
+  }
+  .Home .each-slide div {
+    height: 210px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .Home-cards {
+    flex-direction: column;
+  }
+}

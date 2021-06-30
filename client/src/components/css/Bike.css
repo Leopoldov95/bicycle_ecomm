@@ -199,3 +199,77 @@ h1 {
 .Bike .indicator:hover {
   cursor: pointer;
 }
+
+@media only screen and (max-width: 480px) {
+  .Bike {
+    padding: 0 1rem;
+  }
+  .Bike .Bike-main {
+    display: flex;
+    flex-direction: column;
+  }
+  .Bike .Bike-details {
+    margin-top: 2rem;
+  }
+
+  .Bike .Bike-details .Bike-nav {
+    font-size: 12px;
+  }
+  .Bike .indicator {
+    display: none;
+  }
+  .Bike .each-slide > div {
+    height: 200px;
+  }
+  .Bike .Bike-main .content {
+    padding: 0;
+  }
+  .Bike .Bike-main .content .content-header > div {
+    margin-right: 0;
+    text-align: center;
+  }
+  .Bike .Bike-main .content .content-highlights > div:nth-child(2) {
+    font-size: 14px;
+  }
+  .Bike .Bike-main .content .content-header {
+    flex-direction: column;
+  }
+  .Bike .Bike-main .content .content-size {
+    flex-direction: column;
+  }
+  .Bike .Bike-main .content .content-size span {
+    margin-left: 4px;
+    margin-bottom: 10px;
+  }
+  .Bike .Bike-main .content .content-size {
+    align-items: flex-start;
+  }
+  .Bike .Bike-details .Bike-nav ul li {
+    padding: 0 1rem 8px 1rem;
+  }
+  .Bike .Bike-details .Bike-info .sizing {
+    width: 100%;
+    margin: 0;
+  }
+  .Bike .Bike-details .Bike-info .warranty,
+  .Bike .Bike-details .Bike-info .specs,
+  .Bike .Bike-details .Bike-info .details {
+    width: 100%;
+  }
+  .Bike .Bike-details .Bike-info .specs ul li {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Bike .btn {
+    font-size: 12px;
+  }
+  .Bike .btn-cart {
+    width: 100%;
+  }
+  .Bike .btn-sizing {
+    height: 100px;
+    width: 100%;
+    margin: 6px;
+  }
+}

@@ -39,8 +39,8 @@ function BikeNav(props) {
   }
   return (
     <div
-      className="BikeNav"
-      style={{ display: `${props.display ? "grid" : "none"}` }}
+      className={`BikeNav ${props.large ? "lg-screen" : "mobile-screen"}`}
+      style={{ display: `${props.display ? "flex" : "none"}` }}
       onMouseLeave={props.handleDisplay}
     >
       <div className="BikeNav-select">

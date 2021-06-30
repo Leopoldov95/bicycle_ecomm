@@ -19,3 +19,20 @@
 .Footer-logo img {
   height: 70px;
 }
+
+/* Mobile Display */
+@media only screen and (max-width: 480px) {
+  .Footer {
+    padding-top: 12px;
+    line-height: 1.5;
+    font-size: 12px;
+  }
+
+  .Footer-icons ul li {
+    font-size: 1rem;
+  }
+
+  .Footer-logo img {
+    height: 60px;
+  }
+}
