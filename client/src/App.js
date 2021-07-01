@@ -1,5 +1,5 @@
 import "./App.css";
-
+import { getUsers } from "./actions/index";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
@@ -8,7 +8,9 @@ import About from "./components/About";
 import Bikes from "./components/Bikes";
 import Bike from "./components/Bike";
 
+
 function App() {
+  console.log(getUsers())
   return (
     <div className="App">
       <Router>

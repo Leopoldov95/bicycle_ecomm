@@ -1,6 +1,7 @@
 import express from "express";
 import mongoose from "mongoose"; // Data Base
 import cors from "cors"; // for Cross-Origin
+import API_ROUTES from "./routes/index.js"; // when using import, MUST include the .js file extension
 
 const app = express();
 
@@ -9,6 +10,7 @@ app.use(express.json({ limit: "30mb" })); // To parse the incoming requests with
 
 app.use(cors());
 
+app.use("/user", API_ROUTES);
 // mongodb cloud atlas - credentials must be safely stored before production
 // make sure to specificly connect to bicycle shop page
 const CONNECTION_URL =
