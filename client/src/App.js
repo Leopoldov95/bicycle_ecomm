@@ -7,10 +7,10 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Bikes from "./components/Bikes";
 import Bike from "./components/Bike";
-
+import User from "./components/form/User";
 
 function App() {
-  console.log(getUsers())
+  console.log(getUsers());
   return (
     <div className="App">
       <Router>
@@ -25,6 +25,7 @@ function App() {
             exact
             render={(props) => <Bike {...props} />}
           />
+          <Route path="/login" exact component={User} />
           <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
         </Switch>
       </Router>
