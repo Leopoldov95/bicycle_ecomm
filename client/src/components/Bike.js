@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Slide } from "react-slideshow-image";
+import { postCart } from "../api/index";
 //import "./css/Slideshow.css";
 import BikeData from "../bikes.json";
 import ImgList from "../images.json";
@@ -33,6 +34,13 @@ function Bike(props) {
       </div>
     ),
   };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const { title, price, id, image } = currBike;
+    const bikeSize = size;
+    postCart({ title, price, id, bikeSize, image });
+  }
 
   return (
     <div className="Bike">
@@ -76,7 +84,7 @@ function Bike(props) {
               ))}
             </ul>
           </div>
-          <button className="btn-cart">
+          <button className="btn-cart" onClick={handleSubmit}>
             ADD TO <i className="fas fa-shopping-cart"></i>
           </button>
           <div className="content-highlights">

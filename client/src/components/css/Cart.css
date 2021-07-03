@@ -1,0 +1,36 @@
+.Cart {
+  padding: 3rem 6rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.Cart .Cart-items .item {
+  height: 9rem;
+}
+
+.Cart .Cart-items .item img {
+  height: 6rem;
+}
+
+.Cart .Cart-price {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.Cart .Cart-price div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Cart .Cart-price button {
+  border: none;
+  outline: none;
+  height: 50px;
+  width: 350px;
+  border-radius: 5px;
+  color: white;
+  background-color: var(--primary-color);
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}

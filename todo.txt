@@ -23,3 +23,8 @@ Learn MERN
 - shopping cart
   - adding items
   - deleting items 
+
+/////////
+- will have to create seperate cart sessions for different users...
+- add user authentication
+- manage shopping cart

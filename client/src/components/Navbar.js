@@ -22,7 +22,7 @@ function Navbar() {
           onClick={() => setShowMobile(!showMobile)}
         >
           <button>
-            <i class="fas fa-bars"></i>
+            <i className="fas fa-bars"></i>
           </button>
         </div>
         {/* Navbar Normal */}
@@ -47,10 +47,17 @@ function Navbar() {
         </div>
         <div className="Navbar-user">
           <ul>
-            <li className="lg-screen">Login</li>
-            <li className="lg-screen">Register</li>
+            <Link to="/login">
+              <li className="lg-screen">Login</li>
+            </Link>
+            <Link to="/register">
+              <li className="lg-screen">Register</li>
+            </Link>
+
             <li>
-              <i className="fas fa-shopping-cart"></i>
+              <Link to="/cart">
+                <i className="fas fa-shopping-cart"></i>
+              </Link>
             </li>
           </ul>
         </div>
@@ -82,8 +89,12 @@ function Navbar() {
               <Link to="/about">
                 <li>About Us</li>
               </Link>
-              <li>Login</li>
-              <li>Register</li>
+              <Link to="/login">
+                <li>Login</li>
+              </Link>
+              <Link to="/register">
+                <li>Register</li>
+              </Link>
             </ul>
           </div>
         </div>

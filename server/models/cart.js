@@ -1,11 +1,14 @@
 import mongoose from "mongoose";
 
-const postSchema = mongoose.Schema({
-  name: String,
+const cartSchema = mongoose.Schema({
+  title: String,
   quantity: Number,
-  id: String
+  price: Number,
+  id: String,
+  bikeSize: String,
+  image: String,
 });
 
-const PostCart = mongoose.model("postCart", postSchema);
+const Cart = mongoose.model("cart", cartSchema);
 
-export default PostCart;
+export default Cart;

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { postUser } from "../../api/index";
+import { fetchUser } from "../../api/index";
 import "../css/User.css";
 function User() {
   const [input, setInput] = useState({
@@ -24,7 +24,7 @@ function User() {
       email: input.email,
       password: input.password,
     };
-    postUser(user);
+    fetchUser(user);
     // make sure to clear the input here as well
   }
   return (
