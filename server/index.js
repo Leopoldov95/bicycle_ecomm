@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose"; // Data Base
 import cors from "cors"; // for Cross-Origin
-import API_ROUTES from "./routes/index.js"; // when using import, MUST include the .js file extension
+import API_ROUTES from "./routes/user.js"; // when using import, MUST include the .js file extension
 
 const app = express();
 

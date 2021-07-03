@@ -30,7 +30,7 @@ function Navbar() {
           <ul>
             <li onClick={handleDisplay}>Bikes</li>
             <Link to="/about">
-              <li>About Us</li>
+              <li>About</li>
             </Link>
           </ul>
         </div>

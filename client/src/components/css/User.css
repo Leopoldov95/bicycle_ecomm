@@ -1,0 +1,53 @@
+.User {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.User input,
+.user input:focus {
+  border: none;
+  outline: none;
+  width: 90%;
+}
+.User button {
+  background-color: #fb646b;
+  padding: 1rem;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.User .link {
+  color: white;
+  margin-top: 1rem;
+}
+.User .form-container {
+  width: 400px;
+  text-align: center;
+}
+.User .form-container h1 {
+  margin-bottom: 1rem;
+  color: white;
+}
+.User .form-container form {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.User .form-border {
+  width: 100%;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 25px;
+  opacity: 0.7;
+  margin-bottom: 1rem;
+}
+.User .form-border i {
+  margin-right: 1rem;
+}
