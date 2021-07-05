@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { fetchUser } from "../../api/index";
+import { GoogleLogin } from "react-google-login";
 import "../css/User.css";
 function User() {
   const [input, setInput] = useState({
@@ -26,6 +27,24 @@ function User() {
     };
     fetchUser(user);
     // make sure to clear the input here as well
+  }
+
+  function googleFailure(error){
+    console.log(error);
+    console.log("Google Sign in unsuccessfull, try again later.");
+  }
+
+  async function googleSuccess(res){
+// using res?.profileObj will NOT return an error if doesnt work, special character is ?.
+const result = res?.profileObj; // this will make res = undefined RATHER THAN throwing an error making res unusable
+const token = res?.tokenId;
+
+try {
+ // dispatch({ type: "AUTH", data: { result, token } });
+ console.log(result, token)
+} catch (error) {
+  console.log(error);
+}
   }
   return (
     <div
@@ -60,6 +79,17 @@ function User() {
             />
           </div>
           <button onClick={handleSubmit}>Login</button>
+          <GoogleLogin clientId="972929890931-voaki6ilp7dhs29c177f57im8q4g1ise.apps.googleusercontent.com" 
+          
+          render={(renderProps) => (
+          <button  className='google-btn'  onClick={renderProps.onClick}
+          disabled={renderProps.disabled}><i className="fab fa-google"></i>&nbsp; Login With Google</button>
+          )}
+           onSuccess={googleSuccess}
+           onFailure={googleFailure}
+           cookiePolicy="single_host_origin"
+          /> 
+         
           <Link className="link" to="/register">
             Create an account
           </Link>

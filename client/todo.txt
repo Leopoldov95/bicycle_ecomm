@@ -4,3 +4,4 @@ Things to handle
 - fix all filtet issues
 - refactor code
 - create pages for individual bicycles
+- create single Auth.js file that handles both login and register. use state to achieve this

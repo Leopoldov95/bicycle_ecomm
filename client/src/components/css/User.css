@@ -20,6 +20,11 @@
   font-size: 1.2rem;
 }
 
+.User .google-btn {
+  margin-top: 1rem;
+}
+
+
 .User .link {
   color: white;
   margin-top: 1rem;
