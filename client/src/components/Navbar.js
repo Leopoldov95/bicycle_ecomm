@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import BikeNav from "./BikeNav";
 import "./css/Navbar.css";
-function Navbar() {
+function Navbar(props) {
   const [display, setDisplay] = useState(false);
   const [showMobile, setShowMobile] = useState(false);
   const [showMobileBikes, setShowMobileBikes] = useState(false);
@@ -12,6 +12,12 @@ function Navbar() {
   function mobileBikeClick() {
     handleDisplay();
     setShowMobileBikes(!showMobileBikes);
+  }
+
+  function handleSignOut(e) {
+    e.preventDefault();
+    localStorage.clear(); // clears the entire local storage, needed to remove user from localStorage
+    props.setUser(null);
   }
   return (
     <div className="Navbar">
@@ -47,12 +53,15 @@ function Navbar() {
         </div>
         <div className="Navbar-user">
           <ul>
-            <Link to="/login">
-              <li className="lg-screen">Login</li>
-            </Link>
-            <Link to="/register">
-              <li className="lg-screen">Register</li>
-            </Link>
+            {props.user ? (
+              <button onClick={handleSignOut} className="btn-signout">
+                <i className="fas fa-sign-out-alt"></i> Sign Out
+              </button>
+            ) : (
+              <Link to="/auth">
+                <li className="lg-screen">Account</li>
+              </Link>
+            )}
 
             <li>
               <Link to="/cart">
@@ -89,11 +98,8 @@ function Navbar() {
               <Link to="/about">
                 <li>About Us</li>
               </Link>
-              <Link to="/login">
-                <li>Login</li>
-              </Link>
-              <Link to="/register">
-                <li>Register</li>
+              <Link to="/auth">
+                <li>Account</li>
               </Link>
             </ul>
           </div>

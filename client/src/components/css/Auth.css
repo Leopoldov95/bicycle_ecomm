@@ -1,17 +1,17 @@
-.User {
+.Auth {
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.User input,
-.user input:focus {
+.Auth input,
+.Auth input:focus {
   border: none;
   outline: none;
   width: 90%;
 }
-.User button {
+.Auth .btn-action {
   background-color: #fb646b;
   padding: 1rem;
   border-radius: 25px;
@@ -20,39 +20,49 @@
   font-size: 1.2rem;
 }
 
-.User .google-btn {
+.Auth .google-btn {
   margin-top: 1rem;
 }
 
-
-.User .link {
+.Auth .btn-switch {
+  margin-bottom: 1rem;
+  background: transparent;
+  padding: 1rem;
+  border-radius: 25px;
   color: white;
-  margin-top: 1rem;
+  border: none;
+  font-size: 1.2rem;
 }
-.User .form-container {
+
+.Auth .btn-display {
+  background: transparent;
+  border: none;
+}
+
+.Auth .form-container {
   width: 400px;
   text-align: center;
 }
-.User .form-container h1 {
+.Auth .form-container h1 {
   margin-bottom: 1rem;
   color: white;
 }
-.User .form-container form {
+.Auth .form-container form {
   display: flex;
   flex-direction: column;
   text-align: center;
 }
 
-.User .form-border {
+.Auth .form-border {
   width: 100%;
   background-color: white;
   display: flex;
   align-items: center;
   padding: 1rem;
   border-radius: 25px;
-  opacity: 0.7;
+  opacity: 0.8;
   margin-bottom: 1rem;
 }
-.User .form-border i {
+.Auth .form-border i {
   margin-right: 1rem;
 }
