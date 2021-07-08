@@ -11,6 +11,13 @@
   background-color: white;
 }
 
+.Navbar .btn-signout {
+  font-size: 1rem;
+}
+.Navbar .btn-signout:hover {
+  color: #ab9a6f;
+}
+
 a,
 a:visited,
 a:active {

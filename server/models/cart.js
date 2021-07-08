@@ -1,12 +1,18 @@
 import mongoose from "mongoose";
 
 const cartSchema = mongoose.Schema({
-  title: String,
+  email: String,
+  items: [
+    {
+      title: String,
+      quantity: Number,
+      id: Number,
+      price: Number,
+      bikeSize: String,
+      image: String,
+    },
+  ],
   quantity: Number,
-  price: Number,
-  id: String,
-  bikeSize: String,
-  image: String,
 });
 
 const Cart = mongoose.model("cart", cartSchema);

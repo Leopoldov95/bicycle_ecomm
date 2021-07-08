@@ -2,23 +2,21 @@
 
 import React, { useState, useEffect } from "react";
 import { Slide } from "react-slideshow-image";
-import { postCart } from "../api/index";
+import { useHistory } from "react-router-dom";
+import { postCart } from "../actions/cart";
 //import "./css/Slideshow.css";
 import BikeData from "../bikes.json";
 import ImgList from "../images.json";
 import "./css/Bike.css";
 
 function Bike(props) {
+  const history = useHistory();
   const currId = props.match.params.id;
   const sizes = ["SMALL", "MEDIUM", "LARGE", "X-LARGE"];
   const bikeNav = ["DETAILS", "SPECS", "SIZING", "WARRANTY"];
   const [size, setSize] = useState("MEDIUM");
   const [currInfo, setCurrInfo] = useState("DETAILS");
-  //const [currId, setCurrId] = useState(props.match.params.id);
 
-  /* useEffect(() => {
-    setCurrId(props.match.params.id);
-  }, []); */
   const currBike = BikeData.find((bike) => bike.id === Number(currId));
   const images = ImgList.filter((img) => img.includes(currId));
   const properties = {
@@ -37,17 +35,23 @@ function Bike(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const { title, price, id, image } = currBike;
-    const bikeSize = size;
-    postCart({ title, price, id, bikeSize, image });
+
+    //check to see if user is loggied in
+    if (localStorage.getItem("userProfile")) {
+      const { email } = props.user.result;
+      const { title, price, id, image } = currBike;
+      const bikeSize = size;
+      // post the item to he users carts
+
+      postCart({ email }, { title, price, id, bikeSize, image });
+    } else {
+      history.push("/auth");
+    }
   }
 
   return (
     <div className="Bike">
       <div className="Bike-main">
-        {/* <div className="Bike-main-img">
-          <img src={`/img/bikes/${currImg}`} alt={currBike.subtitle} />
-        </div> */}
         <div className="img-slide">
           <Slide easing="ease" {...properties}>
             {images.map((img) => (
@@ -148,18 +152,14 @@ function Bike(props) {
           >
             <h3>{currBike.subtitle}</h3>
             <ul>
-              {Object.entries(currBike.specs).map(
-                ([key, value]) => (
-                  <li>
-                    <span>
-                      <strong>{key}:</strong>
-                    </span>
-                    <span>{value}</span>
-                  </li>
-                )
-                // Pretty straightforward - use key for the key and value for the value.
-                // Just to clarify: unlike object destructuring, the parameter names don't matter here.
-              )}
+              {Object.entries(currBike.specs).map(([key, value]) => (
+                <li>
+                  <span>
+                    <strong>{key}:</strong>
+                  </span>
+                  <span>{value}</span>
+                </li>
+              ))}
             </ul>
           </div>
           <div

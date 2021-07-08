@@ -65,7 +65,7 @@ function Navbar(props) {
 
             <li>
               <Link to="/cart">
-                <i className="fas fa-shopping-cart"></i>
+                <i className="fas fa-shopping-bag"></i>
               </Link>
             </li>
           </ul>

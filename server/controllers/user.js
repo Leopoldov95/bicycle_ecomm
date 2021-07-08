@@ -4,10 +4,7 @@
 // bcrupt used to hash the password
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"; // store the user in the browser for a certain perios of time, allows the user to stay logged in for that determined period of time
-import mongoose from "mongoose";
 import User from "../models/users.js";
-
-import Cart from "../models/cart.js";
 
 // handle user req here
 export const signin = async (req, res) => {
@@ -70,59 +67,3 @@ export const signup = async (req, res) => {
     res.status(500).json({ message: "Something went wrong." });
   }
 };
-
-export const getCart = async (req, res) => {
-  try {
-    // will want to pass individual item here later
-    Cart.find().then((item) => res.json(item));
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const postCart = async (req, res) => {
-  // if an item already exists in the cart, will want to just increment it, but not create a new instance of it
-  try {
-    const { title, price, id, bikeSize, image } = req.body;
-    const newCart = new Cart({
-      title,
-      image,
-      price,
-      id,
-      bikeSize,
-    });
-    newCart.save();
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-/* export const getUser = async (req, res) => {
-  try {
-    // retieve all posts we have in the data base
-    const Users = await User.find();
-    //console.log(postMessages);
-    res.status(200).json(Users);
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-};
-
-export const postUser = async (req, res) => {
-  try {
-    const { email, password, passwordConfirmation } = req.body;
-    const id = uuidv4();
-    if (password === passwordConfirmation) {
-      const newUser = new User({
-        email,
-        password,
-        id,
-      });
-      newUser.save();
-    } else {
-      throw Error("Passwords must match!!");
-    }
-  } catch (error) {
-    res.status(404).json({ message: error.message });
-  }
-}; */

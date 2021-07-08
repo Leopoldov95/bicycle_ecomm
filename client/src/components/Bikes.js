@@ -218,8 +218,6 @@ function Bikes() {
       >
         <div
           className="Bikes-settings"
-          /*  visibility: visible;
-  opacity: 1; */
           style={{ display: `${showFilter ? "block" : "none"}` }}
         >
           <form action="">

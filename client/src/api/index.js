@@ -4,12 +4,21 @@ import axios from "axios";
 const API = axios.create({
   baseURL: "http://localhost:5000",
 });
-/* const userURL = `http://localhost:5000/user`;
-const cartURL = `http://localhost:5000/cart`;
- */
-// will use the http methods here
+// this function will run on every request, it's helping the middleware function
+API.interceptors.request.use((req) => {
+  if (localStorage.getItem("userProfile")) {
+    ////// due to how headers are handled, VAR NAMES AFTER req MUST BE IN LOWERCASE ///////
+    // name of a property must match!!! Authorization !== authorization
+    req.headers.authorization = `Bearer ${
+      JSON.parse(localStorage.getItem("userProfile")).token
+    }`;
+  }
 
-export const fetchCart = () => API.get("/cart");
-export const postCart = (item) => API.post("/cart", item);
+  return req;
+});
+
+export const fetchCart = (email) => API.post("/cart", email);
+export const postCart = (email, item) =>
+  API.post("/cart/item", { email, item });
 export const signin = (formData) => API.post("/user/signin", formData); // we are using a POST request for the signin as we are sending data  to the database
 export const signup = (formData) => API.post("/user/signup", formData);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
-import { signup, signin } from "../../actions/index";
+import { signup, signin } from "../../actions/user";
 import "../css/Auth.css";
 const initialState = {
   email: "",
@@ -21,13 +21,14 @@ function Auth(props) {
   }
 
   async function googleSuccess(res) {
-    // using res?.profileObj will NOT return an error if doesnt work, special character is ?.
-    const result = res?.profileObj; // this will make res = undefined RATHER THAN throwing an error making res unusable
+    const result = res?.profileObj;
     const token = res?.tokenId;
 
     try {
-      // dispatch({ type: "AUTH", data: { result, token } });
-      console.log(result, token);
+      const data = { result, token };
+
+      localStorage.setItem("userProfile", JSON.stringify(data));
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
@@ -38,12 +39,10 @@ function Auth(props) {
     e.preventDefault();
     // check if user is signin or signed out
     if (isSignup) {
-      console.log("YOU ARE CREATING AN ACCOUNT");
       //need to set user here somehow
 
       signup(formData, history);
     } else {
-      console.log("YOU ARE SIGNING IN");
       signin(formData, history);
     }
   }

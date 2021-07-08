@@ -33,6 +33,7 @@ function App() {
   }, [location]);
   const logout = () => {
     setUser(null);
+    localStorage.clear();
     history.push("/");
   };
 
@@ -47,14 +48,18 @@ function App() {
         <Route
           path="/bikes/:id"
           exact
-          render={(props) => <Bike {...props} />}
+          render={(props) => <Bike {...props} user={user} setUser={setUser} />}
         />
         <Route
           path="/auth"
           exact
           render={(props) => <Auth user={user} setUser={setUser} />}
         />
-        <Route path="/cart" exact component={Cart} />
+        <Route
+          path="/cart"
+          exact
+          render={(props) => <Cart user={user} setUser={setUser} />}
+        />
         <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
       </Switch>
 
