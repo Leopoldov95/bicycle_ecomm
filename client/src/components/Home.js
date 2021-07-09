@@ -5,7 +5,7 @@ import Slideshow from "./Slideshow";
 import BikeData from "../bikes.json";
 import "react-slideshow-image/dist/styles.css";
 
-function Home() {
+const Home = () => {
   return (
     <div className="Home">
       <Slideshow />
@@ -33,6 +33,6 @@ function Home() {
       </div>
     </div>
   );
-}
+};
 
 export default Home;

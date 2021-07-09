@@ -19,6 +19,10 @@ API.interceptors.request.use((req) => {
 
 export const fetchCart = (email) => API.post("/cart", email);
 export const postCart = (email, item) =>
-  API.post("/cart/item", { email, item });
+  API.post("/cart/items", { email, item });
+export const deleteItem = (email, item) =>
+  API.patch("/cart/items", { email, item }); // for some reason, need to use this for the delete request
+export const updateQuantity = (email, item, action) =>
+  API.patch("/cart/items/item", { email, item, action });
 export const signin = (formData) => API.post("/user/signin", formData); // we are using a POST request for the signin as we are sending data  to the database
 export const signup = (formData) => API.post("/user/signup", formData);

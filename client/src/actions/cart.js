@@ -11,11 +11,16 @@ export const fetchCart = async (email) => {
 export const postCart = async (email, item) => {
   const res = await api.postCart(email, item);
   console.log(res);
-  // check if user has a shopping cart
-  // if user has no shopping cart, then create on for them
-  // check if item already exists, if it does, simply increase by 1
-  // else, create a new item in the cart array
-  // add cart quantity by one
+};
+
+export const deleteItem = async (email, item) => {
+  const res = await api.deleteItem(email, item);
+  console.log(res);
+};
+
+export const updateQuantity = async (email, item, action) => {
+  const res = await api.updateQuantity(email, item, action);
+  console.log(res);
 };
 
 // will want to create a method to delete/remove items from the shopping cart

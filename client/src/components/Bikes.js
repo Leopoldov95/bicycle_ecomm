@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import BikeData from "../bikes.json";
 import "./css/Bikes.css";
 //import { styleFilter, speedFilter, priceFilter } from "./helper/filter";
-function Bikes() {
+const Bikes = () => {
   const priceRange = [
     "$0 - $300",
     "$301 - $500",
@@ -23,7 +23,7 @@ function Bikes() {
   }, [filters]);
 
   // sets the filter for styles
-  function styleFilter(filter) {
+  const styleFilter = (filter) => {
     if (!filter) {
       return BikeData;
     } else {
@@ -31,10 +31,10 @@ function Bikes() {
 
       return BikeData.filter((bike) => bike.style === filter);
     }
-  }
+  };
 
   // sets the filter for speed
-  function speedFilter(filter) {
+  const speedFilter = (filter) => {
     if (!filter) {
       return BikeData;
     } else {
@@ -42,23 +42,23 @@ function Bikes() {
 
       return BikeData.filter((bike) => bike.speed === filter);
     }
-  }
+  };
 
   // sets the filter for price
-  function priceFilter(filter) {
+  const priceFilter = (filter) => {
     if (!filter) {
       return BikeData;
     } else {
       setFilters({ ...filters, price: filter });
     }
-  }
+  };
 
   /* //////////////////////// */
-  function handleFilter() {
+  const handleFilter = () => {
     setShowFilter(!showFilter);
-  }
+  };
 
-  function deleteFilter(val) {
+  const deleteFilter = (val) => {
     // alert(val);
     const filterName = Object.keys(filters).find((key) => filters[key] === val);
     if (filterName === "style") {
@@ -68,26 +68,26 @@ function Bikes() {
     } else {
       setFilters({ ...filters, speed: null });
     }
-  }
+  };
 
   /* Creating filter list */
-  function handleStyles() {
+  const handleStyles = () => {
     const arr = [];
     BikeData.forEach((bike) => {
       arr.push(bike.style);
     });
     const set = new Set(arr);
     return set;
-  }
+  };
 
-  function handleSpeed() {
+  const handleSpeed = () => {
     const arr = [];
     BikeData.forEach((bike) => {
       arr.push(bike.speed);
     });
     const set = new Set(arr);
     return set;
-  }
+  };
 
   /*  function generatePriceFilter(arr) {
     for (let price of arr) {
@@ -139,7 +139,7 @@ function Bikes() {
   const styles = handleStyles();
   const speeds = handleSpeed();
 
-  function handlePriceFilter(price, bikes) {
+  const handlePriceFilter = (price, bikes) => {
     // console.log(bikes.forEach((bike) => console.log(bike.price)));
     const arr = [];
     const newArr = price.split("-");
@@ -149,9 +149,9 @@ function Bikes() {
     // use arr to search within price range
     console.log(arr);
     return bikes.filter((bike) => bike.price >= arr[0] && bike.price <= arr[1]);
-  }
+  };
 
-  function updateBikes() {
+  const updateBikes = () => {
     // checking if any filters are currently active
 
     // so when chaning filters of the same category, it dervies the new list from the exisitng modified list rather than the orignal list
@@ -174,7 +174,7 @@ function Bikes() {
       // if no filters are present
       setDisplayBikes(BikeData);
     }
-  }
+  };
   return (
     <div className="Bikes">
       <div
@@ -296,6 +296,6 @@ function Bikes() {
       </div>
     </div>
   );
-}
+};
 
 export default Bikes;

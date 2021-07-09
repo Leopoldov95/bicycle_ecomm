@@ -1,24 +1,35 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory, useLocation } from "react-router-dom";
+
 import BikeNav from "./BikeNav";
 import "./css/Navbar.css";
-function Navbar(props) {
+const Navbar = (props) => {
+  const location = useLocation();
+  const history = useHistory();
   const [display, setDisplay] = useState(false);
+  //const [itemNum, setItemNum] = useState(0);
   const [showMobile, setShowMobile] = useState(false);
   const [showMobileBikes, setShowMobileBikes] = useState(false);
-  function handleDisplay() {
+
+  useEffect(() => {
+    setDisplay(false);
+  }, [location]);
+  const handleDisplay = () => {
     setDisplay(!display);
-  }
-  function mobileBikeClick() {
+  };
+  const mobileBikeClick = () => {
     handleDisplay();
     setShowMobileBikes(!showMobileBikes);
-  }
+  };
 
-  function handleSignOut(e) {
+  const handleSignOut = (e) => {
     e.preventDefault();
+
+    props.setInitMsg(true);
     localStorage.clear(); // clears the entire local storage, needed to remove user from localStorage
     props.setUser(null);
-  }
+    history.push("/");
+  };
   return (
     <div className="Navbar">
       <div className="Navbar-main">
@@ -63,14 +74,15 @@ function Navbar(props) {
               </Link>
             )}
 
-            <li>
+            <li className="Navbar-cart">
               <Link to="/cart">
                 <i className="fas fa-shopping-bag"></i>
               </Link>
+              {props.itemNum > 0 && <span>{props.itemNum}</span>}
             </li>
           </ul>
         </div>
-        <BikeNav large={true} display={display} handleDisplay={handleDisplay} />
+        <BikeNav large={true} display={display} />
       </div>
       {/* Mobile Only Navbar */}
       <div className="Navbar-secondary">
@@ -107,6 +119,6 @@ function Navbar(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Navbar;

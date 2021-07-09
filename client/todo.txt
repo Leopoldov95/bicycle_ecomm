@@ -8,3 +8,4 @@ Things to handle
 - may not need addiyinal item mongoose model, could just push items to users create
 - display cart is empty if no items are present
 - redirect to login if user tries to add to cart and is not logged in
+- display certain errors on fail (login, account creation)

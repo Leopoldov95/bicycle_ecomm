@@ -20,4 +20,5 @@ ul {
 .App {
   background-color: #ffffff;
   font-family: "Montserrat", sans-serif;
+  position: relative;
 }

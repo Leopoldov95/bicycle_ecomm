@@ -9,18 +9,18 @@ const initialState = {
   confirmPassword: "",
 };
 
-function Auth(props) {
+const Auth = (props) => {
   const history = useHistory();
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignUp] = useState(false);
 
-  function googleFailure(error) {
+  const googleFailure = (error) => {
     console.log(error);
     console.log("Google Sign in unsuccessfull, try again later.");
-  }
+  };
 
-  async function googleSuccess(res) {
+  const googleSuccess = async (res) => {
     const result = res?.profileObj;
     const token = res?.tokenId;
 
@@ -32,10 +32,10 @@ function Auth(props) {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   // use this to update the formData state upon clicking submit
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     // check if user is signin or signed out
     if (isSignup) {
@@ -45,16 +45,16 @@ function Auth(props) {
     } else {
       signin(formData, history);
     }
-  }
-  function handleChange(e) {
+  };
+  const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  }
+  };
 
-  function switchMode(e) {
+  const switchMode = (e) => {
     e.preventDefault();
     setIsSignUp((prevState) => !prevState);
     setShowPassword(false);
-  }
+  };
   return (
     <div
       className="Auth"
@@ -136,6 +136,6 @@ function Auth(props) {
       </div>
     </div>
   );
-}
+};
 
 export default Auth;

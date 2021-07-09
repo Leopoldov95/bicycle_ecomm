@@ -8,14 +8,16 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import Bikes from "./components/Bikes";
 import Bike from "./components/Bike";
-
+import Msg from "./components/Msg";
 import Cart from "./components/Cart";
 import Auth from "./components/auth/Auth";
 
 // App will serve as the master management
-function App() {
+const App = () => {
   const location = useLocation();
   const history = useHistory();
+  const [initMsg, setInitMsg] = useState(false);
+  const [itemNum, setItemNum] = useState(0);
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userProfile"))
   );
@@ -31,6 +33,14 @@ function App() {
 
     setUser(JSON.parse(localStorage.getItem("userProfile")));
   }, [location]);
+
+  useEffect(() => {
+    if (initMsg) {
+      setTimeout(() => {
+        setInitMsg(false);
+      }, 3000);
+    }
+  }, [initMsg]);
   const logout = () => {
     setUser(null);
     localStorage.clear();
@@ -39,7 +49,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar user={user} setUser={setUser} />
+      <Navbar
+        user={user}
+        setUser={setUser}
+        setInitMsg={setInitMsg}
+        itemNum={itemNum}
+      />
 
       <Switch>
         <Route path="/" exact component={Home} />
@@ -58,14 +73,16 @@ function App() {
         <Route
           path="/cart"
           exact
-          render={(props) => <Cart user={user} setUser={setUser} />}
+          render={(props) => (
+            <Cart user={user} setUser={setUser} setItemNum={setItemNum} />
+          )}
         />
         <Route path="*" render={() => <h1>Sorry, page not found</h1>} />
       </Switch>
-
+      {initMsg && <Msg />}
       <Footer />
     </div>
   );
-}
+};
 
 export default App;

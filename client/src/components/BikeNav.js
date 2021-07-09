@@ -81,7 +81,7 @@ function BikeNav(props) {
           >
             Commuter
           </li>
-          <Link to="/bikes" onClick={props.handleDisplay}>
+          <Link to="/bikes">
             <li>All Bikes</li>
           </Link>
         </ul>

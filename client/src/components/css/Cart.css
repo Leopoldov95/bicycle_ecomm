@@ -4,13 +4,46 @@
   grid-template-columns: 2fr 1fr;
 }
 
+.Cart .item-toggle:hover {
+  cursor: pointer;
+}
+
+.Cart .Cart-items {
+  padding: 1rem 2rem;
+}
+
 .Cart .Cart-items .item {
-  height: 9rem;
+  padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid #eee;
 }
 
 .Cart .Cart-items .item img {
-  height: 6rem;
+  height: 4.5rem;
 }
+
+.Cart .Cart-items .item .item-price {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 2;
+}
+.Cart .Cart-items .item .item-info {
+  text-align: center;
+}
+
+.Cart .Cart-items .item .item-quantity {
+  border: 1px solid #eee;
+  padding: 1rem 8px;
+  margin: auto;
+}
+
+.Cart .Cart-items .item .item-quantity span:nth-child(2) {
+  padding: 0 2rem;
+}
+/* Toral Price */
 
 .Cart .Cart-price {
   display: flex;

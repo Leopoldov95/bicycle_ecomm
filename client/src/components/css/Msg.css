@@ -1,0 +1,10 @@
+.Msg {
+  position: absolute;
+  z-index: 20;
+  top: 60px;
+  left: 10px;
+  background-color: rgba(51, 51, 51, 0.74);
+
+  color: white;
+  padding: 2rem;
+}

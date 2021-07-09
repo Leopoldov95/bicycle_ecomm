@@ -105,19 +105,19 @@ function Bike(props) {
             <div className="warranty">
               <div>
                 <span>
-                  <i class="fas fa-tools"></i>
+                  <i className="fas fa-tools"></i>
                 </span>
                 <p>Choose to Have Your Bike Delivered Fully Built</p>
               </div>
               <div>
                 <span>
-                  <i class="fas fa-truck"></i>
+                  <i className="fas fa-truck"></i>
                 </span>
                 <p>30 Day Free Returns</p>
               </div>
               <div>
                 <span>
-                  <i class="fas fa-trophy"></i>
+                  <i className="fas fa-trophy"></i>
                 </span>
                 <p> Lifetime Frame and Fork Warranty</p>
               </div>
