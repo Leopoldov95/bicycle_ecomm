@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router";
+import {useHistory} from 'react-router-dom';
 import { fetchCart, updateQuantity, deleteItem } from "../actions/cart";
 // may want to use post cart to update item quantity, as item ALREADY exists in the cart, we may simply change the quantity
 //import { fetchCart } from "../api/index";
@@ -7,13 +7,7 @@ import "./css/Cart.css";
 // have to figure out a way to handle quantity
 
 const Cart = (props) => {
-  const itemProps = {
-    title: "",
-    image: "",
-    id: "",
-    bikeSize: "",
-    price: null,
-  };
+
   // this will manage the main shopping cart for the logged in user
   //const [cart, setCart] = useState([]);
   const [items, setItems] = useState([]);
@@ -23,7 +17,6 @@ const Cart = (props) => {
     if (props.user) {
       const { email } = props.user.result;
       const res = await fetchCart({ email });
-      console.log(res);
       setItems(res.data.items);
       props.setItemNum(res.data.quantity);
       // calculate total price here
@@ -36,11 +29,13 @@ const Cart = (props) => {
   }, [items]);
 
   const calcTotal = (arr) => {
+ 
     let total = 0;
 
     arr.forEach((element) => {
-      total += element.price;
+      total += (element.price * element.quantity);
     });
+    
     return total;
   };
 
@@ -49,10 +44,12 @@ const Cart = (props) => {
     const { id, bikeSize } = item;
     deleteItem({ email }, { id, bikeSize });
   };
-  const handleQuantity = (item, action) => {
+  const handleQuantity = async (item, action) => {
     const { email } = props.user.result;
     const { id, bikeSize } = item;
-    updateQuantity({ email }, { id, bikeSize }, action);
+   const res =  await updateQuantity({ email }, { id, bikeSize }, action);
+   setItems(res.data.items)
+
   };
   return (
     <div className="Cart">
@@ -115,7 +112,7 @@ const Cart = (props) => {
         <div>
           <h1>Total</h1>
           <h1>
-            <span>${total}</span>
+            <span style={{color: '#04a9a7'}}>${total}</span>
           </h1>
         </div>
         <button>Check Out</button>

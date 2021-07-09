@@ -12,6 +12,7 @@ export const signin = async (formData, history) => {
     history.push("/");
   } catch (error) {
     console.log(error);
+    alert ('User does not exist...')
   }
 };
 

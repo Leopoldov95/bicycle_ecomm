@@ -29,30 +29,10 @@ export const postCart = async (req, res) => {
       });
       newCart.save();
     }
-    /* Cart.find(email, (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      if (!result) {
-        console.log("no cart for that user exists");
-        const newCart = new Cart({
-          ...email,
-          items: [],
-          quantity: 0,
-        });
-        newCart.save();
-      }
-    }); */
-
-    //console.log(userCart);
-    /*  if (userCart.length === 0) {
- 
-      //userCart = await Cart.find(email);
-    } */
-    //console.log(userCart);
+    
 
     // simply put - if id and size don't match, then a new item is created
-    Cart.findOneAndUpdate(
+     Cart.findOneAndUpdate(
       {
         $and: [
           email,
@@ -62,27 +42,36 @@ export const postCart = async (req, res) => {
         ],
       },
       { $inc: { "items.$.quantity": 1, quantity: 1 } },
-
+      {new:true},
       (err, result) => {
         if (err) {
           console.log(err);
         }
-        if (!result) {
-          Cart.findOneAndUpdate(
+        if (result) {
+          res.json(result)
+        } else {
+        Cart.findOneAndUpdate(
             email,
             {
               $push: { items: { ...item, quantity: 1 } },
               $inc: { quantity: 1 },
             },
-            (err, doc) => {
-              if (err) console.error(err);
+            {new: true},
+            (err, result) => {
+              if (err) {   res.status(404).json({ message: error.message });}
+              if (result) {
+                res.json(result)
+              }
             }
           );
         }
+      
+         
+        
       }
     );
 
-    res.json(userCart);
+  
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -92,8 +81,9 @@ export const updateQuantity = async (req, res) => {
   const { email, item, action } = req.body;
 
   try {
+    
     if (action === "plus") {
-      Cart.findOneAndUpdate(
+    Cart.findOneAndUpdate(
         {
           $and: [
             email,
@@ -102,13 +92,19 @@ export const updateQuantity = async (req, res) => {
             },
           ],
         },
-        { $inc: { "items.$.quantity": 1, quantity: 1 } },
+        { $inc: { "items.$.quantity": 1, quantity: 1 } }, 
+        {new: true},
         (err, result) => {
-          if (err) console.log(err);
-        }
+          if (err){   res.status(404).json({ message: error.message })}
+          if (result) {
+          res.json(result)
+          }
+          
+        } ,
+     
       );
     } else if (action === "minus") {
-      Cart.findOneAndUpdate(
+     Cart.findOneAndUpdate(
         {
           $and: [
             email,
@@ -116,13 +112,19 @@ export const updateQuantity = async (req, res) => {
               items: { $elemMatch: { bikeSize: item.bikeSize, id: item.id } },
             },
           ],
-        },
+        } ,
         { $inc: { "items.$.quantity": -1, quantity: -1 } },
+        {new: true},
         (err, result) => {
-          if (err) console.log(err);
-        }
+          if (err) {   res.status(404).json({ message: error.message });}
+          if (result) {
+            res.json(result)
+          }
+        } ,
+      
       );
     }
+
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -141,7 +143,8 @@ export const deleteItem = async (req, res) => {
           },
         ],
       },
-      { $pull: { items: { bikeSize: item.bikeSize, id: item.id } } }
+      { $pull: { items: { bikeSize: item.bikeSize, id: item.id } } },
+      {new : true}
     );
     res.json(bike);
   } catch (error) {
