@@ -70,3 +70,31 @@
   font-size: 1.2rem;
   margin: 2rem 0;
 }
+
+/* Mobile Display */
+@media only screen and (max-width: 480px) {
+  .Cart {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+  }
+
+  .Cart .Cart-price button {
+    width: auto;
+  }
+
+  .Cart .Cart-items {
+    padding: 0 10px;
+  }
+  .Cart .Cart-items .item img {
+    height: 3rem;
+  }
+  .Cart .msg {
+    text-align: center;
+    font-size: 0.6rem;
+    margin-bottom: 1rem;
+  }
+  .Cart .Cart-items .item .item-quantity span:nth-child(2) {
+    padding: 0px 16px;
+  }
+}

@@ -22,6 +22,11 @@ const App = () => {
     JSON.parse(localStorage.getItem("userProfile"))
   );
   useEffect(() => {
+    if (!user) {
+      setItemNum(0);
+    }
+  }, [user]);
+  useEffect(() => {
     const token = user?.token;
 
     // JWT ...

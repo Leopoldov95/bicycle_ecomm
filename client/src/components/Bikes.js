@@ -89,53 +89,6 @@ const Bikes = () => {
     return set;
   };
 
-  /*  function generatePriceFilter(arr) {
-    for (let price of arr) {
-      if (arr[price] === 0) {
-        return (
-          <div>
-            <input
-              onClick={() => priceFilter(price)}
-              type="radio"
-              id={price}
-              name="price"
-              value={price}
-            />
-             <label htmlFor={price}>Under ${price}</label>
-          </div>
-        );
-      } else if (arr[price] === arr.length - 1) {
-        return (
-          <div>
-            <input
-              onClick={() => priceFilter(price)}
-              type="radio"
-              id={price}
-              name="price"
-              value={price}
-            />
-             <label htmlFor={price}>${price}+</label>
-          </div>
-        );
-      } else {
-        return (
-          <div>
-            <input
-              onClick={() => priceFilter(price)}
-              type="radio"
-              id={price}
-              name="price"
-              value={price}
-            />
-             
-            <label htmlFor={price}>
-              {arr[indexOf(price) - 1]} - {price}
-            </label>
-          </div>
-        );
-      }
-    } 
-  } */
   const styles = handleStyles();
   const speeds = handleSpeed();
 

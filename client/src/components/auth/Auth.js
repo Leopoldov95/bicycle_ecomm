@@ -129,7 +129,7 @@ const Auth = (props) => {
           />
           <button onClick={switchMode} className="btn-switch">
             {isSignup
-              ? "Already hanve an account? Sign In"
+              ? "Already have an account? Sign In"
               : "Don't have an account? Sign up"}
           </button>
         </form>

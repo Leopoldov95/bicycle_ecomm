@@ -66,3 +66,18 @@
 .Auth .form-border i {
   margin-right: 1rem;
 }
+/* MOBILE QUERY */
+/* Navbar */
+@media only screen and (max-width: 480px) {
+  .Auth {
+    padding: 1rem;
+  }
+
+  .Auth .btn-switch {
+    font-size: 1rem;
+  }
+
+  .Auth .form-container h1 {
+    font-size: 1.5rem;
+  }
+}

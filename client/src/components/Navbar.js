@@ -65,9 +65,9 @@ const Navbar = (props) => {
         <div className="Navbar-user">
           <ul>
             {props.user ? (
-              <button onClick={handleSignOut} className="btn-signout">
+              <li onClick={handleSignOut} className="lg-screen">
                 <i className="fas fa-sign-out-alt"></i> Sign Out
-              </button>
+              </li>
             ) : (
               <Link to="/auth">
                 <li className="lg-screen">Account</li>
@@ -110,9 +110,15 @@ const Navbar = (props) => {
               <Link to="/about">
                 <li>About Us</li>
               </Link>
-              <Link to="/auth">
-                <li>Account</li>
-              </Link>
+              {props.user ? (
+                <li onClick={handleSignOut}>
+                  <i className="fas fa-sign-out-alt"></i> Sign Out
+                </li>
+              ) : (
+                <Link to="/auth">
+                  <li>Account</li>
+                </Link>
+              )}
             </ul>
           </div>
         </div>

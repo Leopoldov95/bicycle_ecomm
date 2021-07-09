@@ -1,6 +1,6 @@
 //// FOR HERE MUST USE RENDER AND NOT COMPONENT, FIGURE OUT HOW TO USE PROPS.PARAMS ON RENDER
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Slide } from "react-slideshow-image";
 import { useHistory } from "react-router-dom";
 import { postCart } from "../actions/cart";
@@ -28,6 +28,7 @@ function Bike(props) {
         <img
           src={`/img/bikes/${images[i]}`}
           style={{ width: "80px", padding: "0 2px" }}
+          alt={images[i]}
         />
       </div>
     ),

@@ -99,13 +99,13 @@ const Cart = (props) => {
               </div>
             ))
           ) : (
-            <div>
+            <div className="msg">
               <h1>Your shopping cart is empty</h1>
             </div>
           )}
         </div>
       ) : (
-        <div>
+        <div className="msg">
           <h1>You must be logged in to view the shopping cart</h1>
         </div>
       )}
