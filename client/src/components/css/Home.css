@@ -67,7 +67,7 @@
 }
 
 .Home .each-slide div h2 {
-  font-size: 3rem;
+  font-size: 2.5rem;
 }
 
 .Home .each-slide .btn {
@@ -77,6 +77,13 @@
   color: white;
   padding: 1rem;
   border-radius: 5px;
+}
+
+/* Tablet view */
+@media only screen and (max-width: 768px) {
+  .Home .each-slide div h2 {
+    font-size: 1.8rem;
+  }
 }
 
 /* Home mobile Menu */

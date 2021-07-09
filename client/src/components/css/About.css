@@ -43,9 +43,19 @@
   margin-right: auto !important;
   margin-left: 0;
 }
+/* Large View view */
+@media only screen and (max-width: 1100px) {
+  .About {
+    padding: 1rem;
+  }
+  .About-flex div:nth-child(2) img {
+    height: auto;
+  }
+}
+/* Tablet view */ /* Already switch to mobile view here */
 
 /* About Mobile */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .About {
     margin: 0;
     padding: 1rem;

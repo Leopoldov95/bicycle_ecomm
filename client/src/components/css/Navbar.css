@@ -72,8 +72,14 @@ a:active {
   color: black;
 }
 /* MOBILE QUERY */
+/* /* Tablet view 
+@media only screen and (max-width: 768px) {
+  .Navbar .Navbar-brand a h1 {
+    font-size: 1.5rem;
+  }
+} */
 /* Navbar */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .Navbar .Navbar-main {
     padding: 1rem;
     align-items: baseline;

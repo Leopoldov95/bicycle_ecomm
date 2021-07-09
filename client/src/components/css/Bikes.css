@@ -76,6 +76,7 @@
 }
 
 .Bikes .Bikes-container .Bikes-settings {
+  min-width: 180px;
   height: 100%;
 }
 
@@ -210,8 +211,8 @@
   margin-right: 0;
 }
 
-/* Mobile View */
-@media only screen and (max-width: 480px) {
+/* Tablet View */
+@media only screen and (max-width: 768px) {
   .Bikes .Bikes-hero {
     padding: 0 2rem;
     text-align: center;
@@ -219,8 +220,8 @@
   }
 
   .Bikes .Bikes-products {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto auto;
   }
   .Bikes .Bikes-header {
     padding: 0 1rem;
@@ -228,13 +229,25 @@
   .Bikes .Bikes-container {
     grid-template-columns: none;
   }
+ 
   .Bikes .Bikes-container .Bikes-settings form {
     padding: 1rem;
   }
-  .Bikes .Bikes-header .Bikes-filter span {
-    display: none;
-  }
+ 
   .Bikes .Bikes-products .Bikes-card img {
     width: 80%;
+  }
+}
+
+/* Large View */
+
+/* Mobile View */
+@media only screen and (max-width: 480px) {
+  .Bikes .Bikes-products {
+    display: flex;
+    flex-direction: column;
+  }
+  .Bikes .Bikes-header .Bikes-filter span {
+    display: none;
   }
 }

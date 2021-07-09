@@ -53,6 +53,10 @@
   text-align: center;
 }
 
+.Auth .form-container form input {
+  font-size: 16px;
+}
+
 .Auth .form-border {
   width: 100%;
   background-color: white;

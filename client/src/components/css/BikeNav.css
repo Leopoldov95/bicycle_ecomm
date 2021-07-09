@@ -73,7 +73,7 @@
 }
 
 /* Mobile Display */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .BikeNav {
     position: relative;
     z-index: 1;

@@ -200,7 +200,7 @@ h1 {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .Bike {
     padding: 0 1rem;
   }
@@ -218,9 +218,7 @@ h1 {
   .Bike .indicator {
     display: none;
   }
-  .Bike .each-slide > div {
-    height: 200px;
-  }
+  
   .Bike .Bike-main .content {
     padding: 0;
   }
@@ -234,6 +232,7 @@ h1 {
   .Bike .Bike-main .content .content-header {
     flex-direction: column;
   }
+ 
   .Bike .Bike-main .content .content-size {
     flex-direction: column;
   }
@@ -271,5 +270,11 @@ h1 {
     height: 100px;
     width: 100%;
     margin: 6px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .Bike .each-slide > div {
+    height: 200px;
   }
 }
