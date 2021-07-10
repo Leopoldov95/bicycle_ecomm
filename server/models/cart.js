@@ -12,7 +12,6 @@ const cartSchema = mongoose.Schema({
       image: String,
     },
   ],
-  quantity: Number,
 });
 
 const Cart = mongoose.model("cart", cartSchema);

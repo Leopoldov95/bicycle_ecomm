@@ -4,13 +4,11 @@ export const fetchCart = async (email) => {
   const res = await api.fetchCart(email);
   return res;
 
-  // first look to see if user has a cart activated
-  // if empty, show that it is empty
 };
 
 export const postCart = async (email, item) => {
   const res = await api.postCart(email, item);
-  console.log(res);
+  return res
 };
 
 export const deleteItem = async (email, item) => {
@@ -20,6 +18,7 @@ export const deleteItem = async (email, item) => {
 };
 
 export const updateQuantity = async (email, item, action) => {
+  
   const res = await api.updateQuantity(email, item, action);
   return res
  

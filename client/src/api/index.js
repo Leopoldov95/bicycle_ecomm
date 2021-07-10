@@ -6,6 +6,7 @@ const API = axios.create({
 });
 // this function will run on every request, it's helping the middleware function
 API.interceptors.request.use((req) => {
+
   if (localStorage.getItem("userProfile")) {
     ////// due to how headers are handled, VAR NAMES AFTER req MUST BE IN LOWERCASE ///////
     // name of a property must match!!! Authorization !== authorization

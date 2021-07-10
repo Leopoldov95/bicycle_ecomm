@@ -10,7 +10,8 @@ Things to handle
 - redirect to login if user tries to add to cart and is not logged in
 - display certain errors on fail (login, account creation)
 /// extra features ////
-- update cart Num as well when user clicks on add bike to cart
-- make bike icons on shoppin cart clickable
-- handle what hapens if item quantity is set to 0
+- handle expired session
+- why is fetchCart being called twice? 
+- need to STILL handle item num showing up when user logins
+- update shopping state items when a new user is created
 - allo shopping cart to be usable if no one is logged in, maybe if user is not loged in, push the shopping cart to a state/array (maybe set localstorage to 'guest') and once the user logs in, push thos items to the logged in users database

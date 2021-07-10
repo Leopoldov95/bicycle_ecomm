@@ -34,19 +34,25 @@ function Bike(props) {
     ),
   };
 
-  function handleSubmit(e) {
+  const  handleSubmit = async(e) => {
     e.preventDefault();
-
+   const { title, price, id, image } = currBike;
+   const bikeSize = size;
     //check to see if user is loggied in
     if (localStorage.getItem("userProfile")) {
       const { email } = props.user.result;
-      const { title, price, id, image } = currBike;
-      const bikeSize = size;
+   
+      
       // post the item to he users carts
 
-      postCart({ email }, { title, price, id, bikeSize, image });
+     const res = await postCart({ email }, { title, price, id, bikeSize, image });
+     props.setItems(res.data.items)
     } else {
-      history.push("/auth");
+      console.log('you are a guest')
+      if (props.guestItems === 0) {
+        props.setGuestItems({title, price, id, bikeSize, image })
+      }
+      console.log(props.guestItems)
     }
   }
 

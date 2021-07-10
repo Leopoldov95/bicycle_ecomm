@@ -1,70 +1,42 @@
-import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { fetchCart, updateQuantity, deleteItem } from "../actions/cart";
+import React from "react";
+import { Link } from "react-router-dom";
+import {  updateQuantity, deleteItem } from "../actions/cart";
 // may want to use post cart to update item quantity, as item ALREADY exists in the cart, we may simply change the quantity
 //import { fetchCart } from "../api/index";
 import "./css/Cart.css";
 // have to figure out a way to handle quantity
 
 const Cart = (props) => {
-  // this will manage the main shopping cart for the logged in user
-  //const [cart, setCart] = useState([]);
-  const [items, setItems] = useState([]);
-  const [total, setTotal] = useState(0);
-  useEffect(async () => {
-    // will want to handle error if no items are in cart
-    if (props.user) {
-      const { email } = props.user.result;
-      const res = await fetchCart({ email });
-      setItems(res.data.items);
-      props.setItemNum(showTotalItems(items));
-      // calculate total price here
-    }
-  }, []);
-  useEffect(() => {
-    if (items) {
-      setTotal(calcTotal(items));
-
-      props.setItemNum(showTotalItems(items));
-    }
-  }, [items]);
-
-  const showTotalItems = (arr) => {
-    let total = 0;
-    for (let item of arr) {
-      total += item.quantity;
-    }
-    return total;
-  };
-  const calcTotal = (arr) => {
-    let total = 0;
-
-    arr.forEach((element) => {
-      total += element.price * element.quantity;
-    });
-
-    return total;
-  };
 
   const handleDelete = async (item) => {
     const { email } = props.user.result;
     const { id, bikeSize } = item;
     const res = await deleteItem({ email }, { id, bikeSize });
-    setItems(res.data.items);
+    props.setItems(res.data.items);
   };
   const handleQuantity = async (item, action) => {
+    let res;
     const { email } = props.user.result;
     const { id, bikeSize } = item;
-    const res = await updateQuantity({ email }, { id, bikeSize }, action);
-    setItems(res.data.items);
+    // if item will be decreased from 1 to 0, delete it
+    if (item.quantity === 1 && action === 'minus') {
+      res = await deleteItem({ email }, { id, bikeSize });
+    } else {
+   
+    
+    res = await updateQuantity({ email }, { id, bikeSize }, action);
+    }
+   
+    props.setItems(res.data.items);
   };
   return (
     <div className="Cart">
       {props.user ? (
         <div className="Cart-items">
-          {items ? (
-            items.map((item) => (
+          {props.items ? (
+            props.items.map((item) => (
               <div className="item" key={`${item.id}-${item.bikeSize}`}>
+                <Link to={`/bikes/${item.id}`}>
                 <div className="item-info">
                   <div>
                     <img src={`/img/bikes/${item.image}`} />
@@ -74,6 +46,8 @@ const Cart = (props) => {
                     <span>{item.bikeSize}</span>
                   </div>
                 </div>
+                </Link>
+                
                 <div className="item-quantity">
                   <span
                     onClick={() => handleQuantity(item, "minus")}
@@ -119,7 +93,7 @@ const Cart = (props) => {
         <div>
           <h1>Total</h1>
           <h1>
-            <span style={{ color: "#04a9a7" }}>${total}</span>
+            <span style={{ color: "#04a9a7" }}>${props.total}</span>
           </h1>
         </div>
         <button>Check Out</button>

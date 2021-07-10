@@ -85,7 +85,7 @@ const Auth = (props) => {
               autoComplete="off"
               placeholder="Enter Password"
             />
-            <button
+            <span
               className="btn-display"
               onClick={() => setShowPassword(!showPassword)}
             >
@@ -94,7 +94,7 @@ const Auth = (props) => {
               ) : (
                 <i className="fas fa-eye"></i>
               )}
-            </button>
+            </span>
           </div>
           {isSignup && (
             <div className="form-border">

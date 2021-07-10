@@ -64,7 +64,7 @@ a:active {
 .Navbar .Navbar-main .Navbar-cart span {
   position: absolute;
   top: 5px;
-  left: 26px;
+  left: 10px;
   padding: 2px 5px;
   background-color: turquoise;
   border-radius: 50%;
