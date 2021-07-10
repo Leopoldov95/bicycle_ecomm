@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useHistory} from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import { fetchCart, updateQuantity, deleteItem } from "../actions/cart";
 // may want to use post cart to update item quantity, as item ALREADY exists in the cart, we may simply change the quantity
 //import { fetchCart } from "../api/index";
@@ -7,7 +7,6 @@ import "./css/Cart.css";
 // have to figure out a way to handle quantity
 
 const Cart = (props) => {
-
   // this will manage the main shopping cart for the logged in user
   //const [cart, setCart] = useState([]);
   const [items, setItems] = useState([]);
@@ -18,38 +17,46 @@ const Cart = (props) => {
       const { email } = props.user.result;
       const res = await fetchCart({ email });
       setItems(res.data.items);
-      props.setItemNum(res.data.quantity);
+      props.setItemNum(showTotalItems(items));
       // calculate total price here
     }
   }, []);
   useEffect(() => {
     if (items) {
       setTotal(calcTotal(items));
+
+      props.setItemNum(showTotalItems(items));
     }
   }, [items]);
 
+  const showTotalItems = (arr) => {
+    let total = 0;
+    for (let item of arr) {
+      total += item.quantity;
+    }
+    return total;
+  };
   const calcTotal = (arr) => {
- 
     let total = 0;
 
     arr.forEach((element) => {
-      total += (element.price * element.quantity);
+      total += element.price * element.quantity;
     });
-    
+
     return total;
   };
 
-  const handleDelete = (item) => {
+  const handleDelete = async (item) => {
     const { email } = props.user.result;
     const { id, bikeSize } = item;
-    deleteItem({ email }, { id, bikeSize });
+    const res = await deleteItem({ email }, { id, bikeSize });
+    setItems(res.data.items);
   };
   const handleQuantity = async (item, action) => {
     const { email } = props.user.result;
     const { id, bikeSize } = item;
-   const res =  await updateQuantity({ email }, { id, bikeSize }, action);
-   setItems(res.data.items)
-
+    const res = await updateQuantity({ email }, { id, bikeSize }, action);
+    setItems(res.data.items);
   };
   return (
     <div className="Cart">
@@ -112,7 +119,7 @@ const Cart = (props) => {
         <div>
           <h1>Total</h1>
           <h1>
-            <span style={{color: '#04a9a7'}}>${total}</span>
+            <span style={{ color: "#04a9a7" }}>${total}</span>
           </h1>
         </div>
         <button>Check Out</button>
