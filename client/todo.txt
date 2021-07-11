@@ -1,15 +1,11 @@
-Things to handle
-- fix bicycle navbar
-- implement item filter
-- fix all filtet issues
+
 - refactor code
-- create pages for individual bicycles
-- create single Auth.js file that handles both login and register. use state to achieve this
-- may not need addiyinal item mongoose model, could just push items to users create
+
 - display cart is empty if no items are present
 - redirect to login if user tries to add to cart and is not logged in
 - display certain errors on fail (login, account creation)
 /// extra features ////
+- bikes view css fix 
 - handle expired session
 - why is fetchCart being called twice? 
 - need to STILL handle item num showing up when user logins

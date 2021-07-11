@@ -13,7 +13,7 @@ import Msg from "./components/Msg";
 import Cart from "./components/Cart";
 import Auth from "./components/auth/Auth";
 import Unkown from "./components/Unkown";
-import Checkout from "./components/Checkout"
+import Checkout from "./components/Checkout";
 
 // App will serve as the master management
 const App = () => {
@@ -27,6 +27,7 @@ const App = () => {
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userProfile"))
   );
+
   useEffect(() => {
     const token = user?.token;
 
@@ -40,16 +41,15 @@ const App = () => {
     setUser(JSON.parse(localStorage.getItem("userProfile")));
   }, [location]);
 
-  useEffect( async() => {
+  useEffect(async () => {
     if (user) {
-    
       const { email } = user.result;
       const res = await fetchCart({ email });
-      
+
       setItems(res.data.items);
-      setItemNum(showTotalItems(items))
+      setItemNum(showTotalItems(items));
     } else {
-       setItemNum(0);
+      setItemNum(0);
     }
   }, [user]);
 
@@ -69,26 +69,24 @@ const App = () => {
   }, [items]);
   const calcTotal = (arr) => {
     if (items) {
-       let total = 0;
+      let total = 0;
 
-    arr.forEach((element) => {
-      total += element.price * element.quantity;
-    });
+      arr.forEach((element) => {
+        total += element.price * element.quantity;
+      });
 
-    return total;
+      return total;
     }
-   
   };
 
   const showTotalItems = (arr) => {
     if (items) {
-        let total = 0;
-    for (let item of arr) {
-      total += item.quantity;
+      let total = 0;
+      for (let item of arr) {
+        total += item.quantity;
+      }
+      return total;
     }
-    return total;
-    }
-  
   };
   const logout = () => {
     setUser(null);
@@ -112,7 +110,16 @@ const App = () => {
         <Route
           path="/bikes/:id"
           exact
-          render={(props) => <Bike {...props} user={user} setUser={setUser} setItems={setItems} setGuestItems={setGuestItems} guestItems={guestItems} />}
+          render={(props) => (
+            <Bike
+              {...props}
+              user={user}
+              setUser={setUser}
+              setItems={setItems}
+              setGuestItems={setGuestItems}
+              guestItems={guestItems}
+            />
+          )}
         />
         <Route
           path="/auth"
@@ -123,10 +130,19 @@ const App = () => {
           path="/cart"
           exact
           render={(props) => (
-            <Cart user={user} setUser={setUser} setItemNum={setItemNum} total={total} items={items} setItems={setItems} guestItems={guestItems} setGuestItems={setGuestItems} />
+            <Cart
+              user={user}
+              setUser={setUser}
+              setItemNum={setItemNum}
+              total={total}
+              items={items}
+              setItems={setItems}
+              guestItems={guestItems}
+              setGuestItems={setGuestItems}
+            />
           )}
         />
-        <Route path="*" component={Unkown}/>
+        <Route path="*" component={Unkown} />
       </Switch>
       {initMsg && <Msg />}
       <Footer />

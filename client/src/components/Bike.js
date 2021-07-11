@@ -34,27 +34,29 @@ function Bike(props) {
     ),
   };
 
-  const  handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-   const { title, price, id, image } = currBike;
-   const bikeSize = size;
+    const { title, price, id, image } = currBike;
+    const bikeSize = size;
     //check to see if user is loggied in
     if (localStorage.getItem("userProfile")) {
       const { email } = props.user.result;
-   
-      
+
       // post the item to he users carts
 
-     const res = await postCart({ email }, { title, price, id, bikeSize, image });
-     props.setItems(res.data.items)
+      const res = await postCart(
+        { email },
+        { title, price, id, bikeSize, image }
+      );
+      props.setItems(res.data.items);
     } else {
-      console.log('you are a guest')
-      if (props.guestItems === 0) {
-        props.setGuestItems({title, price, id, bikeSize, image })
+      if (props.guestItems.length === 0) {
+        const item = { title, price, id, bikeSize, image, quantity: 0 };
+        localStorage.setItem("guest", JSON.stringify(item));
       }
-      console.log(props.guestItems)
+      console.log(localStorage.getItem("guest"));
     }
-  }
+  };
 
   return (
     <div className="Bike">
