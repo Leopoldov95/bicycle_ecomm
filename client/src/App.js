@@ -29,6 +29,13 @@ const App = () => {
   );
 
   useEffect(() => {
+    console.log('I was modified by a guest')
+    setItems(guestItems)
+    //setItemNum(showTotalItems(items))
+  },[guestItems])
+
+  useEffect(() => {
+    
     const token = user?.token;
 
     // JWT ...
@@ -49,6 +56,7 @@ const App = () => {
       setItems(res.data.items);
       setItemNum(showTotalItems(items));
     } else {
+      console.log('there is currently no user')
       setItemNum(0);
     }
   }, [user]);

@@ -51,10 +51,37 @@ function Bike(props) {
       props.setItems(res.data.items);
     } else {
       if (props.guestItems.length === 0) {
-        const item = { title, price, id, bikeSize, image, quantity: 0 };
-        localStorage.setItem("guest", JSON.stringify(item));
-      }
-      console.log(localStorage.getItem("guest"));
+        const item = { title, price, id, bikeSize, image, quantity: 1 };
+       
+        localStorage.setItem("guest", JSON.stringify([item]));
+      
+      
+      } else {
+        const item = { title, price, id, bikeSize, image };
+        const prevItems = JSON.parse(localStorage.getItem('guest'))
+        
+        // check to see if the item already exists in the array
+        const bikeExists = prevItems.filter((bike) => bike.id === item.id && bike.bikeSize === item.bikeSize);
+        if (bikeExists.length > 0) {
+          // do something
+         
+          const newNum = ( bikeExists[0].quantity += 1)
+          let foundIndex = prevItems.findIndex(x => x.id === item.id && x.bikeSize === item.bikeSize);
+       
+          localStorage.setItem("guest", JSON.stringify(prevItems));
+          // modify the quantity of the existing bike in the cart array
+       
+       
+        } else {
+          // item does not exist in the array and shall be pushed to the guest cart
+          console.log('the item does not exist!')
+          const newBike = ({...item, quantity: 1});
+          prevItems.push({...newBike})
+          
+          localStorage.setItem("guest", JSON.stringify(prevItems));
+        }
+      }  
+     props.setGuestItems(JSON.parse(localStorage.getItem('guest')))
     }
   };
 

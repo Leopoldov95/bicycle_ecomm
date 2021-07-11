@@ -11,3 +11,12 @@
 - need to STILL handle item num showing up when user logins
 - update shopping state items when a new user is created
 - allo shopping cart to be usable if no one is logged in, maybe if user is not loged in, push the shopping cart to a state/array (maybe set localstorage to 'guest') and once the user logs in, push thos items to the logged in users database
+-  // maybe the filtering logic should be handeled on the front end, and simply add the updated value(s) to the db, this way, I can avoid having to create two sperate data method for the website
+
+// have to redo the data flow
+
+1 - ALL database manipulation is handled on the front end, by default (if user is not logged in, they will have a 'guest' session ) and the data will be stored in the localstorage as well as state
+2 - In order to checkout, User MUST create account and/or login
+3 - IF the user logs in AND there are items ALREADY in state/ 'guest' local storage, they MUST be push the logged in users cart database
+4 - THe database shall no longer do data manipulation, all algorithms MUST be on the front end, this way, I don't need to be reliant on the database to manage the manipulation logic/algorithms
+

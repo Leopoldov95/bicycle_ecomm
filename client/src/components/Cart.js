@@ -9,13 +9,32 @@ import "./css/Cart.css";
 const Cart = (props) => {
 
   const handleDelete = async (item) => {
-    const { email } = props.user.result;
     const { id, bikeSize } = item;
+    if (props.user) {
+  const { email } = props.user.result;
+   
     const res = await deleteItem({ email }, { id, bikeSize });
     props.setItems(res.data.items);
+    } else {
+      // maybe the filtering logic should be handeled on the front end, and simply add the updated value(s) to the db, this way, I can avoid having to create two sperate data method for the website
+      console.log('you are a guest')
+      console.log(props.items)
+  
+    const filtered = props.items.filter((bike) => { 
+    
+        if (bike.id !== item.id || bike.bikeSize !== item.bikeSize) {
+          return bike
+        }
+          
+    })
+    localStorage.setItem("guest", JSON.stringify(filtered));
+    props.setGuestItems(JSON.parse(localStorage.getItem('guest')))
+    }
+  
   };
   const handleQuantity = async (item, action) => {
-    let res;
+    if (props.user) {
+       let res;
     const { email } = props.user.result;
     const { id, bikeSize } = item;
     // if item will be decreased from 1 to 0, delete it
@@ -28,10 +47,22 @@ const Cart = (props) => {
     }
    
     props.setItems(res.data.items);
+    } else {
+      // if item will be decreased from 1 to 0, delete it
+    if (item.quantity === 1 && action === 'minus') {
+     // res = await deleteItem({ email }, { id, bikeSize });
+     handleDelete(item)
+    } else {
+   
+    
+   // res = await updateQuantity({ email }, { id, bikeSize }, action);
+    }
+    }
+   
   };
   return (
     <div className="Cart">
-      {props.user ? (
+   
         <div className="Cart-items">
           {props.items ? (
             props.items.map((item) => (
@@ -82,12 +113,7 @@ const Cart = (props) => {
             </div>
           )}
         </div>
-      ) : (
-        <div className="msg">
-          <h1>You must be logged in to view the shopping cart</h1>
-        </div>
-      )}
-
+      
       <div className="Cart-price">
         <h2>Cart Summary</h2>
         <div>
