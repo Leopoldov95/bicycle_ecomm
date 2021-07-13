@@ -2,15 +2,11 @@
 
 import React, { useState } from "react";
 import { Slide } from "react-slideshow-image";
-import { useHistory } from "react-router-dom";
-import { postCart } from "../actions/cart";
-//import "./css/Slideshow.css";
 import BikeData from "../bikes.json";
 import ImgList from "../images.json";
 import "./css/Bike.css";
 
 function Bike(props) {
-  const history = useHistory();
   const currId = props.match.params.id;
   const sizes = ["SMALL", "MEDIUM", "LARGE", "X-LARGE"];
   const bikeNav = ["DETAILS", "SPECS", "SIZING", "WARRANTY"];
@@ -38,67 +34,32 @@ function Bike(props) {
     e.preventDefault();
     const { title, price, id, image } = currBike;
     const bikeSize = size;
-
-    if (props.items.length < 1) {
-      console.log("i was trigered by an emoty cart");
-      const prevItems = props.items;
+    const prevItems = props.items;
+    if (prevItems.length < 1) {
       const item = { title, price, id, bikeSize, image, quantity: 1 };
-      const newItem = prevItems.push(item);
-      console.log(prevItems);
-      //localStorage.setItem("localCart", JSON.stringify([item]));
-      //console.log(newItem);
-      //props.setItems(props.items.push(item));
-
-      //await props.handleUpdates(newItem);
+      prevItems.push(item);
+      await props.handleUpdates(prevItems);
     } else {
-      console.log("my cart has items");
       const item = { title, price, id, bikeSize, image };
-      const prevItems = props.items;
 
       // check to see if the item already exists in the array
       const bikeExists = prevItems.filter(
         (bike) => bike.id === item.id && bike.bikeSize === item.bikeSize
       );
       if (bikeExists.length > 0) {
-        // do something
-
-        //const newNum = (bikeExists[0].quantity += 1);
         let foundIndex = prevItems.findIndex(
           (x) => x.id === item.id && x.bikeSize === item.bikeSize
         );
         prevItems[foundIndex].quantity += 1;
 
-        //localStorage.setItem("localCart", JSON.stringify(prevItems));
-        //props.setItems(prevItems);
         // modify the quantity of the existing bike in the cart array
       } else {
         // item does not exist in the array and shall be pushed to the localCart cart
-        console.log("the item does not exist!");
         const newBike = { ...item, quantity: 1 };
         prevItems.push({ ...newBike });
-
-        //localStorage.setItem("localCart", JSON.stringify(prevItems));
-        //props.setItems(prevItems);
       }
       await props.handleUpdates(prevItems);
     }
-
-    /*   if (localStorage.getItem("localCart")) {
-      console.log(props.items);
-      localStorage.setItem("localCart", JSON.stringify(props.items));
-      props.setItems(JSON.parse(localStorage.getItem("localCart")));
-    }
-
-    if (props.user) {
-      // post changes to db cart
-      console.log("I was triggered by changes the Bike add to cart button");
-      const { email } = props.user.result;
-      const newItems = props.items;
-      const result = await postCart(email, newItems);
-      props.setItems(result.data.items);
-
-      // need to update the items here, otherwise website won't update!
-    } */
   };
 
   return (
@@ -124,7 +85,7 @@ function Bike(props) {
               <h2>{size}</h2>
             </div>
             <div>
-              <h1>${currBike.price}</h1>
+              <h1 style={{ color: "#04a9a7" }}>${currBike.price}</h1>
             </div>
           </div>
           <div className="content-size">

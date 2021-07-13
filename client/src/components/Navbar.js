@@ -22,14 +22,14 @@ const Navbar = (props) => {
     setShowMobileBikes(!showMobileBikes);
   };
 
-  const handleSignOut = (e) => {
-    e.preventDefault();
-
+  const handleSignOut = () => {
     props.setInitMsg(true);
     localStorage.clear(); // clears the entire local storage, needed to remove user from localStorage
     props.setUser(null);
+    props.setItems([]);
     history.push("/");
   };
+
   return (
     <div className="Navbar">
       <div className="Navbar-main">
@@ -77,13 +77,12 @@ const Navbar = (props) => {
             <li>
               <Link to="/cart" className="Navbar-cart">
                 <i className="fas fa-shopping-bag"></i>
-                   {props.itemNum > 0 && <span>{props.itemNum}</span>}
+                {props.itemNum > 0 && <span>{props.itemNum}</span>}
               </Link>
-           
             </li>
           </ul>
         </div>
-        <BikeNav large={true} display={display} />
+        <BikeNav large={true} display={display} handleDisplay={handleDisplay} />
       </div>
       {/* Mobile Only Navbar */}
       <div className="Navbar-secondary">
@@ -106,17 +105,22 @@ const Navbar = (props) => {
               <BikeNav
                 large={false}
                 display={display}
-                handleDisplay={handleDisplay}
+                setShowMobile={setShowMobile}
               />
-              <Link to="/about">
+              <Link to="/about" onClick={() => setShowMobile(false)}>
                 <li>About Us</li>
               </Link>
               {props.user ? (
-                <li onClick={handleSignOut}>
+                <li
+                  onClick={() => {
+                    handleSignOut();
+                    setShowMobile(false);
+                  }}
+                >
                   <i className="fas fa-sign-out-alt"></i> Sign Out
                 </li>
               ) : (
-                <Link to="/auth">
+                <Link to="/auth" onClick={() => setShowMobile(false)}>
                   <li>Account</li>
                 </Link>
               )}

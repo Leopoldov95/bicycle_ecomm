@@ -1,0 +1,30 @@
+.Checkout {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 2rem;
+  position: relative;
+}
+
+.Checkout::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.479);
+}
+
+.Checkout h1 {
+  color: white;
+  font-size: 3rem;
+  z-index: 100;
+}
+
+@media only screen and (max-width: 480px) {
+  .Checkout h1 {
+    font-size: 16px;
+  }
+}

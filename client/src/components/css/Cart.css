@@ -2,6 +2,7 @@
   padding: 3rem 6rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
+  min-height: 71vh;
 }
 
 .Cart .item-toggle:hover {

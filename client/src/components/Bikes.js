@@ -10,7 +10,7 @@ const Bikes = () => {
     "$501 - $700",
     "$701 - $1000",
   ];
-  const [showFilter, setShowFilter] = useState(true);
+  const [showFilter, setShowFilter] = useState(false);
   const [displayBikes, setDisplayBikes] = useState(BikeData);
   const [filters, setFilters] = useState({
     style: null,
@@ -93,14 +93,11 @@ const Bikes = () => {
   const speeds = handleSpeed();
 
   const handlePriceFilter = (price, bikes) => {
-    // console.log(bikes.forEach((bike) => console.log(bike.price)));
     const arr = [];
     const newArr = price.split("-");
     for (let i of newArr) {
       arr.push(Number(i.match(/(\d+)/)[0]));
     }
-    // use arr to search within price range
-    console.log(arr);
     return bikes.filter((bike) => bike.price >= arr[0] && bike.price <= arr[1]);
   };
 
@@ -118,7 +115,6 @@ const Bikes = () => {
           setDisplayBikes(newDisplay);
         } else if (value !== null && key === "price") {
           // handle price setting here, may want to refactor later
-          console.log("price filter has been engaged");
           newDisplay = handlePriceFilter(filters.price, newDisplay);
           setDisplayBikes(newDisplay);
         }

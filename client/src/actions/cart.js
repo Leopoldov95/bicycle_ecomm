@@ -9,5 +9,3 @@ export const postCart = async (email, item) => {
   const res = await api.postCart(email, item);
   return res;
 };
-
-// will want to create a method to delete/remove items from the shopping cart

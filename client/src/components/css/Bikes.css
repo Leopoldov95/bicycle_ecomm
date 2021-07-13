@@ -101,7 +101,7 @@
 
 .Bikes .Bikes-products {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .Bikes .Bikes-products .Bikes-card {
@@ -118,8 +118,8 @@
 }
 
 .Bikes .Bikes-products .Bikes-card img {
-  width: 300px;
-  height: 200px;
+  width: 100%;
+  height: 100%;
 }
 
 .Bikes .Bikes-products .Bikes-card-link {
@@ -150,24 +150,6 @@
   opacity: 0;
   transition: all ease 0.3s;
 }
-
-/* 
-
-.card-main:hover .card-main-shop,
-.card-main:hover .card-main-shop span{
-  display: flex;
-  opacity: 1;
-
-
-}
-.card-main .card-main-shop{
-  display: flex;
-  height: 2.5rem;
-  opacity: 0;
-  transition: all ease 0.3s;
-}
- 
-*/
 
 /* Custom Radio Selectors */
 
@@ -229,11 +211,11 @@
   .Bikes .Bikes-container {
     grid-template-columns: none;
   }
- 
+
   .Bikes .Bikes-container .Bikes-settings form {
     padding: 1rem;
   }
- 
+
   .Bikes .Bikes-products .Bikes-card img {
     width: 80%;
   }
@@ -246,8 +228,5 @@
   .Bikes .Bikes-products {
     display: flex;
     flex-direction: column;
-  }
-  .Bikes .Bikes-header .Bikes-filter span {
-    display: none;
   }
 }

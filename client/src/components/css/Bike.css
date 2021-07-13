@@ -129,6 +129,9 @@ h1 {
 }
 
 /* Bike Bottom Nav Display */
+.Bike .Bike-details {
+  margin-top: 1rem;
+}
 
 .Bike .Bike-details .Bike-info .warranty,
 .Bike .Bike-details .Bike-info .specs,
@@ -218,7 +221,7 @@ h1 {
   .Bike .indicator {
     display: none;
   }
-  
+
   .Bike .Bike-main .content {
     padding: 0;
   }
@@ -232,7 +235,7 @@ h1 {
   .Bike .Bike-main .content .content-header {
     flex-direction: column;
   }
- 
+
   .Bike .Bike-main .content .content-size {
     flex-direction: column;
   }
@@ -244,7 +247,7 @@ h1 {
     align-items: flex-start;
   }
   .Bike .Bike-details .Bike-nav ul li {
-    padding: 0 1rem 8px 1rem;
+    padding: 0 10px 8px 10px;
   }
   .Bike .Bike-details .Bike-info .sizing {
     width: 100%;

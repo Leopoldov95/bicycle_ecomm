@@ -12,7 +12,7 @@ import Bike from "./components/Bike";
 import Msg from "./components/Msg";
 import Cart from "./components/Cart";
 import Auth from "./components/auth/Auth";
-import Unkown from "./components/Unkown";
+import Unknown from "./components/Unknown";
 import Checkout from "./components/Checkout";
 
 // App will serve as the master management
@@ -32,7 +32,6 @@ const App = () => {
   useEffect(() => {
     // if no user is present, initialize the localCart
     if (!user) {
-      console.log("there is no user and a local cart has been initialized");
       // this is needed to prevent localCart reset on page refresh
       if (!localStorage.getItem("localCart")) {
         setItems([]);
@@ -42,11 +41,6 @@ const App = () => {
         setItems(JSON.parse(localStorage.getItem("localCart")));
       }
     }
-    /*   if (localStorage.getItem("localCart")) {
-     
-    } else {
-      
-    } */
   }, []);
 
   useEffect(() => {
@@ -69,21 +63,15 @@ const App = () => {
 
       // if user logs in and item exists, add them to the user's cart db
       if (localStorage.getItem("localCart") && user) {
-        console.log("I was triggered by changes to user");
-
         const result = await fetchCart({ email });
         const dbItems = result.data.items;
-
         // so gather the current items in the db, then add the new items to them when user logs in...
-        // messy method
-        console.log(dbItems);
         for (let bike of items) {
           if (dbItems && dbItems.length > 1) {
             const filtered = dbItems.filter(
               (dbItem) =>
                 dbItem.id === bike.id && dbItem.bikeSize === bike.bikeSize
             );
-            console.log(filtered);
             // if filtered is true, then item exists
             if (filtered.length > 0) {
               let foundIndex = dbItems.findIndex(
@@ -92,8 +80,6 @@ const App = () => {
               );
 
               dbItems[foundIndex].quantity += bike.quantity;
-              //dbItems[dbItems.indexOf(filtered)].quantity += bike.quantity;
-
               // else if filtered is 0, then item in localCart does not exist in db cart
             } else {
               dbItems.push(bike);
@@ -103,24 +89,21 @@ const App = () => {
             dbItems.push(bike);
           }
         }
-
         // check if database ALREADY contains the item, if so, increase it's quantity
-
         // else, add it as a new item to the database
-        console.log(dbItems);
         const newItems = await postCart(email, dbItems);
-
         // set the localCart local storage to the NEW db item set
-        // localStorage.setItem("localCart", JSON.stringify(newItems.data.items));
         localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
-        //setItems(newItems);
         await handleUpdates(newItems.data.items);
       } else {
         localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
         const result = await fetchCart({ email });
         const dbItems = result.data.items;
-        //setItems(dbItems);
-        await handleUpdates(dbItems);
+        if (dbItems) {
+          await handleUpdates(dbItems);
+        } else {
+          await handleUpdates([]);
+        }
       }
     }
     // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
@@ -136,12 +119,10 @@ const App = () => {
 
   // use this to make changes to the databses whenever there are changes to the items
   useEffect(() => {
-    console.log("there have been changes to the items!!!");
     if (items && items.length > 0) {
       setTotal(calcTotal(items));
 
       setItemNum(showTotalItems(items));
-      // so anytime changes are made to the items, they should be applied to the db
     } else {
       setTotal(0);
       setItemNum(0);
@@ -201,6 +182,7 @@ const App = () => {
         setUser={setUser}
         setInitMsg={setInitMsg}
         itemNum={itemNum}
+        setItems={setItems}
       />
 
       <Switch>
@@ -241,7 +223,12 @@ const App = () => {
             />
           )}
         />
-        <Route path="*" component={Unkown} />
+        <Route
+          path="/checkout"
+          exact
+          render={(props) => <Checkout {...props} user={user} />}
+        />
+        <Route path="*" component={Unknown} />
       </Switch>
       {initMsg && <Msg />}
       <Footer />

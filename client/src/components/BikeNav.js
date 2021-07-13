@@ -1,10 +1,15 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./css/BikeNav.css";
 import BikeData from "../bikes.json";
 function BikeNav(props) {
+  const location = useLocation();
   const [active, setActive] = useState(1);
-
+  useEffect(() => {
+    if (!props.large) {
+      props.setShowMobile(false);
+    }
+  }, [location]);
   const bikes = {
     1: [BikeData[0], BikeData[1]],
     2: [BikeData[2]],

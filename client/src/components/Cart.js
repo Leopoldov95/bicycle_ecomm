@@ -1,12 +1,19 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { postCart } from "../actions/cart";
+import React, { useState, useEffect } from "react";
+import { Link, useHistory } from "react-router-dom";
+
 // may want to use post cart to update item quantity, as item ALREADY exists in the cart, we may simply change the quantity
-//import { fetchCart } from "../api/index";
+
 import "./css/Cart.css";
 // have to figure out a way to handle quantity
 
 const Cart = (props) => {
+  const history = useHistory();
+  const [err, setErr] = useState(null);
+  useEffect(() => {
+    setTimeout(() => {
+      setErr(null);
+    }, 3000);
+  }, [err]);
   const handleDelete = async (item) => {
     const currItems = props.items;
     const filtered = currItems.filter((bike) => {
@@ -15,24 +22,7 @@ const Cart = (props) => {
       }
     });
 
-    //localStorage.setItem("localCart", JSON.stringify(filtered));
-
-    // props.setItems(filtered);
     await props.handleUpdates(filtered);
-    /*  if (localStorage.getItem("localCart")) {
-      localStorage.setItem("localCart", JSON.stringify(props.items));
-      props.setItems(JSON.parse(localStorage.getItem("localCart")));
-    }
-    if (props.user) {
-      // post changes to db cart
-      console.log("I was triggered by changes the Cart delete button");
-      const { email } = props.user.result;
-      const newItems = props.items;
-      const result = await postCart(email, newItems);
-      props.setItems(result.data.items);
-
-      // need to update the items here, otherwise website won't update!
-    } */
   };
   const handleQuantity = async (item, action) => {
     // if item will be decreased from 1 to 0, delete it
@@ -48,34 +38,20 @@ const Cart = (props) => {
 
       if (action === "plus") {
         prevItems[foundIndex].quantity += 1;
-
-        // localStorage.setItem("localCart", JSON.stringify(prevItems));
-        //props.setItems(prevItems);
       } else if (action === "minus") {
         prevItems[foundIndex].quantity -= 1;
-
-        //localStorage.setItem("localCart", JSON.stringify(prevItems));
-
-        //props.setItems(prevItems);
       }
       await props.handleUpdates(prevItems);
-      // res = await updateQuantity({ email }, { id, bikeSize }, action);
     }
+  };
 
-    /* if (localStorage.getItem("localCart")) {
-      localStorage.setItem("localCart", JSON.stringify(props.items));
-      props.setItems(JSON.parse(localStorage.getItem("localCart")));
-    }
+  const handleCheckout = (e) => {
+    e.preventDefault();
     if (props.user) {
-      // post changes to db cart
-      console.log("I was triggered by changes the Cart delete button");
-      const { email } = props.user.result;
-      const newItems = props.items;
-      const result = await postCart(email, newItems);
-      props.setItems(result.data.items);
-
-      // need to update the items here, otherwise website won't update!
-    } */
+      history.push("/checkout");
+    } else {
+      setErr("You must be logged in to checkout");
+    }
   };
   return (
     <div className="Cart">
@@ -86,7 +62,7 @@ const Cart = (props) => {
               <Link to={`/bikes/${item.id}`}>
                 <div className="item-info">
                   <div>
-                    <img src={`/img/bikes/${item.image}`} />
+                    <img src={`/img/bikes/${item.image}`} alt={item.title} />
                   </div>
                   <div>
                     <h4>{item.title}</h4>
@@ -138,7 +114,9 @@ const Cart = (props) => {
             <span style={{ color: "#04a9a7" }}>${props.total}</span>
           </h1>
         </div>
-        <button>Check Out</button>
+
+        <button onClick={handleCheckout}>Check Out</button>
+        {err && <span style={{ color: "red" }}>{err}</span>}
       </div>
     </div>
   );
