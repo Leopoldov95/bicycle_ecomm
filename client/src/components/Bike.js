@@ -40,13 +40,18 @@ function Bike(props) {
     const bikeSize = size;
 
     if (props.items.length < 1) {
+      console.log("i was trigered by an emoty cart");
+      const prevItems = props.items;
       const item = { title, price, id, bikeSize, image, quantity: 1 };
-
+      const newItem = prevItems.push(item);
+      console.log(prevItems);
       //localStorage.setItem("localCart", JSON.stringify([item]));
-
+      //console.log(newItem);
       //props.setItems(props.items.push(item));
-      await props.handleUpdates(item);
+
+      //await props.handleUpdates(newItem);
     } else {
+      console.log("my cart has items");
       const item = { title, price, id, bikeSize, image };
       const prevItems = props.items;
 

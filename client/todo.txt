@@ -19,4 +19,4 @@
 2 - In order to checkout, User MUST create account and/or login
 3 - IF the user logs in AND there are items ALREADY in state/ 'guest' local storage, they MUST be push the logged in users cart database
 4 - THe database shall no longer do data manipulation, all algorithms MUST be on the front end, this way, I don't need to be reliant on the database to manage the manipulation logic/algorithms
-
+5 - find a way to trigger the msg component for various actions (loggin out, deleting an item, adding item to cart)

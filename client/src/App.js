@@ -22,7 +22,7 @@ const App = () => {
 
   const [total, setTotal] = useState(0);
 
-  const [items, setItems] = useState(null);
+  const [items, setItems] = useState([]);
   const [initMsg, setInitMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
   const [user, setUser] = useState(
@@ -76,14 +76,14 @@ const App = () => {
 
         // so gather the current items in the db, then add the new items to them when user logs in...
         // messy method
-
+        console.log(dbItems);
         for (let bike of items) {
           if (dbItems && dbItems.length > 1) {
             const filtered = dbItems.filter(
               (dbItem) =>
                 dbItem.id === bike.id && dbItem.bikeSize === bike.bikeSize
             );
-
+            console.log(filtered);
             // if filtered is true, then item exists
             if (filtered.length > 0) {
               let foundIndex = dbItems.findIndex(
@@ -95,6 +95,8 @@ const App = () => {
               //dbItems[dbItems.indexOf(filtered)].quantity += bike.quantity;
 
               // else if filtered is 0, then item in localCart does not exist in db cart
+            } else {
+              dbItems.push(bike);
             }
           } else {
             // push item to db cart
@@ -105,17 +107,20 @@ const App = () => {
         // check if database ALREADY contains the item, if so, increase it's quantity
 
         // else, add it as a new item to the database
-
+        console.log(dbItems);
         const newItems = await postCart(email, dbItems);
+
         // set the localCart local storage to the NEW db item set
         // localStorage.setItem("localCart", JSON.stringify(newItems.data.items));
         localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
-        setItems(newItems);
+        //setItems(newItems);
+        await handleUpdates(newItems.data.items);
       } else {
         localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
         const result = await fetchCart({ email });
         const dbItems = result.data.items;
-        setItems(dbItems);
+        //setItems(dbItems);
+        await handleUpdates(dbItems);
       }
     }
     // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
@@ -132,8 +137,6 @@ const App = () => {
   // use this to make changes to the databses whenever there are changes to the items
   useEffect(() => {
     console.log("there have been changes to the items!!!");
-    console.log(items);
-
     if (items && items.length > 0) {
       setTotal(calcTotal(items));
 
@@ -180,12 +183,11 @@ const App = () => {
     if (localStorage.getItem("localCart")) {
       localStorage.setItem("localCart", JSON.stringify(newItems));
       setItems(JSON.parse(localStorage.getItem("localCart")));
-    }
-    if (user) {
+    } else if (user) {
       // post changes to db cart
-      console.log("I was triggered by changes the Cart delete button");
+
       const { email } = user.result;
-      const newItems = newItems;
+      //const newItems = newItems;
       const result = await postCart(email, newItems);
       setItems(result.data.items);
 
