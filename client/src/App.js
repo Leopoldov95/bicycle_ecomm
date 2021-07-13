@@ -21,8 +21,8 @@ const App = () => {
   const history = useHistory();
 
   const [total, setTotal] = useState(0);
-  const [fetch, setFetch] = useState(true);
-  const [items, setItems] = useState([]);
+
+  const [items, setItems] = useState(null);
   const [initMsg, setInitMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
   const [user, setUser] = useState(
@@ -30,11 +30,23 @@ const App = () => {
   );
 
   useEffect(() => {
-    if (localStorage.getItem("localCart")) {
-      setItems(JSON.parse(localStorage.getItem("localCart")));
-    } else {
-      setItemNum(0);
+    // if no user is present, initialize the localCart
+    if (!user) {
+      console.log("there is no user and a local cart has been initialized");
+      // this is needed to prevent localCart reset on page refresh
+      if (!localStorage.getItem("localCart")) {
+        setItems([]);
+        localStorage.setItem("localCart", JSON.stringify(items));
+        setItemNum(0);
+      } else {
+        setItems(JSON.parse(localStorage.getItem("localCart")));
+      }
     }
+    /*   if (localStorage.getItem("localCart")) {
+     
+    } else {
+      
+    } */
   }, []);
 
   useEffect(() => {
@@ -52,12 +64,11 @@ const App = () => {
 
   useEffect(async () => {
     // so this will only be triggered once the user logs in
-    if (user && fetch) {
-      console.log("there is a user!!!");
-      setFetch(false);
-      /*  const { email } = user.result;
+    if (user) {
+      const { email } = user.result;
+
       // if user logs in and item exists, add them to the user's cart db
-      if (items.length > 0) {
+      if (localStorage.getItem("localCart") && user) {
         console.log("I was triggered by changes to user");
 
         const result = await fetchCart({ email });
@@ -97,18 +108,17 @@ const App = () => {
 
         const newItems = await postCart(email, dbItems);
         // set the localCart local storage to the NEW db item set
-        localStorage.setItem("localCart", JSON.stringify(newItems.data.items));
-        setItems(JSON.parse(localStorage.getItem("localCart")));
+        // localStorage.setItem("localCart", JSON.stringify(newItems.data.items));
+        localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
+        setItems(newItems);
       } else {
+        localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
         const result = await fetchCart({ email });
         const dbItems = result.data.items;
-        if (dbItems && dbItems.length > 0) {
-          localStorage.setItem("localCart", JSON.stringify(dbItems));
-          setItems(JSON.parse(localStorage.getItem("localCart")));
-        }
-      } */
-      // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
+        setItems(dbItems);
+      }
     }
+    // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
   }, [user]);
 
   useEffect(() => {
@@ -118,7 +128,12 @@ const App = () => {
       }, 3000);
     }
   }, [initMsg]);
-  useEffect(async () => {
+
+  // use this to make changes to the databses whenever there are changes to the items
+  useEffect(() => {
+    console.log("there have been changes to the items!!!");
+    console.log(items);
+
     if (items && items.length > 0) {
       setTotal(calcTotal(items));
 
@@ -154,14 +169,29 @@ const App = () => {
   };
   const logout = () => {
     setUser(null);
-    setFetch(true);
     localStorage.clear();
-    setItems([]);
     setTotal(0);
     setItemNum(0);
+    setItems([]);
+    localStorage.setItem("localCart", JSON.stringify(items));
     history.push("/");
   };
+  const handleUpdates = async (newItems) => {
+    if (localStorage.getItem("localCart")) {
+      localStorage.setItem("localCart", JSON.stringify(newItems));
+      setItems(JSON.parse(localStorage.getItem("localCart")));
+    }
+    if (user) {
+      // post changes to db cart
+      console.log("I was triggered by changes the Cart delete button");
+      const { email } = user.result;
+      const newItems = newItems;
+      const result = await postCart(email, newItems);
+      setItems(result.data.items);
 
+      // need to update the items here, otherwise website won't update!
+    }
+  };
   return (
     <div className="App">
       <Navbar
@@ -185,6 +215,7 @@ const App = () => {
               setUser={setUser}
               items={items}
               setItems={setItems}
+              handleUpdates={handleUpdates}
             />
           )}
         />
@@ -204,6 +235,7 @@ const App = () => {
               total={total}
               items={items}
               setItems={setItems}
+              handleUpdates={handleUpdates}
             />
           )}
         />

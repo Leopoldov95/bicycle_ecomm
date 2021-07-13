@@ -42,10 +42,13 @@ function Bike(props) {
     if (props.items.length < 1) {
       const item = { title, price, id, bikeSize, image, quantity: 1 };
 
-      localStorage.setItem("localCart", JSON.stringify([item]));
+      //localStorage.setItem("localCart", JSON.stringify([item]));
+
+      //props.setItems(props.items.push(item));
+      await props.handleUpdates(item);
     } else {
       const item = { title, price, id, bikeSize, image };
-      const prevItems = JSON.parse(localStorage.getItem("localCart"));
+      const prevItems = props.items;
 
       // check to see if the item already exists in the array
       const bikeExists = prevItems.filter(
@@ -60,7 +63,8 @@ function Bike(props) {
         );
         prevItems[foundIndex].quantity += 1;
 
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //props.setItems(prevItems);
         // modify the quantity of the existing bike in the cart array
       } else {
         // item does not exist in the array and shall be pushed to the localCart cart
@@ -68,19 +72,28 @@ function Bike(props) {
         const newBike = { ...item, quantity: 1 };
         prevItems.push({ ...newBike });
 
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //props.setItems(prevItems);
       }
+      await props.handleUpdates(prevItems);
     }
-    props.setItems(JSON.parse(localStorage.getItem("localCart")));
+
+    /*   if (localStorage.getItem("localCart")) {
+      console.log(props.items);
+      localStorage.setItem("localCart", JSON.stringify(props.items));
+      props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    }
+
     if (props.user) {
       // post changes to db cart
       console.log("I was triggered by changes the Bike add to cart button");
       const { email } = props.user.result;
       const newItems = props.items;
-      await postCart(email, newItems);
+      const result = await postCart(email, newItems);
+      props.setItems(result.data.items);
 
       // need to update the items here, otherwise website won't update!
-    }
+    } */
   };
 
   return (

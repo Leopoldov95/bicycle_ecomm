@@ -8,22 +8,31 @@ import "./css/Cart.css";
 
 const Cart = (props) => {
   const handleDelete = async (item) => {
-    const filtered = props.items.filter((bike) => {
+    const currItems = props.items;
+    const filtered = currItems.filter((bike) => {
       if (bike.id !== item.id || bike.bikeSize !== item.bikeSize) {
         return bike;
       }
     });
-    localStorage.setItem("localCart", JSON.stringify(filtered));
-    props.setItems(JSON.parse(localStorage.getItem("localCart")));
+
+    //localStorage.setItem("localCart", JSON.stringify(filtered));
+
+    // props.setItems(filtered);
+    await props.handleUpdates(filtered);
+    /*  if (localStorage.getItem("localCart")) {
+      localStorage.setItem("localCart", JSON.stringify(props.items));
+      props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    }
     if (props.user) {
       // post changes to db cart
       console.log("I was triggered by changes the Cart delete button");
       const { email } = props.user.result;
       const newItems = props.items;
-      await postCart(email, newItems);
+      const result = await postCart(email, newItems);
+      props.setItems(result.data.items);
 
       // need to update the items here, otherwise website won't update!
-    }
+    } */
   };
   const handleQuantity = async (item, action) => {
     // if item will be decreased from 1 to 0, delete it
@@ -31,7 +40,8 @@ const Cart = (props) => {
       // res = await deleteItem({ email }, { id, bikeSize });
       handleDelete(item);
     } else {
-      const prevItems = JSON.parse(localStorage.getItem("localCart"));
+      // const prevItems = JSON.parse(localStorage.getItem("localCart"));
+      const prevItems = props.items;
       let foundIndex = prevItems.findIndex(
         (x) => x.id === item.id && x.bikeSize === item.bikeSize
       );
@@ -39,24 +49,33 @@ const Cart = (props) => {
       if (action === "plus") {
         prevItems[foundIndex].quantity += 1;
 
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
+        // localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //props.setItems(prevItems);
       } else if (action === "minus") {
         prevItems[foundIndex].quantity -= 1;
 
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
+        //localStorage.setItem("localCart", JSON.stringify(prevItems));
+
+        //props.setItems(prevItems);
       }
+      await props.handleUpdates(prevItems);
       // res = await updateQuantity({ email }, { id, bikeSize }, action);
     }
-    props.setItems(JSON.parse(localStorage.getItem("localCart")));
+
+    /* if (localStorage.getItem("localCart")) {
+      localStorage.setItem("localCart", JSON.stringify(props.items));
+      props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    }
     if (props.user) {
       // post changes to db cart
-      console.log("I was triggered by changes the cart change quantity button");
+      console.log("I was triggered by changes the Cart delete button");
       const { email } = props.user.result;
       const newItems = props.items;
-      await postCart(email, newItems);
+      const result = await postCart(email, newItems);
+      props.setItems(result.data.items);
 
       // need to update the items here, otherwise website won't update!
-    }
+    } */
   };
   return (
     <div className="Cart">
