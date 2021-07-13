@@ -34,44 +34,56 @@ function Bike(props) {
     ),
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { title, price, id, image } = currBike;
     const bikeSize = size;
+    //check to see if user is loggied in
+    if (localStorage.getItem("userProfile")) {
+      const { email } = props.user.result;
 
-    if (props.items.length < 1) {
-      const item = { title, price, id, bikeSize, image, quantity: 1 };
+      // post the item to he users carts
 
-      localStorage.setItem("localCart", JSON.stringify([item]));
-    } else {
-      const item = { title, price, id, bikeSize, image };
-      const prevItems = JSON.parse(localStorage.getItem("localCart"));
-
-      // check to see if the item already exists in the array
-      const bikeExists = prevItems.filter(
-        (bike) => bike.id === item.id && bike.bikeSize === item.bikeSize
+      const res = await postCart(
+        { email },
+        { title, price, id, bikeSize, image }
       );
-      if (bikeExists.length > 0) {
-        // do something
+      props.setItems(res.data.items);
+    } else {
+      if (props.items.length < 1) {
+        const item = { title, price, id, bikeSize, image, quantity: 1 };
 
-        //const newNum = (bikeExists[0].quantity += 1);
-        let foundIndex = prevItems.findIndex(
-          (x) => x.id === item.id && x.bikeSize === item.bikeSize
-        );
-        prevItems[foundIndex].quantity += 1;
-
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
-        // modify the quantity of the existing bike in the cart array
+        localStorage.setItem("localCart", JSON.stringify([item]));
       } else {
-        // item does not exist in the array and shall be pushed to the localCart cart
-        console.log("the item does not exist!");
-        const newBike = { ...item, quantity: 1 };
-        prevItems.push({ ...newBike });
+        const item = { title, price, id, bikeSize, image };
+        const prevItems = JSON.parse(localStorage.getItem("localCart"));
 
-        localStorage.setItem("localCart", JSON.stringify(prevItems));
+        // check to see if the item already exists in the array
+        const bikeExists = prevItems.filter(
+          (bike) => bike.id === item.id && bike.bikeSize === item.bikeSize
+        );
+        if (bikeExists.length > 0) {
+          // do something
+
+          //const newNum = (bikeExists[0].quantity += 1);
+          let foundIndex = prevItems.findIndex(
+            (x) => x.id === item.id && x.bikeSize === item.bikeSize
+          );
+          prevItems[foundIndex].quantity += 1;
+
+          localStorage.setItem("localCart", JSON.stringify(prevItems));
+          // modify the quantity of the existing bike in the cart array
+        } else {
+          // item does not exist in the array and shall be pushed to the localCart cart
+          console.log("the item does not exist!");
+          const newBike = { ...item, quantity: 1 };
+          prevItems.push({ ...newBike });
+
+          localStorage.setItem("localCart", JSON.stringify(prevItems));
+        }
       }
+      props.setItems(JSON.parse(localStorage.getItem("localCart")));
     }
-    props.setItems(JSON.parse(localStorage.getItem("localCart")));
   };
 
   return (
