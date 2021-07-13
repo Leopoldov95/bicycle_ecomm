@@ -34,7 +34,7 @@ function Bike(props) {
     ),
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { title, price, id, image } = currBike;
     const bikeSize = size;
@@ -72,6 +72,15 @@ function Bike(props) {
       }
     }
     props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    if (props.user) {
+      // post changes to db cart
+      console.log("I was triggered by changes the Bike add to cart button");
+      const { email } = props.user.result;
+      const newItems = props.items;
+      await postCart(email, newItems);
+
+      // need to update the items here, otherwise website won't update!
+    }
   };
 
   return (

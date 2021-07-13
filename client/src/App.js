@@ -19,8 +19,9 @@ import Checkout from "./components/Checkout";
 const App = () => {
   const location = useLocation();
   const history = useHistory();
-  const [total, setTotal] = useState(0);
 
+  const [total, setTotal] = useState(0);
+  const [fetch, setFetch] = useState(true);
   const [items, setItems] = useState([]);
   const [initMsg, setInitMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
@@ -51,8 +52,10 @@ const App = () => {
 
   useEffect(async () => {
     // so this will only be triggered once the user logs in
-    if (user) {
-      const { email } = user.result;
+    if (user && fetch) {
+      console.log("there is a user!!!");
+      setFetch(false);
+      /*  const { email } = user.result;
       // if user logs in and item exists, add them to the user's cart db
       if (items.length > 0) {
         console.log("I was triggered by changes to user");
@@ -77,7 +80,6 @@ const App = () => {
                   x.id === filtered[0].id && x.bikeSize === filtered[0].bikeSize
               );
 
-              console.log(dbItems[foundIndex].quantity);
               dbItems[foundIndex].quantity += bike.quantity;
               //dbItems[dbItems.indexOf(filtered)].quantity += bike.quantity;
 
@@ -104,7 +106,7 @@ const App = () => {
           localStorage.setItem("localCart", JSON.stringify(dbItems));
           setItems(JSON.parse(localStorage.getItem("localCart")));
         }
-      }
+      } */
       // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
     }
   }, [user]);
@@ -122,16 +124,6 @@ const App = () => {
 
       setItemNum(showTotalItems(items));
       // so anytime changes are made to the items, they should be applied to the db
-      if (user) {
-        // post changes to db cart
-        console.log("I was triggered by changes to items");
-        const { email } = user.result;
-        const newItems = items;
-        const result = await postCart(email, newItems);
-        const dbItems = result.data.items;
-        console.log(dbItems);
-        // need to update the items here, otherwise website won't update!
-      }
     } else {
       setTotal(0);
       setItemNum(0);
@@ -162,6 +154,7 @@ const App = () => {
   };
   const logout = () => {
     setUser(null);
+    setFetch(true);
     localStorage.clear();
     setItems([]);
     setTotal(0);

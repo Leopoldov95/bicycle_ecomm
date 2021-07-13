@@ -7,7 +7,7 @@ import "./css/Cart.css";
 // have to figure out a way to handle quantity
 
 const Cart = (props) => {
-  const handleDelete = (item) => {
+  const handleDelete = async (item) => {
     const filtered = props.items.filter((bike) => {
       if (bike.id !== item.id || bike.bikeSize !== item.bikeSize) {
         return bike;
@@ -15,8 +15,17 @@ const Cart = (props) => {
     });
     localStorage.setItem("localCart", JSON.stringify(filtered));
     props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    if (props.user) {
+      // post changes to db cart
+      console.log("I was triggered by changes the Cart delete button");
+      const { email } = props.user.result;
+      const newItems = props.items;
+      await postCart(email, newItems);
+
+      // need to update the items here, otherwise website won't update!
+    }
   };
-  const handleQuantity = (item, action) => {
+  const handleQuantity = async (item, action) => {
     // if item will be decreased from 1 to 0, delete it
     if (item.quantity === 1 && action === "minus") {
       // res = await deleteItem({ email }, { id, bikeSize });
@@ -39,6 +48,15 @@ const Cart = (props) => {
       // res = await updateQuantity({ email }, { id, bikeSize }, action);
     }
     props.setItems(JSON.parse(localStorage.getItem("localCart")));
+    if (props.user) {
+      // post changes to db cart
+      console.log("I was triggered by changes the cart change quantity button");
+      const { email } = props.user.result;
+      const newItems = props.items;
+      await postCart(email, newItems);
+
+      // need to update the items here, otherwise website won't update!
+    }
   };
   return (
     <div className="Cart">
