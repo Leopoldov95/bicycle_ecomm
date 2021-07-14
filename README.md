@@ -1,2 +1,51 @@
-# bicycle_ecomm
-Working on learning the MERN stack in order to create this project.
+# MERN Stack ECommerce Website
+## Table of Contents
+* [General Info](#general-info)
+* [Usage](#usage)
+* [Features](#features)
+* [Screenshot](#screenshot)
+* [Technologies](#technologies)
+* [What I Learned](#what-i-learned)
+
+
+## General Info
+This is a full MERN stack Ecommerce website created using MongoDB, Express.JS, ReactJS, and NodeJs. This is a proof of concept for a bicycle ecommerce website where a user can browse through the shop's inventory, add and/or remove items to/from a shopping cart, and allow the user to create an account or login using Google login. 
+
+## Screenshot
+![ScreenShot](https://github.com/Leopoldov95/bicycle_ecomm/blob/main/screenshot.png?raw=true)
+
+## Usage
+Simply click on the demo link provided.
+If you wish to download the code and use it, you must first download or clone the repo, then you must go to BOTH the /client and the /server folder and run on both:
+```bash
+npm install
+```
+
+Then type on both;
+```bash
+npm start 
+```
+
+You must first start the server before you can start the client.
+
+## Features
+* Fullstack MERN ECommerce wesbite that utilizes CRUD
+* User can add/remove and delete items from the shopping cart
+* Both guests and registered users can add items to the shopping cart
+* A MongoDB database where the user can login/created an account and store items that are in the shopping cart
+* Google login for easier login
+* User can use filters to narrow down the items
+* A easy to use navbar that shows the bicycles based on their categories
+* Website is fully responsive and looks great across multiple platforms
+
+
+## Technologies
+The app was created with the following technologies
+* MongoDB
+* Express.JS
+* ReactJS
+* NodeJS
+
+
+## What I Learned
+This has been my largest project created so far. This is actually my second attempt at creating a full stacked ECommerce website, but my first iteration did not utilize a database and therefore the end result had many many issues. This project was the most I have ever delved with the backend side of web programming and it certainly has been a challenge. I learned how to use MongoDB Atlas as a database to store information and how to retrieve that information onto the front-end. I learned better folder structure and how to many if a logged in user vs a guest has certain privileges to access certain features. 
