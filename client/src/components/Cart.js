@@ -50,7 +50,7 @@ const Cart = (props) => {
   return (
     <div className="Cart">
       <div className="Cart-items">
-        {props.items && props.items.length > 1 ? (
+        {props.items && props.items.length > 0 ? (
           props.items.map((item) => (
             <div className="item" key={`${item.id}-${item.bikeSize}`}>
               <Link to={`/bikes/${item.id}`}>
