@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 import { signup, signin } from "../../actions/user";
@@ -11,9 +11,18 @@ const initialState = {
 
 const Auth = (props) => {
   const history = useHistory();
+  const [showErr, setShowErr] = useState(null)
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignUp] = useState(false);
+
+  useEffect(() => {
+    if (showErr) {
+       setTimeout(()=> {
+        setShowErr(null)
+    }, 2000)
+    }
+  }, [showErr])
 
   const googleFailure = (error) => {
     console.log(error);
@@ -35,13 +44,24 @@ const Auth = (props) => {
   };
 
   // use this to update the formData state upon clicking submit
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // check if user is signin or signed out
     if (isSignup) {
-      signup(formData, history);
+      const result = await signup(formData, history);
+      if (result) {
+          console.log(result)
+          setShowErr(result)
+      }
+    
+      
+
     } else {
-      signin(formData, history);
+     const result = await  signin(formData, history);
+     if (result) {
+      console.log(result)
+      setShowErr(result)
+  }
     }
   };
   const handleChange = (e) => {
@@ -62,6 +82,8 @@ const Auth = (props) => {
     >
       <div className="form-container">
         <h1>{isSignup ? "CREATE AN ACCOUNT" : "SIGN IN"}</h1>
+        <span className={`form-error ${showErr ? 'isError' : ''}`}>{showErr ? `${showErr}` : ''}</span>
+       
         <form onSubmit={handleSubmit}>
           <div className="form-border">
             <i className="far fa-envelope"></i>

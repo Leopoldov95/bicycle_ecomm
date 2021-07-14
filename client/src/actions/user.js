@@ -8,15 +8,25 @@ export const signin = async (formData, history) => {
 
     history.push("/");
   } catch (error) {
-    console.log(error);
-    alert("User does not exist...");
+    if (error.response && error.response.data) {
+     // console.log(error.response.data.message) // some reason error message
+      return error.response.data.message;
+    }
   }
 };
 
 export const signup = async (formData, history) => {
-  const { data } = await api.signup(formData);
+  try {
+    const { data } = await api.signup(formData);
 
-  localStorage.setItem("userProfile", JSON.stringify(data));
+    localStorage.setItem("userProfile", JSON.stringify(data));
+  
+    history.push("/");
+  } catch (error) {
+    if (error.response && error.response.data) {
+     // alert(error.response.data.message) // some reason error message
+     return  error.response.data.message;
+    }
+  }
 
-  history.push("/");
 };

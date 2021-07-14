@@ -5,6 +5,13 @@
   align-items: center;
 }
 
+.Auth .isError {
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 4px 8px;
+  border-radius: 15px;
+  
+}
+
 .Auth input,
 .Auth input:focus {
   border: none;
@@ -43,8 +50,12 @@
   width: 400px;
   text-align: center;
 }
+.Auth .form-container .form-error {
+  display: inline-block;
+  color: red;
+  margin: 12px 0;
+}
 .Auth .form-container h1 {
-  margin-bottom: 1rem;
   color: white;
 }
 .Auth .form-container form {
