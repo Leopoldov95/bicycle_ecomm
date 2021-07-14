@@ -1,6 +1,7 @@
 .About {
   max-width: 1200px;
   margin: 3rem auto;
+  min-height: 76vh;
 }
 
 .About div:first-of-type h2 {

@@ -39,8 +39,6 @@ const Auth = (props) => {
     e.preventDefault();
     // check if user is signin or signed out
     if (isSignup) {
-      //need to set user here somehow
-
       signup(formData, history);
     } else {
       signin(formData, history);

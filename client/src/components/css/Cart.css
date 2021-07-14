@@ -2,7 +2,7 @@
   padding: 3rem 6rem;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  min-height: 71vh;
+  min-height: 84vh;
 }
 
 .Cart .item-toggle:hover {
@@ -51,7 +51,7 @@
   flex-direction: column;
   text-align: center;
   background: #f5f5f5;
-  padding: 2rem;
+  padding: 1rem 2rem;
   line-height: 2;
   max-height: 320px;
 }

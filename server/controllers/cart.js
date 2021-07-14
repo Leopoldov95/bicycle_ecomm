@@ -1,11 +1,9 @@
 import Cart from "../models/Cart.js";
 
-// may need to change this
 export const getCart = async (req, res) => {
   try {
     const email = req.body;
 
-    // will want to pass individual item here later
     const userCart = await Cart.find(email, (err, result) => {
       if (result.length === 0) {
         const newCart = new Cart({
@@ -30,15 +28,6 @@ export const postCart = async (req, res) => {
       { email },
       { $set: { items: item } },
       { new: true }
-      /* (err, result) => {
-        if (err) {
-          res.status(404).json({ message: err.message });
-        }
-        if (result) {
-          console.log(result.items);
-          res.json(result.items);
-        }
-      } */
     );
 
     res.json(dbCart);

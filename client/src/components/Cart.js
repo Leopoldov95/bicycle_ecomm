@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-
-// may want to use post cart to update item quantity, as item ALREADY exists in the cart, we may simply change the quantity
-
 import "./css/Cart.css";
-// have to figure out a way to handle quantity
 
 const Cart = (props) => {
   const history = useHistory();
@@ -27,10 +23,8 @@ const Cart = (props) => {
   const handleQuantity = async (item, action) => {
     // if item will be decreased from 1 to 0, delete it
     if (item.quantity === 1 && action === "minus") {
-      // res = await deleteItem({ email }, { id, bikeSize });
       handleDelete(item);
     } else {
-      // const prevItems = JSON.parse(localStorage.getItem("localCart"));
       const prevItems = props.items;
       let foundIndex = prevItems.findIndex(
         (x) => x.id === item.id && x.bikeSize === item.bikeSize
@@ -56,7 +50,7 @@ const Cart = (props) => {
   return (
     <div className="Cart">
       <div className="Cart-items">
-        {props.items ? (
+        {props.items && props.items.length > 1 ? (
           props.items.map((item) => (
             <div className="item" key={`${item.id}-${item.bikeSize}`}>
               <Link to={`/bikes/${item.id}`}>

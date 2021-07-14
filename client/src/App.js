@@ -19,9 +19,7 @@ import Checkout from "./components/Checkout";
 const App = () => {
   const location = useLocation();
   const history = useHistory();
-
   const [total, setTotal] = useState(0);
-
   const [items, setItems] = useState([]);
   const [initMsg, setInitMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
@@ -44,6 +42,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const token = user?.token;
 
     // JWT ...
@@ -121,7 +120,6 @@ const App = () => {
   useEffect(() => {
     if (items && items.length > 0) {
       setTotal(calcTotal(items));
-
       setItemNum(showTotalItems(items));
     } else {
       setTotal(0);
@@ -136,7 +134,6 @@ const App = () => {
         arr.forEach((element) => {
           total += element.price * element.quantity;
         });
-
         return total;
       }
     }
@@ -168,11 +165,8 @@ const App = () => {
       // post changes to db cart
 
       const { email } = user.result;
-      //const newItems = newItems;
       const result = await postCart(email, newItems);
       setItems(result.data.items);
-
-      // need to update the items here, otherwise website won't update!
     }
   };
   return (

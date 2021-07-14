@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import BikeData from "../bikes.json";
 import "./css/Bikes.css";
-//import { styleFilter, speedFilter, priceFilter } from "./helper/filter";
 const Bikes = () => {
   const priceRange = [
     "$0 - $300",
@@ -53,13 +52,11 @@ const Bikes = () => {
     }
   };
 
-  /* //////////////////////// */
   const handleFilter = () => {
     setShowFilter(!showFilter);
   };
 
   const deleteFilter = (val) => {
-    // alert(val);
     const filterName = Object.keys(filters).find((key) => filters[key] === val);
     if (filterName === "style") {
       setFilters({ ...filters, style: null });

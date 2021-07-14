@@ -6,8 +6,8 @@ const About = () => {
       <div>
         <h2>About Us</h2>
         <p>
-          Pure Cycles was founded with one mission in mind: to get more people
-          on bikes. For almost 10 years we’ve been designing, developing, and
+          Leo Cycles was founded with one mission in mind: to get more people on
+          bikes. For almost 10 years we’ve been designing, developing, and
           delivering the coolest bikes on the market and it’s been a blast to
           watch our brand and our bikes spread around the world.
         </p>
@@ -49,7 +49,7 @@ const About = () => {
             something for everyone - so we got to work.
           </p>
           <p>
-            Now, as Pure Cycles, our bikes span several disciplines and
+            Now, as Leo Cycles, our bikes span several disciplines and
             occasions. Race bikes, road bikes, rad bikes, and we’re always
             cooking up new ideas because we always find new places and ways to
             ride! From our successful Kickstarter to breathe life into our

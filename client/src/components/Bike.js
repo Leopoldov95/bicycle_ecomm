@@ -68,7 +68,7 @@ function Bike(props) {
         <div className="img-slide">
           <Slide easing="ease" {...properties}>
             {images.map((img) => (
-              <div className="each-slide">
+              <div className="each-slide" key={img}>
                 <div
                   style={{
                     background: `no-repeat center center/100% url(/img/bikes/${img})`,
@@ -93,6 +93,7 @@ function Bike(props) {
             <ul>
               {sizes.map((s) => (
                 <li
+                  key={s}
                   className={`${s === size && "btn-active"} btn`}
                   onClick={() => setSize(s)}
                 >
@@ -111,7 +112,7 @@ function Bike(props) {
             <div>
               <ul>
                 {currBike.highlights.map((det) => (
-                  <li>{det}</li>
+                  <li key={det}>{det}</li>
                 ))}
               </ul>
             </div>
@@ -143,6 +144,7 @@ function Bike(props) {
           <ul>
             {bikeNav.map((nav) => (
               <li
+                key={nav}
                 className={`${currInfo === nav ? "nav-active" : ""}`}
                 onClick={() => setCurrInfo(nav)}
               >
@@ -166,7 +168,7 @@ function Bike(props) {
             <h3>{currBike.subtitle}</h3>
             <ul>
               {Object.entries(currBike.specs).map(([key, value]) => (
-                <li>
+                <li key={value}>
                   <span>
                     <strong>{key}:</strong>
                   </span>

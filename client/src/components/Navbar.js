@@ -7,7 +7,6 @@ const Navbar = (props) => {
   const location = useLocation();
   const history = useHistory();
   const [display, setDisplay] = useState(false);
-  //const [itemNum, setItemNum] = useState(0);
   const [showMobile, setShowMobile] = useState(false);
   const [showMobileBikes, setShowMobileBikes] = useState(false);
 
