@@ -17,9 +17,9 @@ This is a full MERN stack Ecommerce website created using MongoDB, Express.JS, R
 ## Usage
 Simply click on the demo link provided.
 If you wish to download the code and use it, you must first download or clone the repo.
-If you want to use your own MongoDb Atlas server, you must configure the .env file with your MongoDB database and then run ```bash npm install ``` to install the dependencies and then start the server with ```bash npm start ```
+If you want to use your own MongoDb Atlas server, you must configure the .env file with your MongoDB database and then run ```npm install ``` to install the dependencies and then start the server with ```npm start ```
 
-If you just want to use the client then simply go to the client folder, run ```bash npm install ``` to install the dependencies and then start the client with ```bash npm start ```
+If you just want to use the client then simply go to the client folder, run ```npm install ``` to install the dependencies and then start the client with ```npm start ```
 
 ## Features
 * Fullstack MERN ECommerce wesbite that utilizes CRUD
