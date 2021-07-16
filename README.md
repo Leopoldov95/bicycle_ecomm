@@ -6,6 +6,7 @@
 * [Screenshot](#screenshot)
 * [Technologies](#technologies)
 * [What I Learned](#what-i-learned)
+* [Google Sign In Issues](#google-sign-in-issues)
 
 
 ## General Info
@@ -42,3 +43,6 @@ The app was created with the following technologies
 
 ## What I Learned
 This has been my largest project created so far. This is actually my second attempt at creating a full stacked ECommerce website, but my first iteration did not utilize a database and therefore the end result had many many issues. This project was the most I have ever delved with the backend side of web programming and it certainly has been a challenge. I learned how to use MongoDB Atlas as a database to store information and how to retrieve that information onto the front-end. I learned better folder structure and how to many if a logged in user vs a guest has certain privileges to access certain features. 
+
+## Google Sign In Issues
+I am using Google OAuth 2.0 for Google User authentication. If you are unable to sign in, you may have to clear your browsers cache in order to get this feature to work.
