@@ -8,7 +8,7 @@ function BikeNav(props) {
   useEffect(() => {
     if (!props.large) {
       props.setShowMobile(false);
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
   const bikes = {
     1: [BikeData[0], BikeData[1]],

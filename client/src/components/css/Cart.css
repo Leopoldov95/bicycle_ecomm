@@ -89,6 +89,7 @@
 
   .Cart .Cart-items {
     padding: 0 10px;
+    min-height: 200px;
   }
   .Cart .Cart-items .item img {
     height: 3rem;

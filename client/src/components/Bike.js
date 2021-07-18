@@ -60,6 +60,7 @@ function Bike(props) {
       }
       await props.handleUpdates(prevItems);
     }
+    props.setCartMsg(true);
   };
 
   return (
@@ -168,7 +169,7 @@ function Bike(props) {
             <h3>{currBike.subtitle}</h3>
             <ul>
               {Object.entries(currBike.specs).map(([key, value]) => (
-                <li key={value}>
+                <li key={key}>
                   <span>
                     <strong>{key}:</strong>
                   </span>

@@ -76,7 +76,13 @@ const Navbar = (props) => {
             <li>
               <Link to="/cart" className="Navbar-cart">
                 <i className="fas fa-shopping-bag"></i>
-                {props.itemNum > 0 && <span>{props.itemNum}</span>}
+                {props.itemNum > 0 && (
+                  <span
+                    className={`cart-num ${props.cartMsg ? "cart-msg" : ""}`}
+                  >
+                    {props.itemNum}
+                  </span>
+                )}
               </Link>
             </li>
           </ul>

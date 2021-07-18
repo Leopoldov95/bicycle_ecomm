@@ -22,6 +22,7 @@ const App = () => {
   const [total, setTotal] = useState(0);
   const [items, setItems] = useState([]);
   const [initMsg, setInitMsg] = useState(false);
+  const [cartMsg, setCartMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
   const [user, setUser] = useState(
     JSON.parse(localStorage.getItem("userProfile"))
@@ -38,7 +39,7 @@ const App = () => {
       } else {
         setItems(JSON.parse(localStorage.getItem("localCart")));
       }
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -52,60 +53,62 @@ const App = () => {
       if (decodedToken.exp * 1000 < new Date().getTime()) logout();
     }
 
-    setUser(JSON.parse(localStorage.getItem("userProfile")));
+    setUser(JSON.parse(localStorage.getItem("userProfile"))); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
-  useEffect(async () => {
-    // so this will only be triggered once the user logs in
-    if (user) {
-      const { email } = user.result;
+  useEffect(() => {
+    async function fetchData() {
+      if (user) {
+        const { email } = user.result;
 
-      // if user logs in and item exists, add them to the user's cart db
-      if (localStorage.getItem("localCart") && user) {
-        const result = await fetchCart({ email });
-        const dbItems = result.data.items;
-        // so gather the current items in the db, then add the new items to them when user logs in...
-        for (let bike of items) {
-          if (dbItems && dbItems.length > 1) {
-            const filtered = dbItems.filter(
-              (dbItem) =>
-                dbItem.id === bike.id && dbItem.bikeSize === bike.bikeSize
-            );
-            // if filtered is true, then item exists
-            if (filtered.length > 0) {
-              let foundIndex = dbItems.findIndex(
-                (x) =>
-                  x.id === filtered[0].id && x.bikeSize === filtered[0].bikeSize
+        // if user logs in and item exists, add them to the user's cart db
+        if (localStorage.getItem("localCart") && user) {
+          const result = await fetchCart({ email });
+          const dbItems = result.data.items;
+          // so gather the current items in the db, then add the new items to them when user logs in...
+          for (let bike of items) {
+            if (dbItems && dbItems.length > 1) {
+              const filtered = dbItems.filter(
+                (dbItem) =>
+                  dbItem.id === bike.id && dbItem.bikeSize === bike.bikeSize
               );
+              // if filtered is true, then item exists
+              if (filtered.length > 0) {
+                let foundIndex = dbItems.findIndex(
+                  (x) =>
+                    x.id === filtered[0].id &&
+                    x.bikeSize === filtered[0].bikeSize
+                );
 
-              dbItems[foundIndex].quantity += bike.quantity;
-              // else if filtered is 0, then item in localCart does not exist in db cart
+                dbItems[foundIndex].quantity += bike.quantity;
+                // else if filtered is 0, then item in localCart does not exist in db cart
+              } else {
+                dbItems.push(bike);
+              }
             } else {
+              // push item to db cart
               dbItems.push(bike);
             }
-          } else {
-            // push item to db cart
-            dbItems.push(bike);
           }
-        }
-        // check if database ALREADY contains the item, if so, increase it's quantity
-        // else, add it as a new item to the database
-        const newItems = await postCart(email, dbItems);
-        // set the localCart local storage to the NEW db item set
-        localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
-        await handleUpdates(newItems.data.items);
-      } else {
-        localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
-        const result = await fetchCart({ email });
-        const dbItems = result.data.items;
-        if (dbItems) {
-          await handleUpdates(dbItems);
+          // check if database ALREADY contains the item, if so, increase it's quantity
+          // else, add it as a new item to the database
+          const newItems = await postCart(email, dbItems);
+          // set the localCart local storage to the NEW db item set
+          localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
+          await handleUpdates(newItems.data.items);
         } else {
-          await handleUpdates([]);
+          localStorage.removeItem("localCart"); // must remove the localStorage session to avoid issues with db
+          const result = await fetchCart({ email });
+          const dbItems = result.data.items;
+          if (dbItems) {
+            await handleUpdates(dbItems);
+          } else {
+            await handleUpdates([]);
+          }
         }
       }
     }
-    // if user logs in and once all local items have been stored in the users db, fetch their items and set them to the current items state
+    fetchData(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
 
   useEffect(() => {
@@ -116,6 +119,14 @@ const App = () => {
     }
   }, [initMsg]);
 
+  useEffect(() => {
+    if (cartMsg) {
+      setTimeout(() => {
+        setCartMsg(false);
+      }, 400);
+    }
+  }, [cartMsg]);
+
   // use this to make changes to the databses whenever there are changes to the items
   useEffect(() => {
     if (items && items.length > 0) {
@@ -124,7 +135,7 @@ const App = () => {
     } else {
       setTotal(0);
       setItemNum(0);
-    }
+    } // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [items]);
   const calcTotal = (arr) => {
     if (items) {
@@ -177,6 +188,7 @@ const App = () => {
         setInitMsg={setInitMsg}
         itemNum={itemNum}
         setItems={setItems}
+        cartMsg={cartMsg}
       />
 
       <Switch>
@@ -194,6 +206,7 @@ const App = () => {
               items={items}
               setItems={setItems}
               handleUpdates={handleUpdates}
+              setCartMsg={setCartMsg}
             />
           )}
         />
@@ -214,6 +227,7 @@ const App = () => {
               items={items}
               setItems={setItems}
               handleUpdates={handleUpdates}
+              setCartMsg={setCartMsg}
             />
           )}
         />

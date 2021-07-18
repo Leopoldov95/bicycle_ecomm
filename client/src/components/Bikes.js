@@ -18,7 +18,7 @@ const Bikes = () => {
   });
 
   useEffect(() => {
-    updateBikes();
+    updateBikes(); // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters]);
 
   // sets the filter for styles
@@ -208,7 +208,7 @@ const Bikes = () => {
             <h2>Price</h2>
 
             {priceRange.map((price) => (
-              <div className="radio">
+              <div className="radio" key={price}>
                 <input
                   onClick={() => priceFilter(price)}
                   checked={filters.price === price}

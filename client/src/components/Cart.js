@@ -19,6 +19,7 @@ const Cart = (props) => {
     });
 
     await props.handleUpdates(filtered);
+    props.setCartMsg(true);
   };
   const handleQuantity = async (item, action) => {
     // if item will be decreased from 1 to 0, delete it
@@ -37,6 +38,7 @@ const Cart = (props) => {
       }
       await props.handleUpdates(prevItems);
     }
+    props.setCartMsg(true);
   };
 
   const handleCheckout = (e) => {

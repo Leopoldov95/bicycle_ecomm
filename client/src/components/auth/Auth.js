@@ -11,22 +11,24 @@ const initialState = {
 
 const Auth = (props) => {
   const history = useHistory();
-  const [showErr, setShowErr] = useState(null)
+  const [showErr, setShowErr] = useState(null);
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
   const [isSignup, setIsSignUp] = useState(false);
 
   useEffect(() => {
     if (showErr) {
-       setTimeout(()=> {
-        setShowErr(null)
-    }, 2000)
+      setTimeout(() => {
+        setShowErr(null);
+      }, 2000);
     }
-  }, [showErr])
+  }, [showErr]);
 
   const googleFailure = (error) => {
     console.log(error);
-    console.log("Google Sign in unsuccessfull, try again later.");
+    alert(
+      "Google Sign in unsuccessfull, try again later. You may need to clear your cache to get Google Signin to work..."
+    );
   };
 
   const googleSuccess = async (res) => {
@@ -50,18 +52,15 @@ const Auth = (props) => {
     if (isSignup) {
       const result = await signup(formData, history);
       if (result) {
-          console.log(result)
-          setShowErr(result)
+        console.log(result);
+        setShowErr(result);
       }
-    
-      
-
     } else {
-     const result = await  signin(formData, history);
-     if (result) {
-      console.log(result)
-      setShowErr(result)
-  }
+      const result = await signin(formData, history);
+      if (result) {
+        console.log(result);
+        setShowErr(result);
+      }
     }
   };
   const handleChange = (e) => {
@@ -82,8 +81,10 @@ const Auth = (props) => {
     >
       <div className="form-container">
         <h1>{isSignup ? "CREATE AN ACCOUNT" : "SIGN IN"}</h1>
-        <span className={`form-error ${showErr ? 'isError' : ''}`}>{showErr ? `${showErr}` : ''}</span>
-       
+        <span className={`form-error ${showErr ? "isError" : ""}`}>
+          {showErr ? `${showErr}` : ""}
+        </span>
+
         <form onSubmit={handleSubmit}>
           <div className="form-border">
             <i className="far fa-envelope"></i>
