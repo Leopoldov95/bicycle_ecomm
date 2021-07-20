@@ -26,9 +26,6 @@ const Auth = (props) => {
 
   const googleFailure = (error) => {
     console.log(error);
-    alert(
-      "Google Sign in unsuccessfull, try again later. You may need to clear your cache to get Google Signin to work..."
-    );
   };
 
   const googleSuccess = async (res) => {
