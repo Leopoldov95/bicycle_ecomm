@@ -21,7 +21,7 @@ const App = () => {
   const history = useHistory();
   const [total, setTotal] = useState(0);
   const [items, setItems] = useState([]);
-  const [initMsg, setInitMsg] = useState(false);
+  const [initMsg, setInitMsg] = useState('');
   const [cartMsg, setCartMsg] = useState(false);
   const [itemNum, setItemNum] = useState(0);
   const [user, setUser] = useState(
@@ -114,7 +114,7 @@ const App = () => {
   useEffect(() => {
     if (initMsg) {
       setTimeout(() => {
-        setInitMsg(false);
+        setInitMsg('');
       }, 3000);
     }
   }, [initMsg]);
@@ -213,7 +213,7 @@ const App = () => {
         <Route
           path="/auth"
           exact
-          render={(props) => <Auth user={user} setUser={setUser} />}
+          render={(props) => <Auth user={user} setUser={setUser} setInitMsg={setInitMsg}/>}
         />
         <Route
           path="/cart"
@@ -238,7 +238,7 @@ const App = () => {
         />
         <Route path="*" component={Unknown} />
       </Switch>
-      {initMsg && <Msg />}
+      {initMsg && <Msg initMsg={initMsg} />}
       <Footer />
     </div>
   );

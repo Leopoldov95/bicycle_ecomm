@@ -11,6 +11,8 @@ const initialState = {
 
 const Auth = (props) => {
   const history = useHistory();
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState(false);
   const [showErr, setShowErr] = useState(null);
   const [formData, setFormData] = useState(initialState);
   const [showPassword, setShowPassword] = useState(false);
@@ -36,27 +38,37 @@ const Auth = (props) => {
       const data = { result, token };
 
       localStorage.setItem("userProfile", JSON.stringify(data));
+      props.setInitMsg('You Have Logged In!');
       history.push("/");
     } catch (error) {
       console.log(error);
     }
   };
-
   // use this to update the formData state upon clicking submit
   const handleSubmit = async (e) => {
     e.preventDefault();
     // check if user is signin or signed out
     if (isSignup) {
+      setLoading(true)
       const result = await signup(formData, history);
       if (result) {
         console.log(result);
+        setLoading(false)
         setShowErr(result);
+      } else {
+        setLoading(false)
+        props.setInitMsg('Account Created!');
       }
     } else {
+      setLoading(true)
       const result = await signin(formData, history);
       if (result) {
+        setLoading(false)
         console.log(result);
-        setShowErr(result);
+      return  setShowErr(result);
+      } else {
+        setLoading(false)
+        props.setInitMsg('You Have Logged In!');
       }
     }
   };
@@ -78,6 +90,10 @@ const Auth = (props) => {
     >
       <div className="form-container">
         <h1>{isSignup ? "CREATE AN ACCOUNT" : "SIGN IN"}</h1>
+        {loading && <div className='loader'>
+          <img className='loader-img' src='img/account/loading.png' alt='load_png'/>
+        </div>}
+        {isSignup && !loading && <p className='password-message' style={{display: `${message ? 'block' : 'none'}`}}>Password must be greater than 5 characters, contain 1 Uppercase, 1 Special chracter (!@#$&*), and 1 number</p>}
         <span className={`form-error ${showErr ? "isError" : ""}`}>
           {showErr ? `${showErr}` : ""}
         </span>
@@ -93,8 +109,7 @@ const Auth = (props) => {
               placeholder="Enter Email"
             />
           </div>
-          <div className="form-border">
-            {" "}
+          <div className="form-border" onBlur={()=>setMessage(false)} onFocus={()=>setMessage(true)}>
             <i className="fas fa-lock"></i>
             <input
               name="password"

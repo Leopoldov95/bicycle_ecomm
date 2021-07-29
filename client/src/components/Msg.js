@@ -1,9 +1,9 @@
 import React from "react";
 import "./css/Msg.css";
-const Msg = () => {
+const Msg = (props) => {
   return (
     <div className="Msg">
-      <span>You have successfully logged out!</span>
+      <span>{props.initMsg}</span>
     </div>
   );
 };

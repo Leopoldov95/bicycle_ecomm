@@ -40,6 +40,7 @@ export const signin = async (req, res) => {
 };
 export const signup = async (req, res) => {
   const { email, password, confirmPassword } = req.body;
+  const regex = new RegExp('^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{5,}'); // One Uppercase, One special Character, One Number, 5 char's minumum
 
   try {
     const existingUser = await User.findOne({ email }); // look for an existing user by using the email
@@ -47,6 +48,10 @@ export const signup = async (req, res) => {
     // for signup, checks to see if a user already exists
     if (existingUser)
       return res.status(404).json({ message: "User already exists" });
+    
+    if (!regex.test(password)) {
+      return res.status(404).json({ message: "Password requirement not met" });
+    }
 
     if (password !== confirmPassword)
       return res.status(404).json({ message: "Passwords don't match" });

@@ -22,7 +22,7 @@ const Navbar = (props) => {
   };
 
   const handleSignOut = () => {
-    props.setInitMsg(true);
+    props.setInitMsg('You Have Successfully Logged Out!');
     localStorage.clear(); // clears the entire local storage, needed to remove user from localStorage
     props.setUser(null);
     props.setItems([]);

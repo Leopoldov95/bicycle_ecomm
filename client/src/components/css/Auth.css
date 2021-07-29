@@ -50,6 +50,19 @@
   width: 400px;
   text-align: center;
 }
+
+.Auth .form-container .password-message {
+  color: turquoise;
+  font-size: 14px;
+  font-weight: bold;
+}
+.Auth .form-container .loader {
+  margin-top: 10px;
+}
+.Auth .form-container .loader .loader-img {
+  height: 50px;
+  animation: spinner 2s linear infinite;
+}
 .Auth .form-container .form-error {
   display: inline-block;
   color: red;
@@ -95,4 +108,8 @@
   .Auth .form-container h1 {
     font-size: 1.5rem;
   }
+}
+
+@keyframes spinner {
+  to {transform: rotate(360deg);}
 }
