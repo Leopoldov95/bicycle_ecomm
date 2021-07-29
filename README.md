@@ -1,4 +1,4 @@
-# MERN Stack ECommerce Website
+# MERN Stack ECommerce Website <img src='https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/express/express-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg' width='50' />
 ## Table of Contents
 * [General Info](#general-info)
 * [Usage](#usage)
