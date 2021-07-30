@@ -1,4 +1,6 @@
 # MERN Stack ECommerce Website <img src='https://github.com/devicons/devicon/blob/master/icons/mongodb/mongodb-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/express/express-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg' width='50' /><img src='https://github.com/devicons/devicon/blob/master/icons/nodejs/nodejs-original.svg' width='50' />
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/3e70f7e5-fff6-4a82-9005-03e0b3264183/deploy-status)](https://app.netlify.com/sites/leocycles/deploys)
 ## Table of Contents
 * [General Info](#general-info)
 * [Usage](#usage)
