@@ -12,7 +12,7 @@
 
 
 ## General Info
-This is a full MERN stack Ecommerce website created using MongoDB, Express.JS, ReactJS, and NodeJs. This is a proof of concept for a bicycle ecommerce website where a user can browse through the shop's inventory, add and/or remove items to/from a shopping cart, and allow the user to create an account or login using Google login. 
+This is a full MERN stack Ecommerce website created using MongoDB, Express.JS, ReactJS, and NodeJs. This is a proof of concept for a bicycle ecommerce website where a user can browse through the shop's inventory, add and/or remove items to/from a shopping cart, and allow the user to create an account or login using Google-Login. 
 
 ## Screenshot
 ![ScreenShot](https://github.com/Leopoldov95/bicycle_ecomm/blob/main/screenshot.png?raw=true)
