@@ -366,14 +366,14 @@
     "style": "Adventure",
     "speed": "8 Speed",
     "best": false,
-    "price": 1499,
+    "price": 599,
     "id": 1010,
     "highlights": [
       "Electric Bike with 36V Battery. Only takes 4 hours to charge!",
       "Relaxed drive",
       "Includes charger and lock"
     ],
-    "details": "With its sweeping curves, the Pure City Step-Through has the classic look of a cobblestone street with a smooth modern feel.  Whether you're headed uptown, downtown, or just around the corner, if you're on this bike, you'll always be taking the scenic route!",
+    "details": "This E-Bike features an integrated flush-mount battery with a charge time of four hours. When fully charged this E-Bike can take you a distance of 20 miles or give you one hour of riding in comfort. If you want to just cruise or ride at speed you will enjoy the benefits of cycling with the assistance from the electric motor.",
     "specs": {
       "Frame": "Aluminum Frame",
       "Fork": "Hi-Ten Steel Frame",
@@ -441,7 +441,7 @@
     "title": "X500 Folding E-Bike",
     "subtitle": "Folding E-Bike",
     "image": "1012_01.jpeg",
-    "style": "City",
+    "style": "Commuter",
     "speed": "8 Speed",
     "best": false,
     "price": 5999,
