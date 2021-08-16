@@ -22,7 +22,7 @@ const Navbar = (props) => {
   };
 
   const handleSignOut = () => {
-    props.setInitMsg('You Have Successfully Logged Out!');
+    props.setInitMsg("You Have Successfully Logged Out!");
     localStorage.clear(); // clears the entire local storage, needed to remove user from localStorage
     props.setUser(null);
     props.setItems([]);
@@ -64,12 +64,16 @@ const Navbar = (props) => {
         <div className="Navbar-user">
           <ul>
             {props.user ? (
-              <li onClick={handleSignOut} className="lg-screen">
-                <i className="fas fa-sign-out-alt"></i> Sign Out
+              <li onClick={handleSignOut}>
+                <span className="lg-screen">Sign Out</span>
+                <i className="fas fa-sign-out-alt sm-screen"></i>
               </li>
             ) : (
               <Link to="/auth">
-                <li className="lg-screen">Account</li>
+                <li>
+                  <span className="lg-screen">Account</span>
+                  <i className="far fa-user sm-screen"></i>
+                </li>
               </Link>
             )}
 
@@ -115,20 +119,6 @@ const Navbar = (props) => {
               <Link to="/about" onClick={() => setShowMobile(false)}>
                 <li>About Us</li>
               </Link>
-              {props.user ? (
-                <li
-                  onClick={() => {
-                    handleSignOut();
-                    setShowMobile(false);
-                  }}
-                >
-                  <i className="fas fa-sign-out-alt"></i> Sign Out
-                </li>
-              ) : (
-                <Link to="/auth" onClick={() => setShowMobile(false)}>
-                  <li>Account</li>
-                </Link>
-              )}
             </ul>
           </div>
         </div>

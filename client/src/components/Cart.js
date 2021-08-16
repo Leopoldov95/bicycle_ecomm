@@ -43,10 +43,10 @@ const Cart = (props) => {
 
   const handleCheckout = (e) => {
     e.preventDefault();
-    if (props.user) {
+    if (props.items.length > 0) {
       history.push("/checkout");
     } else {
-      setErr("You must be logged in to checkout");
+      setErr("Your shopping cart is empty");
     }
   };
   return (

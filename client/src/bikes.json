@@ -1,6 +1,6 @@
 [
   {
-    "title": "Original Fixed Bike",
+    "title": "Original Bike",
     "subtitle": "Original",
     "image": "1001_01.png",
     "price": 349,
@@ -14,7 +14,7 @@
       "25mm rims",
       "Warranty activated with professional assembly from your local bike shop."
     ],
-    "details": "These are the bikes that started it all - now, they're our best-sellers! Speed, style, and simplicity make these bikes the perfect storm of awesome whether you’re starting out, getting back into biking after a few years away, or just want to get a feel for riding fixed!",
+    "details": "These are the orignal bikes that began our journey - now, they're our best-sellers! Speed, style, and simplicity make these bikes the perfect storm of awesome whether you’re starting out, getting back into biking after a few years away, or just want to get a feel for riding fixed!",
     "specs": {
       "Frame": "Hi-Ten Steel Frame",
       "Fork": "Hi-Ten Steel Fork",
@@ -54,7 +54,7 @@
       "25mm rims",
       "Warranty activated with professional assembly from your local bike shop."
     ],
-    "details": "The Pure Cycles Coaster Bikes are biking made simple. One speed, no cables, no levers, no nonsense - just you, the bike, and the road. Featuring a hands-free coaster brake for easy stops, swept-back bars for a comfy, upright ride, and a steel frame to soften the road, this bike is perfect for quick errands, slow rolls, and all of those late-night party rides.",
+    "details": "The Coaster Bikes are biking made simple. One speed, no cables, no levers, no nonsense - just you, the bike, and the road. Featuring a hands-free coaster brake for easy stops, swept-back bars for a comfy, upright ride, and a steel frame to soften the road, this bike is perfect for quick errands, slow rolls, and all of those late-night party rides.",
     "specs": {
       "Frame": "Hi-Ten Steel Frame",
       "Fork": "High-tensile steel 1\" threaded",
@@ -66,8 +66,8 @@
       "Rear Derailleur": "Shimano Claris",
       "Freewheel": "Sunrace CSM55 8pd 11-34t ",
       "CassetteChain": "KMC 1/8",
-      "Handlebar": "Pure Cycles ergo bar",
-      "Stem": "Pure Cycles alloy quill",
+      "Handlebar": "Ergo bar",
+      "Stem": "Alloy quill",
       "Grips": "Standard Grips",
       "Shifter": "Shimano Claris",
       "Saddle": "Drome Saddle",
@@ -80,7 +80,7 @@
     }
   },
   {
-    "title": "Gravel Adventure Bike",
+    "title": "Adventure Bike",
     "subtitle": "Adventure",
     "image": "1003_01.jpeg",
     "style": "Adventure",
@@ -95,8 +95,8 @@
     ],
     "details": "Blaze new trails, grind that gravel, and leave your maps at home - our Adventure Series is geared up to take you where you want to be, not where the roads want to take you. Beefy tires, tons of clearance, and mount points for all your racks, bags, and campsite-hauling needs. Where will your next adventure take you?",
     "specs": {
-      "Frame": "Pure Cycles Cromo Adventure",
-      "Fork": "Pure Cycles 1-1/8” Cromo Adventure",
+      "Frame": "Cromo Adventure",
+      "Fork": "1-1/8” Cromo Adventure",
       "Headset": "1-1/8” Threadless",
       "Crankset": "Adventure, 48/32t Chainrings",
       "BB": "FSA Square Taper Sealed Cartridge",
@@ -105,9 +105,9 @@
       "Rear Derailleur": "Shimano Claris",
       "Freewheel": "Sunrace CSM55 8pd 11-34t ",
       "CassetteChain": "KMC Z-8",
-      "Handlebar": "Pure Cycles Alloy Drop 31.8mm",
-      "Stem": "Pure Cycles Alloy",
-      "Grips": "Pure Cycles Tape",
+      "Handlebar": "Alloy Drop 31.8mm",
+      "Stem": "Alloy",
+      "Grips": "Tape",
       "Shifter": "Shimano Claris",
       "Saddle": "Selle Royal Rampage",
       "Seat Post": "Alloy Micro-Adjust - 27.2 x 350mm",
@@ -137,8 +137,8 @@
     ],
     "details": "Classic road bike looks with modern geometry and engineering makes the Pure Cycles Road Bike worthy of any climb. If you’ve got your eye on the top, this ride’s already heading that way.",
     "specs": {
-      "Frame": "Pure Cycles Cromo Road",
-      "Fork": "Pure Cycles 1-1/8” Cromo Road",
+      "Frame": "Cromo Road",
+      "Fork": "1-1/8” Cromo Road",
       "Headset": "1-1/8” Threadless",
       "Crankset": "Alloy 3pc Arms, 50/34t Chainrings",
       "BB": "FSA Square Taper Sealed Cartridge",
@@ -147,14 +147,14 @@
       "Rear Derailleur": "Shimano Claris",
       "Freewheel": "Sunrace CSM55 8pd 11-34t ",
       "CassetteChain": "KMC Z-8",
-      "Handlebar": "Pure Cycles Alloy 31.8mm",
-      "Stem": "Pure Cycles Alloy",
-      "Grips": "Pure Cycles Tape",
+      "Handlebar": "Alloy 31.8mm",
+      "Stem": "Alloy",
+      "Grips": "Tape",
       "Shifter": "Shimano Claris",
-      "Saddle": "Pure Cycles Road",
+      "Saddle": "Road",
       "Seat Post": "Alloy Micro-Adjust - 27.2 x 350mm",
       "Seat Clamp": "Alloy 30mm",
-      "Wheelset": "Pure Cycles 17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
+      "Wheelset": "17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
       "Tires": "Hutchinson Nitro II 700 x 28c",
       "Brakes": "Promax RC-469",
       "Brake Lever": "Shimano Claris"
@@ -174,7 +174,7 @@
       "Relaxed urban geometry",
       "Includes rear rack and fenders"
     ],
-    "details": "Our Pure City Classic is one smooth glass of class.  Designed to effortlessly take you from Point A to Point B, it's ready to quench your thirst for riding, and give you a nice little buzzy feeling at the same time.",
+    "details": "Our City Classic is one smooth glass of class.  Designed to effortlessly take you from Point A to Point B, it's ready to quench your thirst for riding, and give you a nice little buzzy feeling at the same time.",
     "specs": {
       "Frame": "Hi-Ten Steel Frame",
       "Fork": "Hi-Ten Steel Frame",
@@ -193,7 +193,7 @@
       "Saddle": "Vegan Leather Saddle w/ Springs",
       "Seat Post": "Alloy 25.4mm",
       "Seat Clamp": "Alloy 30mm",
-      "Wheelset": "Pure Cycles 17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
+      "Wheelset": "17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
       "Tires": "Kenda 700x35C",
       "Brakes": "Front and Rear Included - Alloy",
       "Brake Lever": "22.2mm"
@@ -233,7 +233,7 @@
       "Saddle": "Vegan Leather Saddle w/ Springs",
       "Seat Post": "Alloy 25.4mm",
       "Seat Clamp": "Alloy 30mm",
-      "Wheelset": "Pure Cycles 17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
+      "Wheelset": "17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
       "Tires": "Kenda 700x35C",
       "Brakes": "Front and Rear Included - Alloy",
       "Brake Lever": "22.2mm"
@@ -312,7 +312,7 @@
       "Saddle": "Vegan Leather Saddle w/ Springs",
       "Seat Post": "Alloy 25.4mm",
       "Seat Clamp": "Alloy 30mm",
-      "Wheelset": "Pure Cycles 17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
+      "Wheelset": "17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
       "Tires": "700x35C",
       "Brakes": "Front and Rear Included - Alloy",
       "Brake Lever": "22.2mm"
@@ -357,6 +357,124 @@
       "Tires": "WTB Slick Comp 700c x 32mm",
       "Brakes": "Tektro M280 Mechanical Disc",
       "Brake Lever": "Tektro"
+    }
+  },
+  {
+    "title": "Hyper Electric Bke",
+    "subtitle": "E-Bike",
+    "image": "1010_01.jpeg",
+    "style": "Adventure",
+    "speed": "8 Speed",
+    "best": false,
+    "price": 1499,
+    "id": 1010,
+    "highlights": [
+      "Electric Bike with 36V Battery. Only takes 4 hours to charge!",
+      "Relaxed drive",
+      "Includes charger and lock"
+    ],
+    "details": "With its sweeping curves, the Pure City Step-Through has the classic look of a cobblestone street with a smooth modern feel.  Whether you're headed uptown, downtown, or just around the corner, if you're on this bike, you'll always be taking the scenic route!",
+    "specs": {
+      "Frame": "Aluminum Frame",
+      "Fork": "Hi-Ten Steel Frame",
+      "Headset": "1\" Alloy",
+      "Crankset": "44T Alloy",
+      "BB": "Sealed Cartridge 68mm/105mm",
+      "Pedals": "City Platform 9/16\"",
+      "Derailleur": "Shimano 8-Speed with a 12-32 Cassette",
+      "Rear Derailleur": "Shimano 8-Speed with a 12-32 Cassette",
+      "Freewheel": "1/2\" x 1/8\" 16T",
+      "CassetteChain": "KMC Z-8",
+      "Handlebar": "Low Riser Bar",
+      "Stem": "Alloy Quill Stem",
+      "Grips": "Leather",
+      "Shifter": "Grip Shifter",
+      "Saddle": "Leather Saddle w/ Springs",
+      "Seat Post": "Alloy 25.4mm",
+      "Seat Clamp": "Alloy 30mm",
+      "Wheelset": "Tubular Tires",
+      "Tires": "700C",
+      "Brakes": "Front and Rear Included - V-Brakes",
+      "Brake Lever": "22.2mm"
+    }
+  },
+  {
+    "title": "Folding Bike",
+    "subtitle": "Folding Bike",
+    "image": "1011_01.jpeg",
+    "style": "Commuter",
+    "speed": "8 Speed",
+    "best": false,
+    "price": 1199,
+    "id": 1011,
+    "highlights": [
+      "Versatile 7-speed internal gear hub offers low-maintenance riding while helping you climb the hills with ease",
+      "Relaxed urban geometry",
+      "Includes rear rack and fenders"
+    ],
+    "details": "Built to handle the varied conditions and obstacles of your commute, the Folding Bike keeps you in a comfortable riding position and has 7 speeds to conquer any hills along the way.",
+    "specs": {
+      "Frame": "Aluminum, OCL+ joint",
+      "Fork": "Integrated Hi-tensile-strength steel",
+      "Headset": "Folding alloy body",
+      "Crankset": "Cold-forged 6061 aluminum crank arms, hand-polished",
+      "BB": "Cartridge, sealed bearings",
+      "Pedals": "Folding alloy body",
+      "Derailleur": "Shimano 1.4 W dynamo",
+      "Rear Derailleur": "Shimano Nexus 8-speed internally geared",
+      "Freewheel": "1/2\" x 1/8\" 16T",
+      "CassetteChain": "KMC Z-8",
+      "Handlebar": "Tern Sweep 6061 aluminum, Tern Andros butted",
+      "Stem": "Tern Andros (G2), adjustable, forged construction",
+      "Grips": "Leather",
+      "Shifter": "Shimano Nexus",
+      "Saddle": "Biologic Como DLX",
+      "Seat Post": "6061 aluminum with micro-adjust clamp",
+      "Seat Clamp": "Alloy 30mm",
+      "Wheelset": "Doublewall aluminum 24 inches",
+      "Tires": "Schwalbe Big Apple, 24 x 2.0 in.",
+      "Brakes": "V, aluminum, linear spring",
+      "Brake Lever": "V, aluminum bracket/lever"
+    }
+  },
+  {
+    "title": "X500 Folding E-Bike",
+    "subtitle": "Folding E-Bike",
+    "image": "1012_01.jpeg",
+    "style": "City",
+    "speed": "8 Speed",
+    "best": false,
+    "price": 5999,
+    "id": 1012,
+    "highlights": [
+      "Bosch® Cargo Line Motor provides up to 85 Nm of torque and 400% support.",
+      "This bike handles up to a 440 lb. (200 kg) Maximum Gross Vehicle Weight.",
+      "Always-on RearStop™ brake light helps you signal stops",
+      "Foldable and able to be stored just about anywhere"
+    ],
+    "details": "Looking for a bike that could replace your car? The X500 electric bike carries 2 kids plus groceries—or a whole lot of cargo—and with dual-battery technology, it's ready to ride all day.",
+    "specs": {
+      "Frame": "6061 aluminum",
+      "Fork": "Chromoly steerer; 32 mm stanchions",
+      "Headset": "1\" Alloy",
+      "Crankset": "44T Alloy",
+      "BB": "Sealed Cartridge 68mm/105mm",
+      "Pedals": "City Platform 9/16\"",
+      "Derailleur": "Tern Atlas, Boost thru axle, cargo-optimized design, sealed cartridge bearing",
+      "Rear Derailleur": "Enviolo Sport 380, Boost",
+      "Freewheel": "1/2\" x 1/8\" 16T",
+      "CassetteChain": "Gates Cabon Drive CDX belt",
+      "Handlebar": "Aluminum 25.4mm Center Clamp",
+      "Stem": "Tern Andros, adjustable, forged construction, patented technology",
+      "Grips": "Vegan Leather",
+      "Shifter": "Enviolo twist",
+      "Saddle": "Tern GSD by Velo with rear handle",
+      "Seat Post": "Tern Telescope, 34.9/30.9 mm, 2014 aluminum, telescopic",
+      "Seat Clamp": "Alloy 30mm",
+      "Wheelset": "17mm-Deep Alloy 32-Hole Rims, Stainless Steel Spokes, Alloy Front Hub, Alloy Cassette Rear Hub",
+      "Tires": "Schwalbe Super Moto-X 20 x 2.4 in.",
+      "Brakes": "Hydraulic Disc Brake",
+      "Brake Lever": "MT5 E-Stop, hydraulic, with brake sensor"
     }
   }
 ]
