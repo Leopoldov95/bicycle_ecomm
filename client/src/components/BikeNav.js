@@ -12,10 +12,10 @@ function BikeNav(props) {
   }, [location]);
   const bikes = {
     1: [BikeData[0], BikeData[1]],
-    2: [BikeData[2]],
+    2: [BikeData[2], BikeData[9]],
     3: [BikeData[3]],
     4: [BikeData[4], BikeData[5], BikeData[6], BikeData[7]],
-    5: [BikeData[8]],
+    5: [BikeData[8], BikeData[10], BikeData[11]],
   };
   function handleClick(id) {
     setActive(id);
