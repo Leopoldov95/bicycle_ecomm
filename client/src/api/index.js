@@ -2,7 +2,7 @@ import axios from "axios";
 
 // so by using this url, we can use the backend logic
 const API = axios.create({
-  baseURL: "https://bicycleshop-api.herokuapp.com"
+  baseURL: "https://bicycle-ecomm-api.onrender.com/",
 });
 // this function will run on every request, it's helping the middleware function
 API.interceptors.request.use((req) => {
