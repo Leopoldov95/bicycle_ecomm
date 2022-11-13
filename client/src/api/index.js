@@ -2,7 +2,7 @@ import axios from "axios";
 
 // so by using this url, we can use the backend logic
 const API = axios.create({
-  baseURL: "https://bicycle-ecomm-api.onrender.com/",
+  baseURL: "https://gray-tame-gazelle.cyclic.app/",
 });
 // this function will run on every request, it's helping the middleware function
 API.interceptors.request.use((req) => {
